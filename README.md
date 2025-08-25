@@ -5,18 +5,18 @@
 ## Install
 
 ```bash
-pip install fatehan
+pip install fatehan-pypb
 ```
 
-## Usage
+## GRPC Usage
 
 ```python
 import grpc
-from fatehan.devices import devices_pb2, devices_pb2_grpc
+from services import api_pb2, api_pb2_grpc
 
 channel = grpc.insecure_channel("localhost:50051")
-stub = devices_pb2_grpc.DeviceServiceStub(channel)  # replace with your actual service
-resp = stub.GetDevice(devices_pb2.GetDeviceRequest(id="123"))
+stub = api_pb2_grpc.ApiService(channel) 
+resp = stub.DeviceIndex(api_pb2.DeviceRequest(page=1, page_size=25))
 print(resp)
 ```
 
@@ -29,7 +29,6 @@ python -m grpc_tools.protoc \
   --grpc_python_out=. \
   --pyi_out=. \
   $(find ../protocols -name "*.proto" -print)
-
 ```
 
 ## Build And Test Locally
@@ -42,7 +41,7 @@ python -m twine check dist/*
 ## Try a local install
 ```bash
 python -m venv .venv && . .venv/bin/activate
-pip install dist/fatehan-0.2.0-py3-none-any.whl
+pip install dist/fatehan_pypb-0.2.0-py3-none-any.whl
 python -c "from devices import devices_pb2; print('ok', bool(devices_pb2))"
 ```
 

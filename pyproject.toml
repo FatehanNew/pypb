@@ -3,13 +3,13 @@ requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fatehan"
+name = "fatehan-pypb"
 version = "0.2.0"
 description = "gRPC/Protobuf message and service stubs for Fatehan"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
-authors = [{ name = "Your Name", email = "you@example.com" }]
+authors = [{ name = "Mehdi Rajabi", email = "96rajabi@gmail.com" }]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Operating System :: OS Independent",
@@ -26,10 +26,10 @@ dev = [
 ]
 
 [project.urls]
-Repository = "https://example.com/repo"
+Repository = "https://github.com/FatehanNew/pypb"
 
 [tool.setuptools]
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["fatehan*"]
+include = ["*"]
