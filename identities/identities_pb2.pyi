@@ -2,6 +2,7 @@ import datetime
 
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from google.protobuf.internal import containers as _containers
+from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from collections.abc import Iterable as _Iterable, Mapping as _Mapping
@@ -9,8 +10,1355 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
+class Permission(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    UNSPECIFIED: _ClassVar[Permission]
+    USER_LIST: _ClassVar[Permission]
+    USER_CREATE: _ClassVar[Permission]
+    USER_SHOW: _ClassVar[Permission]
+    USER_UPDATE: _ClassVar[Permission]
+    USER_DELETE: _ClassVar[Permission]
+    USER_ME: _ClassVar[Permission]
+    USER_SUB: _ClassVar[Permission]
+    ALERT_LIST: _ClassVar[Permission]
+    ALERT_CREATE: _ClassVar[Permission]
+    ALERT_SHOW: _ClassVar[Permission]
+    ALERT_UPDATE: _ClassVar[Permission]
+    ALERT_DELETE: _ClassVar[Permission]
+    ALERT_ME: _ClassVar[Permission]
+    ALERT_SUB: _ClassVar[Permission]
+    CAR_LIST: _ClassVar[Permission]
+    CAR_CREATE: _ClassVar[Permission]
+    CAR_SHOW: _ClassVar[Permission]
+    CAR_UPDATE: _ClassVar[Permission]
+    CAR_DELETE: _ClassVar[Permission]
+    CAR_ME: _ClassVar[Permission]
+    CAR_SUB: _ClassVar[Permission]
+    COMMAND_LIST: _ClassVar[Permission]
+    COMMAND_CREATE: _ClassVar[Permission]
+    COMMAND_SHOW: _ClassVar[Permission]
+    COMMAND_UPDATE: _ClassVar[Permission]
+    COMMAND_DELETE: _ClassVar[Permission]
+    COMMAND_ME: _ClassVar[Permission]
+    COMMAND_SUB: _ClassVar[Permission]
+    COMMAND_REBRAND_LIST: _ClassVar[Permission]
+    COMMAND_REBRAND_CREATE: _ClassVar[Permission]
+    COMMAND_REBRAND_SHOW: _ClassVar[Permission]
+    COMMAND_REBRAND_UPDATE: _ClassVar[Permission]
+    COMMAND_REBRAND_DELETE: _ClassVar[Permission]
+    COMMAND_REBRAND_ME: _ClassVar[Permission]
+    COMMAND_REBRAND_SUB: _ClassVar[Permission]
+    COMMAND_SEND: _ClassVar[Permission]
+    COMMAND_SEND_LIST: _ClassVar[Permission]
+    COMMAND_SEND_CREATE: _ClassVar[Permission]
+    COMMAND_SEND_SHOW: _ClassVar[Permission]
+    COMMAND_SEND_ME: _ClassVar[Permission]
+    COMMAND_SEND_SUB: _ClassVar[Permission]
+    DEVICE_LIST: _ClassVar[Permission]
+    DEVICE_CREATE: _ClassVar[Permission]
+    DEVICE_SHOW: _ClassVar[Permission]
+    DEVICE_UPDATE: _ClassVar[Permission]
+    DEVICE_DELETE: _ClassVar[Permission]
+    DEVICE_ME: _ClassVar[Permission]
+    DEVICE_SUB: _ClassVar[Permission]
+    DEVICE_IO_LIST: _ClassVar[Permission]
+    DEVICE_IO_CREATE: _ClassVar[Permission]
+    DEVICE_IO_SHOW: _ClassVar[Permission]
+    DEVICE_IO_UPDATE: _ClassVar[Permission]
+    DEVICE_IO_DELETE: _ClassVar[Permission]
+    DEVICE_IO_ME: _ClassVar[Permission]
+    DEVICE_IO_SUB: _ClassVar[Permission]
+    OPERATION_LIST: _ClassVar[Permission]
+    OPERATION_CREATE: _ClassVar[Permission]
+    OPERATION_SHOW: _ClassVar[Permission]
+    OPERATION_UPDATE: _ClassVar[Permission]
+    OPERATION_DELETE: _ClassVar[Permission]
+    OPERATION_ME: _ClassVar[Permission]
+    OPERATION_SUB: _ClassVar[Permission]
+    OPERATION_ACCEPT: _ClassVar[Permission]
+    OPERATION_REJECT: _ClassVar[Permission]
+    OPERATION_REPORT: _ClassVar[Permission]
+    OPERATION_DELETE_AFTER_START: _ClassVar[Permission]
+    AREA_LIST: _ClassVar[Permission]
+    AREA_CREATE: _ClassVar[Permission]
+    AREA_SHOW: _ClassVar[Permission]
+    AREA_UPDATE: _ClassVar[Permission]
+    AREA_DELETE: _ClassVar[Permission]
+    AREA_ME: _ClassVar[Permission]
+    AREA_SUB: _ClassVar[Permission]
+    AREA_CATEGORY_LIST: _ClassVar[Permission]
+    AREA_CATEGORY_CREATE: _ClassVar[Permission]
+    AREA_CATEGORY_SHOW: _ClassVar[Permission]
+    AREA_CATEGORY_UPDATE: _ClassVar[Permission]
+    AREA_CATEGORY_DELETE: _ClassVar[Permission]
+    AREA_CATEGORY_ME: _ClassVar[Permission]
+    AREA_CATEGORY_SUB: _ClassVar[Permission]
+    GPS_LOG_LIST: _ClassVar[Permission]
+    GPS_LOG_CREATE: _ClassVar[Permission]
+    GPS_LOG_SHOW: _ClassVar[Permission]
+    GPS_LOG_UPDATE: _ClassVar[Permission]
+    GPS_LOG_DELETE: _ClassVar[Permission]
+    GPS_LOG_ME: _ClassVar[Permission]
+    GPS_LOG_SUB: _ClassVar[Permission]
+    ICON_LIST: _ClassVar[Permission]
+    ICON_CREATE: _ClassVar[Permission]
+    ICON_SHOW: _ClassVar[Permission]
+    ICON_UPDATE: _ClassVar[Permission]
+    ICON_DELETE: _ClassVar[Permission]
+    ICON_ME: _ClassVar[Permission]
+    ICON_SUB: _ClassVar[Permission]
+    ICON_CREATE_DEFAULT: _ClassVar[Permission]
+    ICON_UPDATE_DEFAULT: _ClassVar[Permission]
+    ICON_DELETE_DEFAULT: _ClassVar[Permission]
+    INVOICE_LIST: _ClassVar[Permission]
+    INVOICE_CREATE: _ClassVar[Permission]
+    INVOICE_SHOW: _ClassVar[Permission]
+    INVOICE_UPDATE: _ClassVar[Permission]
+    INVOICE_DELETE: _ClassVar[Permission]
+    INVOICE_ME: _ClassVar[Permission]
+    INVOICE_SUB: _ClassVar[Permission]
+    NOTIFICATION_LIST: _ClassVar[Permission]
+    NOTIFICATION_CREATE: _ClassVar[Permission]
+    NOTIFICATION_SHOW: _ClassVar[Permission]
+    NOTIFICATION_UPDATE: _ClassVar[Permission]
+    NOTIFICATION_DELETE: _ClassVar[Permission]
+    NOTIFICATION_ME: _ClassVar[Permission]
+    NOTIFICATION_SUB: _ClassVar[Permission]
+    ORGANIZATION_LIST: _ClassVar[Permission]
+    ORGANIZATION_CREATE: _ClassVar[Permission]
+    ORGANIZATION_SHOW: _ClassVar[Permission]
+    ORGANIZATION_UPDATE: _ClassVar[Permission]
+    ORGANIZATION_DELETE: _ClassVar[Permission]
+    ORGANIZATION_ME: _ClassVar[Permission]
+    ORGANIZATION_SUB: _ClassVar[Permission]
+    ORGANIZATION_SETTING_LIST: _ClassVar[Permission]
+    ORGANIZATION_SETTING_CREATE: _ClassVar[Permission]
+    ORGANIZATION_SETTING_SHOW: _ClassVar[Permission]
+    ORGANIZATION_SETTING_UPDATE: _ClassVar[Permission]
+    ORGANIZATION_SETTING_DELETE: _ClassVar[Permission]
+    ORGANIZATION_SETTING_ME: _ClassVar[Permission]
+    ORGANIZATION_SETTING_SUB: _ClassVar[Permission]
+    PERSON_LIST: _ClassVar[Permission]
+    PERSON_CREATE: _ClassVar[Permission]
+    PERSON_SHOW: _ClassVar[Permission]
+    PERSON_UPDATE: _ClassVar[Permission]
+    PERSON_DELETE: _ClassVar[Permission]
+    PERSON_ME: _ClassVar[Permission]
+    PERSON_SUB: _ClassVar[Permission]
+    PRINT_CONFIG_LIST: _ClassVar[Permission]
+    PRINT_CONFIG_CREATE: _ClassVar[Permission]
+    PRINT_CONFIG_SHOW: _ClassVar[Permission]
+    PRINT_CONFIG_UPDATE: _ClassVar[Permission]
+    PRINT_CONFIG_DELETE: _ClassVar[Permission]
+    PRINT_CONFIG_ME: _ClassVar[Permission]
+    PRINT_CONFIG_SUB: _ClassVar[Permission]
+    REMINDER_LIST: _ClassVar[Permission]
+    REMINDER_CREATE: _ClassVar[Permission]
+    REMINDER_SHOW: _ClassVar[Permission]
+    REMINDER_UPDATE: _ClassVar[Permission]
+    REMINDER_DELETE: _ClassVar[Permission]
+    REMINDER_ME: _ClassVar[Permission]
+    REMINDER_SUB: _ClassVar[Permission]
+    SHIFT_LIST: _ClassVar[Permission]
+    SHIFT_CREATE: _ClassVar[Permission]
+    SHIFT_SHOW: _ClassVar[Permission]
+    SHIFT_UPDATE: _ClassVar[Permission]
+    SHIFT_DELETE: _ClassVar[Permission]
+    SHIFT_ME: _ClassVar[Permission]
+    SHIFT_SUB: _ClassVar[Permission]
+    SIM_CARD_LIST: _ClassVar[Permission]
+    SIM_CARD_CREATE: _ClassVar[Permission]
+    SIM_CARD_SHOW: _ClassVar[Permission]
+    SIM_CARD_UPDATE: _ClassVar[Permission]
+    SIM_CARD_DELETE: _ClassVar[Permission]
+    SIM_CARD_ME: _ClassVar[Permission]
+    SIM_CARD_SUB: _ClassVar[Permission]
+    USER_DEVICE_CONFIG_LIST: _ClassVar[Permission]
+    USER_DEVICE_CONFIG_CREATE: _ClassVar[Permission]
+    USER_DEVICE_CONFIG_SHOW: _ClassVar[Permission]
+    USER_DEVICE_CONFIG_UPDATE: _ClassVar[Permission]
+    USER_DEVICE_CONFIG_DELETE: _ClassVar[Permission]
+    USER_DEVICE_CONFIG_ME: _ClassVar[Permission]
+    USER_DEVICE_CONFIG_SUB: _ClassVar[Permission]
+    WAREHOUSE_LIST: _ClassVar[Permission]
+    WAREHOUSE_CREATE: _ClassVar[Permission]
+    WAREHOUSE_SHOW: _ClassVar[Permission]
+    WAREHOUSE_UPDATE: _ClassVar[Permission]
+    WAREHOUSE_DELETE: _ClassVar[Permission]
+    WAREHOUSE_ME: _ClassVar[Permission]
+    WAREHOUSE_SUB: _ClassVar[Permission]
+    PHONE_BOOK_LIST: _ClassVar[Permission]
+    PHONE_BOOK_CREATE: _ClassVar[Permission]
+    PHONE_BOOK_SHOW: _ClassVar[Permission]
+    PHONE_BOOK_UPDATE: _ClassVar[Permission]
+    PHONE_BOOK_DELETE: _ClassVar[Permission]
+    PHONE_BOOK_ME: _ClassVar[Permission]
+    PHONE_BOOK_SUB: _ClassVar[Permission]
+    ROLE_LIST: _ClassVar[Permission]
+    ROLE_CREATE: _ClassVar[Permission]
+    ROLE_SHOW: _ClassVar[Permission]
+    ROLE_UPDATE: _ClassVar[Permission]
+    ROLE_DELETE: _ClassVar[Permission]
+    ROLE_ME: _ClassVar[Permission]
+    ROLE_SUB: _ClassVar[Permission]
+    ROLE_PERMISSION: _ClassVar[Permission]
+    ALERT_CONFIG_CREATE: _ClassVar[Permission]
+    ALERT_CONFIG_SHOW: _ClassVar[Permission]
+    ALERT_CONFIG_UPDATE: _ClassVar[Permission]
+    ALERT_CONFIG_DELETE: _ClassVar[Permission]
+    ALERT_CONFIG_ME: _ClassVar[Permission]
+    ALERT_CONFIG_SUB: _ClassVar[Permission]
+    SERVICE_LIST: _ClassVar[Permission]
+    SERVICE_CREATE: _ClassVar[Permission]
+    SERVICE_SHOW: _ClassVar[Permission]
+    SERVICE_UPDATE: _ClassVar[Permission]
+    SERVICE_DELETE: _ClassVar[Permission]
+    SERVICE_ME: _ClassVar[Permission]
+    SERVICE_SUB: _ClassVar[Permission]
+    SERVICE_CAR_LIST: _ClassVar[Permission]
+    SERVICE_CAR_CREATE: _ClassVar[Permission]
+    SERVICE_CAR_SHOW: _ClassVar[Permission]
+    SERVICE_CAR_UPDATE: _ClassVar[Permission]
+    SERVICE_CAR_DELETE: _ClassVar[Permission]
+    SERVICE_CAR_ME: _ClassVar[Permission]
+    SERVICE_CAR_SUB: _ClassVar[Permission]
+    LIVE_LOCATION_LIST: _ClassVar[Permission]
+    LIVE_LOCATION_CREATE: _ClassVar[Permission]
+    LIVE_LOCATION_SHOW: _ClassVar[Permission]
+    LIVE_LOCATION_UPDATE: _ClassVar[Permission]
+    LIVE_LOCATION_DELETE: _ClassVar[Permission]
+    LIVE_LOCATION_ME: _ClassVar[Permission]
+    LIVE_LOCATION_SUB: _ClassVar[Permission]
+    INSTALLATION_AGENCY_LIST: _ClassVar[Permission]
+    INSTALLATION_AGENCY_CREATE: _ClassVar[Permission]
+    INSTALLATION_AGENCY_SHOW: _ClassVar[Permission]
+    INSTALLATION_AGENCY_UPDATE: _ClassVar[Permission]
+    INSTALLATION_AGENCY_DELETE: _ClassVar[Permission]
+    INSTALLATION_AGENCY_ME: _ClassVar[Permission]
+    INSTALLATION_AGENCY_SUB: _ClassVar[Permission]
+    SALES_AGENCY_REPORT: _ClassVar[Permission]
+    SALES_AGENCY_PRICE_LIST: _ClassVar[Permission]
+    SALES_AGENCY_PRICE_UPDATE: _ClassVar[Permission]
+    SALES_AGENCY_REQUEST_LIST: _ClassVar[Permission]
+    SALES_AGENCY_REQUEST_CREATE: _ClassVar[Permission]
+    SALES_AGENCY_REQUEST_ACCEPT: _ClassVar[Permission]
+    SALES_AGENCY_REQUEST_REJECT: _ClassVar[Permission]
+    SALES_AGENCY_LIST: _ClassVar[Permission]
+    SALES_AGENCY_CREATE: _ClassVar[Permission]
+    SALES_AGENCY_SHOW: _ClassVar[Permission]
+    SALES_AGENCY_UPDATE: _ClassVar[Permission]
+    SALES_AGENCY_DELETE: _ClassVar[Permission]
+    SALES_AGENCY_ME: _ClassVar[Permission]
+    SALES_AGENCY_SUB: _ClassVar[Permission]
+    TRANSACTION_LIST: _ClassVar[Permission]
+    TRANSACTION_CREATE: _ClassVar[Permission]
+    TRANSACTION_SHOW: _ClassVar[Permission]
+    TRANSACTION_UPDATE: _ClassVar[Permission]
+    TRANSACTION_DELETE: _ClassVar[Permission]
+    TRANSACTION_ME: _ClassVar[Permission]
+    TRANSACTION_SUB: _ClassVar[Permission]
+    TRANSACTION_CONFIRM: _ClassVar[Permission]
+    TRANSACTION_SUMMARY_LIST: _ClassVar[Permission]
+    TRANSACTION_SUMMARY_CREATE: _ClassVar[Permission]
+    TRANSACTION_SUMMARY_SHOW: _ClassVar[Permission]
+    TRANSACTION_SUMMARY_UPDATE: _ClassVar[Permission]
+    TRANSACTION_SUMMARY_DELETE: _ClassVar[Permission]
+    TRANSACTION_SUMMARY_ME: _ClassVar[Permission]
+    TRANSACTION_SUMMARY_SUB: _ClassVar[Permission]
+    WALLET_LIST: _ClassVar[Permission]
+    WALLET_CREATE: _ClassVar[Permission]
+    WALLET_SHOW: _ClassVar[Permission]
+    WALLET_UPDATE: _ClassVar[Permission]
+    WALLET_DELETE: _ClassVar[Permission]
+    WALLET_ME: _ClassVar[Permission]
+    WALLET_SUB: _ClassVar[Permission]
+    WALLET_TRANSACTION: _ClassVar[Permission]
+    WALLET_TRANSACTION_SUB: _ClassVar[Permission]
+    BANK_ACCOUNT_LIST: _ClassVar[Permission]
+    BANK_ACCOUNT_CREATE: _ClassVar[Permission]
+    BANK_ACCOUNT_SHOW: _ClassVar[Permission]
+    BANK_ACCOUNT_UPDATE: _ClassVar[Permission]
+    BANK_ACCOUNT_DELETE: _ClassVar[Permission]
+    BANK_ACCOUNT_ME: _ClassVar[Permission]
+    BANK_ACCOUNT_SUB: _ClassVar[Permission]
+    TRACKERS_LIST: _ClassVar[Permission]
+    TRACKERS_CREATE: _ClassVar[Permission]
+    TRACKERS_SHOW: _ClassVar[Permission]
+    TRACKERS_UPDATE: _ClassVar[Permission]
+    TRACKERS_DELETE: _ClassVar[Permission]
+    TRACKERS_ME: _ClassVar[Permission]
+    TRACKERS_SUB: _ClassVar[Permission]
+    TRACKERS_REBRAND_LIST: _ClassVar[Permission]
+    TRACKERS_REBRAND_CREATE: _ClassVar[Permission]
+    TRACKERS_REBRAND_SHOW: _ClassVar[Permission]
+    TRACKERS_REBRAND_UPDATE: _ClassVar[Permission]
+    TRACKERS_REBRAND_DELETE: _ClassVar[Permission]
+    TRACKERS_REBRAND_ME: _ClassVar[Permission]
+    TRACKERS_REBRAND_SUB: _ClassVar[Permission]
+    CAR_TYPE_LIST: _ClassVar[Permission]
+    CAR_TYPE_CREATE: _ClassVar[Permission]
+    CAR_TYPE_SHOW: _ClassVar[Permission]
+    CAR_TYPE_UPDATE: _ClassVar[Permission]
+    CAR_TYPE_DELETE: _ClassVar[Permission]
+    CAR_TYPE_ME: _ClassVar[Permission]
+    CAR_TYPE_SUB: _ClassVar[Permission]
+    CAR_GROUP_LIST: _ClassVar[Permission]
+    CAR_GROUP_CREATE: _ClassVar[Permission]
+    CAR_GROUP_SHOW: _ClassVar[Permission]
+    CAR_GROUP_UPDATE: _ClassVar[Permission]
+    CAR_GROUP_DELETE: _ClassVar[Permission]
+    CAR_GROUP_ME: _ClassVar[Permission]
+    CAR_GROUP_SUB: _ClassVar[Permission]
+    WARRANTY_LIST: _ClassVar[Permission]
+    WARRANTY_CREATE: _ClassVar[Permission]
+    WARRANTY_SHOW: _ClassVar[Permission]
+    WARRANTY_UPDATE: _ClassVar[Permission]
+    WARRANTY_DELETE: _ClassVar[Permission]
+    WARRANTY_ME: _ClassVar[Permission]
+    WARRANTY_SUB: _ClassVar[Permission]
+    WAREHOUSE_PRODUCT_LIST: _ClassVar[Permission]
+    WAREHOUSE_PRODUCT_CREATE: _ClassVar[Permission]
+    WAREHOUSE_PRODUCT_SHOW: _ClassVar[Permission]
+    WAREHOUSE_PRODUCT_UPDATE: _ClassVar[Permission]
+    WAREHOUSE_PRODUCT_DELETE: _ClassVar[Permission]
+    WAREHOUSE_PRODUCT_ME: _ClassVar[Permission]
+    WAREHOUSE_PRODUCT_SUB: _ClassVar[Permission]
+    PRODUCT_LIST: _ClassVar[Permission]
+    PRODUCT_CREATE: _ClassVar[Permission]
+    PRODUCT_SHOW: _ClassVar[Permission]
+    PRODUCT_UPDATE: _ClassVar[Permission]
+    PRODUCT_DELETE: _ClassVar[Permission]
+    PRODUCT_ME: _ClassVar[Permission]
+    PRODUCT_SUB: _ClassVar[Permission]
+    WAREHOUSE_ACTION_LIST: _ClassVar[Permission]
+    WAREHOUSE_ACTION_CREATE: _ClassVar[Permission]
+    WAREHOUSE_ACTION_SHOW: _ClassVar[Permission]
+    WAREHOUSE_ACTION_UPDATE: _ClassVar[Permission]
+    WAREHOUSE_ACTION_DELETE: _ClassVar[Permission]
+    WAREHOUSE_ACTION_ME: _ClassVar[Permission]
+    WAREHOUSE_ACTION_SUB: _ClassVar[Permission]
+    SUBSCRIPTION_LIST: _ClassVar[Permission]
+    SUBSCRIPTION_CREATE: _ClassVar[Permission]
+    SUBSCRIPTION_SHOW: _ClassVar[Permission]
+    SUBSCRIPTION_UPDATE: _ClassVar[Permission]
+    SUBSCRIPTION_DELETE: _ClassVar[Permission]
+    SUBSCRIPTION_ME: _ClassVar[Permission]
+    SUBSCRIPTION_SUB: _ClassVar[Permission]
+    PAYMENT_GATEWAY_LIST: _ClassVar[Permission]
+    PAYMENT_GATEWAY_CREATE: _ClassVar[Permission]
+    PAYMENT_GATEWAY_SHOW: _ClassVar[Permission]
+    PAYMENT_GATEWAY_UPDATE: _ClassVar[Permission]
+    PAYMENT_GATEWAY_DELETE: _ClassVar[Permission]
+    PAYMENT_GATEWAY_ME: _ClassVar[Permission]
+    PAYMENT_GATEWAY_SUB: _ClassVar[Permission]
+    WALLET_TRANSACTION_LOG_LIST: _ClassVar[Permission]
+    WALLET_TRANSACTION_LOG_SHOW: _ClassVar[Permission]
+    CONFIGS_LIST: _ClassVar[Permission]
+    CONFIGS_CREATE: _ClassVar[Permission]
+    CONFIGS_SHOW: _ClassVar[Permission]
+    CONFIGS_UPDATE: _ClassVar[Permission]
+    CONFIGS_DELETE: _ClassVar[Permission]
+    CONFIGS_ME: _ClassVar[Permission]
+    CONFIGS_SUB: _ClassVar[Permission]
+    AVAILABLE_CONFIG_LIST: _ClassVar[Permission]
+    AVAILABLE_CONFIG_CREATE: _ClassVar[Permission]
+    AVAILABLE_CONFIG_SHOW: _ClassVar[Permission]
+    AVAILABLE_CONFIG_UPDATE: _ClassVar[Permission]
+    AVAILABLE_CONFIG_DELETE: _ClassVar[Permission]
+    AVAILABLE_CONFIG_ME: _ClassVar[Permission]
+    AVAILABLE_CONFIG_SUB: _ClassVar[Permission]
+    DRIVERS_LIST: _ClassVar[Permission]
+    DRIVERS_CREATE: _ClassVar[Permission]
+    DRIVERS_SHOW: _ClassVar[Permission]
+    DRIVERS_UPDATE: _ClassVar[Permission]
+    DRIVERS_DELETE: _ClassVar[Permission]
+    DRIVERS_ME: _ClassVar[Permission]
+    DRIVERS_SUB: _ClassVar[Permission]
+    CAR_DRIVERS_LIST: _ClassVar[Permission]
+    CAR_DRIVERS_CREATE: _ClassVar[Permission]
+    CAR_DRIVERS_SHOW: _ClassVar[Permission]
+    CAR_DRIVERS_UPDATE: _ClassVar[Permission]
+    CAR_DRIVERS_DELETE: _ClassVar[Permission]
+    CAR_DRIVERS_ME: _ClassVar[Permission]
+    CAR_DRIVERS_SUB: _ClassVar[Permission]
+    CAR_ASSIGN_DRIVERS_LIST: _ClassVar[Permission]
+    CAR_ASSIGN_DRIVERS_CREATE: _ClassVar[Permission]
+    CAR_ASSIGN_DRIVERS_SHOW: _ClassVar[Permission]
+    CAR_ASSIGN_DRIVERS_UPDATE: _ClassVar[Permission]
+    CAR_ASSIGN_DRIVERS_DELETE: _ClassVar[Permission]
+    CAR_ASSIGN_DRIVERS_ME: _ClassVar[Permission]
+    CAR_ASSIGN_DRIVERS_SUB: _ClassVar[Permission]
+    TASK_LIST: _ClassVar[Permission]
+    TASK_CREATE: _ClassVar[Permission]
+    TASK_SHOW: _ClassVar[Permission]
+    TASK_UPDATE: _ClassVar[Permission]
+    TASK_DELETE: _ClassVar[Permission]
+    TASK_ME: _ClassVar[Permission]
+    TASK_SUB: _ClassVar[Permission]
+    PROJECT_LIST: _ClassVar[Permission]
+    PROJECT_CREATE: _ClassVar[Permission]
+    PROJECT_SHOW: _ClassVar[Permission]
+    PROJECT_UPDATE: _ClassVar[Permission]
+    PROJECT_DELETE: _ClassVar[Permission]
+    PROJECT_ME: _ClassVar[Permission]
+    PROJECT_SUB: _ClassVar[Permission]
+    PROJECT_CAR_LIST: _ClassVar[Permission]
+    PROJECT_CAR_CREATE: _ClassVar[Permission]
+    PROJECT_CAR_SHOW: _ClassVar[Permission]
+    PROJECT_CAR_UPDATE: _ClassVar[Permission]
+    PROJECT_CAR_DELETE: _ClassVar[Permission]
+    PROJECT_CAR_ME: _ClassVar[Permission]
+    PROJECT_CAR_SUB: _ClassVar[Permission]
+    PARTS_LIST: _ClassVar[Permission]
+    PARTS_CREATE: _ClassVar[Permission]
+    PARTS_SHOW: _ClassVar[Permission]
+    PARTS_UPDATE: _ClassVar[Permission]
+    PARTS_DELETE: _ClassVar[Permission]
+    PARTS_ME: _ClassVar[Permission]
+    PARTS_SUB: _ClassVar[Permission]
+    PARTS_WAREHOUSE_LIST: _ClassVar[Permission]
+    PARTS_WAREHOUSE_CREATE: _ClassVar[Permission]
+    PARTS_WAREHOUSE_SHOW: _ClassVar[Permission]
+    PARTS_WAREHOUSE_UPDATE: _ClassVar[Permission]
+    PARTS_WAREHOUSE_DELETE: _ClassVar[Permission]
+    PARTS_WAREHOUSE_ME: _ClassVar[Permission]
+    PARTS_WAREHOUSE_SUB: _ClassVar[Permission]
+    PARTS_PROVIDER_LIST: _ClassVar[Permission]
+    PARTS_PROVIDER_CREATE: _ClassVar[Permission]
+    PARTS_PROVIDER_SHOW: _ClassVar[Permission]
+    PARTS_PROVIDER_UPDATE: _ClassVar[Permission]
+    PARTS_PROVIDER_DELETE: _ClassVar[Permission]
+    PARTS_PROVIDER_ME: _ClassVar[Permission]
+    PARTS_PROVIDER_SUB: _ClassVar[Permission]
+    PARTS_WAREHOUSE_MANAGE_LIST: _ClassVar[Permission]
+    PARTS_WAREHOUSE_MANAGE_CREATE: _ClassVar[Permission]
+    PARTS_WAREHOUSE_MANAGE_SHOW: _ClassVar[Permission]
+    PARTS_WAREHOUSE_MANAGE_UPDATE: _ClassVar[Permission]
+    PARTS_WAREHOUSE_MANAGE_DELETE: _ClassVar[Permission]
+    PARTS_WAREHOUSE_MANAGE_ME: _ClassVar[Permission]
+    PARTS_WAREHOUSE_MANAGE_SUB: _ClassVar[Permission]
+    PAYMENT_LIST: _ClassVar[Permission]
+    PAYMENT_CREATE: _ClassVar[Permission]
+    PAYMENT_SHOW: _ClassVar[Permission]
+    PAYMENT_UPDATE: _ClassVar[Permission]
+    PAYMENT_DELETE: _ClassVar[Permission]
+    PAYMENT_ME: _ClassVar[Permission]
+    PAYMENT_SUB: _ClassVar[Permission]
+    SMS_LIST: _ClassVar[Permission]
+    SMS_CREATE: _ClassVar[Permission]
+    SMS_SHOW: _ClassVar[Permission]
+    SMS_UPDATE: _ClassVar[Permission]
+    SMS_DELETE: _ClassVar[Permission]
+    SMS_ME: _ClassVar[Permission]
+    SMS_SUB: _ClassVar[Permission]
+    ATTENDANCE_LIST: _ClassVar[Permission]
+    ATTENDANCE_CREATE: _ClassVar[Permission]
+    ATTENDANCE_SHOW: _ClassVar[Permission]
+    ATTENDANCE_UPDATE: _ClassVar[Permission]
+    ATTENDANCE_DELETE: _ClassVar[Permission]
+    ATTENDANCE_ME: _ClassVar[Permission]
+    ATTENDANCE_SUB: _ClassVar[Permission]
+    ATTENDANCE_DEVICE_LIST: _ClassVar[Permission]
+    ATTENDANCE_DEVICE_CREATE: _ClassVar[Permission]
+    ATTENDANCE_DEVICE_SHOW: _ClassVar[Permission]
+    ATTENDANCE_DEVICE_UPDATE: _ClassVar[Permission]
+    ATTENDANCE_DEVICE_DELETE: _ClassVar[Permission]
+    ATTENDANCE_DEVICE_ME: _ClassVar[Permission]
+    ATTENDANCE_DEVICE_SUB: _ClassVar[Permission]
+    TRAFFIC_DEVICE_LIST: _ClassVar[Permission]
+    TRAFFIC_DEVICE_CREATE: _ClassVar[Permission]
+    TRAFFIC_DEVICE_SHOW: _ClassVar[Permission]
+    TRAFFIC_DEVICE_UPDATE: _ClassVar[Permission]
+    TRAFFIC_DEVICE_DELETE: _ClassVar[Permission]
+    TRAFFIC_DEVICE_ME: _ClassVar[Permission]
+    TRAFFIC_DEVICE_SUB: _ClassVar[Permission]
+    VACATION_LIST: _ClassVar[Permission]
+    VACATION_CREATE: _ClassVar[Permission]
+    VACATION_SHOW: _ClassVar[Permission]
+    VACATION_UPDATE: _ClassVar[Permission]
+    VACATION_DELETE: _ClassVar[Permission]
+    VACATION_ME: _ClassVar[Permission]
+    VACATION_SUB: _ClassVar[Permission]
+    PERFORMANCE_REPORT: _ClassVar[Permission]
+    AREA_REPORT: _ClassVar[Permission]
+    RAW_DATA_REPORT: _ClassVar[Permission]
+    DATA_REPORT: _ClassVar[Permission]
+    STOP_REPORT: _ClassVar[Permission]
+    HISTORY_REPORT: _ClassVar[Permission]
+    CHART_REPORT: _ClassVar[Permission]
+    TRIP_REPORT: _ClassVar[Permission]
+    TEXT_REPORT: _ClassVar[Permission]
+    INSURANCE_REPORT: _ClassVar[Permission]
+    STATS_REPORT: _ClassVar[Permission]
+    USER_REPORT: _ClassVar[Permission]
+    GUEST_REPORT: _ClassVar[Permission]
+    INVOICE_REPORT: _ClassVar[Permission]
+    CAMERA_REPORT: _ClassVar[Permission]
+    DRIVER_BEHAVIOR_REPORT: _ClassVar[Permission]
+    CALL_REPORT: _ClassVar[Permission]
+    DATA_COUNT_REPORT: _ClassVar[Permission]
+    DEVICE_CHARGE_REPORT: _ClassVar[Permission]
+    CAR_WARRANTY_REPORT: _ClassVar[Permission]
+    LAST_CONNECTION_REPORT: _ClassVar[Permission]
+    CHARGE_DEVICE: _ClassVar[Permission]
+    CHARGE_MANUAL_DEVICE: _ClassVar[Permission]
+    SERVER: _ClassVar[Permission]
+    PARTNER_REPORT: _ClassVar[Permission]
+    EXPIRE_SHOW: _ClassVar[Permission]
+    DRIVING_REPORT: _ClassVar[Permission]
+    ACTIVITY_LOG_LIST: _ClassVar[Permission]
+    REPORT_REPORT: _ClassVar[Permission]
+    REPORT_DRIVER: _ClassVar[Permission]
+    REPORT_STOPS: _ClassVar[Permission]
+    REPORT_TRAFFIC: _ClassVar[Permission]
+    REPORT_GEOFENCE: _ClassVar[Permission]
+    REPORT_DATA: _ClassVar[Permission]
+    NOTIFICATION_REPORT: _ClassVar[Permission]
+    REMOTE_CONTROL: _ClassVar[Permission]
+    PRINT_SETTING: _ClassVar[Permission]
+    TRACKING: _ClassVar[Permission]
+    WAREHOUSE_REPORT: _ClassVar[Permission]
+    BUY_SUBSCRIPTION_METHOD_CREATE: _ClassVar[Permission]
+    CHARGE_WALLET_CREATE: _ClassVar[Permission]
+    ADMIN_CHARGE_WALLET: _ClassVar[Permission]
+    USER_DEVICE_ALERT_LIST: _ClassVar[Permission]
+    USER_DEVICE_ALERT_CREATE: _ClassVar[Permission]
+    USER_DEVICE_ALERT_UPDATE: _ClassVar[Permission]
+    USER_DEVICE_ALERT_SHOW: _ClassVar[Permission]
+    USER_DEVICE_ALERT_DELETE: _ClassVar[Permission]
+    IO_ELEMENT_LIST: _ClassVar[Permission]
+    IO_ELEMENT_CREATE: _ClassVar[Permission]
+    IO_ELEMENT_SHOW: _ClassVar[Permission]
+    IO_ELEMENT_UPDATE: _ClassVar[Permission]
+    IO_ELEMENT_DELETE: _ClassVar[Permission]
+    ORGANIZATION_CONFIG_LIST: _ClassVar[Permission]
+    ORGANIZATION_CONFIG_CREATE: _ClassVar[Permission]
+    ORGANIZATION_CONFIG_SHOW: _ClassVar[Permission]
+    ORGANIZATION_CONFIG_UPDATE: _ClassVar[Permission]
+    ORGANIZATION_CONFIG_DELETE: _ClassVar[Permission]
+    CAR_CATEGORY_CREATE: _ClassVar[Permission]
+    CAR_CATEGORY_UPDATE: _ClassVar[Permission]
+    CAR_CATEGORY_DELETE: _ClassVar[Permission]
+    CAR_BRAND_CREATE: _ClassVar[Permission]
+    CAR_BRAND_UPDATE: _ClassVar[Permission]
+    CAR_BRAND_DELETE: _ClassVar[Permission]
+    PRODUCT_TYPE_CREATE: _ClassVar[Permission]
+    PRODUCT_TYPE_UPDATE: _ClassVar[Permission]
+    PRODUCT_TYPE_DELETE: _ClassVar[Permission]
+    NOTIFICATION_ALERT_LIST: _ClassVar[Permission]
+    NOTIFICATION_ALERT_SHOW: _ClassVar[Permission]
+    NOTIFICATION_ALERT_CREATE: _ClassVar[Permission]
+    NOTIFICATION_ALERT_UPDATE: _ClassVar[Permission]
+    NOTIFICATION_ALERT_DELETE: _ClassVar[Permission]
+    MODULE_PRICE_LIST: _ClassVar[Permission]
+    MODULE_PRICE_SHOW: _ClassVar[Permission]
+    MODULE_PRICE_CREATE: _ClassVar[Permission]
+    MODULE_PRICE_UPDATE: _ClassVar[Permission]
+    MODULE_PRICE_DELETE: _ClassVar[Permission]
+    ACTIVITY_LOGS_LIST: _ClassVar[Permission]
+    ACTIVITY_LOGS_LAST: _ClassVar[Permission]
+    ACTIVITY_LOGS_SHOW: _ClassVar[Permission]
+    USER_DEVICE_IO_LIST: _ClassVar[Permission]
+    USER_DEVICE_IO_SHOW: _ClassVar[Permission]
+    USER_DEVICE_IO_CREATE: _ClassVar[Permission]
+    USER_DEVICE_IO_UPDATE: _ClassVar[Permission]
+    USER_DEVICE_IO_DELETE: _ClassVar[Permission]
+    MODULE_PACKAGE_LIST: _ClassVar[Permission]
+    MODULE_PACKAGE_SHOW: _ClassVar[Permission]
+    MODULE_PACKAGE_CREATE: _ClassVar[Permission]
+    MODULE_PACKAGE_UPDATE: _ClassVar[Permission]
+    MODULE_PACKAGE_DELETE: _ClassVar[Permission]
+    APP_VERSION_LIST: _ClassVar[Permission]
+    APP_VERSION_SHOW: _ClassVar[Permission]
+    APP_VERSION_CREATE: _ClassVar[Permission]
+    APP_VERSION_UPDATE: _ClassVar[Permission]
+    APP_VERSION_DELETE: _ClassVar[Permission]
+    PERMISSIONS_LIST: _ClassVar[Permission]
+    SERVICE_CREATE_DEFAULT: _ClassVar[Permission]
+    REPORT_WORK_CYCLE: _ClassVar[Permission]
+    REPORT_NOTIFICATION: _ClassVar[Permission]
+    REPORT_CHART: _ClassVar[Permission]
+    MAINTENANCE_LIST: _ClassVar[Permission]
+    MAINTENANCE_CREATE: _ClassVar[Permission]
+    MAINTENANCE_SHOW: _ClassVar[Permission]
+    MAINTENANCE_UPDATE: _ClassVar[Permission]
+    MAINTENANCE_DELETE: _ClassVar[Permission]
+    MAINTENANCE_ME: _ClassVar[Permission]
+    MAINTENANCE_SUB: _ClassVar[Permission]
+    WORK_CYCLE_LIST: _ClassVar[Permission]
+    WORK_CYCLE_CREATE: _ClassVar[Permission]
+    WORK_CYCLE_SHOW: _ClassVar[Permission]
+    WORK_CYCLE_UPDATE: _ClassVar[Permission]
+    WORK_CYCLE_DELETE: _ClassVar[Permission]
+    WORK_CYCLE_ME: _ClassVar[Permission]
+    WORK_CYCLE_SUB: _ClassVar[Permission]
+    ORDER_LIST: _ClassVar[Permission]
+    ORDER_CREATE: _ClassVar[Permission]
+    ORDER_SHOW: _ClassVar[Permission]
+    ORDER_UPDATE: _ClassVar[Permission]
+    ORDER_DELETE: _ClassVar[Permission]
+    ORDER_ME: _ClassVar[Permission]
+    ORDER_SUB: _ClassVar[Permission]
+    APP_SETTING_LIST: _ClassVar[Permission]
+    APP_SETTING_SHOW: _ClassVar[Permission]
+    APP_SETTING_CREATE: _ClassVar[Permission]
+    APP_SETTING_UPDATE: _ClassVar[Permission]
+    APP_SETTING_DELETE: _ClassVar[Permission]
+    BLOCK_IP: _ClassVar[Permission]
+    SEND_SMS_COMMAND: _ClassVar[Permission]
+    WORK_FLOW_LIST: _ClassVar[Permission]
+    WORK_FLOW_SHOW: _ClassVar[Permission]
+    WORK_FLOW_CREATE: _ClassVar[Permission]
+    WORK_FLOW_UPDATE: _ClassVar[Permission]
+    WORK_FLOW_DELETE: _ClassVar[Permission]
+    WORK_FLOW_SUB: _ClassVar[Permission]
+    WORK_FLOW_ME: _ClassVar[Permission]
+    COMMAND_SEND_SMS: _ClassVar[Permission]
+    COMMAND_SEND_GPRS: _ClassVar[Permission]
+    COMMAND_SEND_MANUAL: _ClassVar[Permission]
+    ATTENDANCE_REPORT: _ClassVar[Permission]
+    SMS_GATEWAY_LIST: _ClassVar[Permission]
+    SMS_GATEWAY_CREATE: _ClassVar[Permission]
+    SMS_GATEWAY_SHOW: _ClassVar[Permission]
+    SMS_GATEWAY_UPDATE: _ClassVar[Permission]
+    SMS_GATEWAY_DELETE: _ClassVar[Permission]
+    SMS_GATEWAY_ME: _ClassVar[Permission]
+    SMS_GATEWAY_SUB: _ClassVar[Permission]
+    PB_WORK_FLOW_TASK_LIST: _ClassVar[Permission]
+    PB_WORK_FLOW_TASK_SHOW: _ClassVar[Permission]
+    PB_WORK_FLOW_TASK_CREATE: _ClassVar[Permission]
+    PB_WORK_FLOW_TASK_UPDATE: _ClassVar[Permission]
+    PB_WORK_FLOW_TASK_DELETE: _ClassVar[Permission]
+    PB_WORK_FLOW_TASK_SUB: _ClassVar[Permission]
+    PB_WORK_FLOW_TASK_ME: _ClassVar[Permission]
+    PB_WORK_FLOW_TASK_CONFIRM_REJECT: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_LIST: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_SHOW: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_CREATE: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_UPDATE: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_DELETE: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_SUB: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_ME: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_CONFIRM: _ClassVar[Permission]
+    CHANGE_ORGANIZATION_IS_UNLIMITED: _ClassVar[Permission]
+    LIVE_VIDEO_MONITORING: _ClassVar[Permission]
+    PLAYBACK_VIDEO_MONITORING: _ClassVar[Permission]
+    LISTEN_VIDEO_MONITORING: _ClassVar[Permission]
+    CALL_VIDEO_MONITORING: _ClassVar[Permission]
+    WORKFLOW_TASK_LIST: _ClassVar[Permission]
+    WORKFLOW_TASK_SHOW: _ClassVar[Permission]
+    WORKFLOW_TASK_CREATE: _ClassVar[Permission]
+    WORKFLOW_TASK_UPDATE: _ClassVar[Permission]
+    WORKFLOW_TASK_DELETE: _ClassVar[Permission]
+    WORKFLOW_TASK_SUB: _ClassVar[Permission]
+    WORKFLOW_TASK_ME: _ClassVar[Permission]
+    TRIP_WORK_FLOW_TASK_REJECT: _ClassVar[Permission]
+    MONITORING: _ClassVar[Permission]
+    DEBUGGING: _ClassVar[Permission]
+    USER_UPDATE_IMEI: _ClassVar[Permission]
+    PARTNER_UPDATE_IMEI: _ClassVar[Permission]
+    ADMIN_UPDATE_IMEI: _ClassVar[Permission]
+    EVENTS_LIST: _ClassVar[Permission]
+    EVENTS_CREATE: _ClassVar[Permission]
+    EVENTS_UPDATE: _ClassVar[Permission]
+    EVENTS_DELETE: _ClassVar[Permission]
+    EVENT_TEMPLATE_CREATE: _ClassVar[Permission]
+    EVENT_TEMPLATE_UPDATE: _ClassVar[Permission]
+    EVENT_TEMPLATE_DELETE: _ClassVar[Permission]
+    QUESTION_LIST: _ClassVar[Permission]
+    QUESTION_CREATE: _ClassVar[Permission]
+    QUESTION_SHOW: _ClassVar[Permission]
+    QUESTION_UPDATE: _ClassVar[Permission]
+    QUESTION_DELETE: _ClassVar[Permission]
+    QUESTION_ME: _ClassVar[Permission]
+    QUESTION_SUB: _ClassVar[Permission]
+    QUESTION_ANSWER: _ClassVar[Permission]
+    TRACKER_OUTPUT_COMMAND_LIST: _ClassVar[Permission]
+    TRACKER_OUTPUT_COMMAND_CREATE: _ClassVar[Permission]
+    TRACKER_OUTPUT_COMMAND_SHOW: _ClassVar[Permission]
+    TRACKER_OUTPUT_COMMAND_UPDATE: _ClassVar[Permission]
+    TRACKER_OUTPUT_COMMAND_DELETE: _ClassVar[Permission]
+UNSPECIFIED: Permission
+USER_LIST: Permission
+USER_CREATE: Permission
+USER_SHOW: Permission
+USER_UPDATE: Permission
+USER_DELETE: Permission
+USER_ME: Permission
+USER_SUB: Permission
+ALERT_LIST: Permission
+ALERT_CREATE: Permission
+ALERT_SHOW: Permission
+ALERT_UPDATE: Permission
+ALERT_DELETE: Permission
+ALERT_ME: Permission
+ALERT_SUB: Permission
+CAR_LIST: Permission
+CAR_CREATE: Permission
+CAR_SHOW: Permission
+CAR_UPDATE: Permission
+CAR_DELETE: Permission
+CAR_ME: Permission
+CAR_SUB: Permission
+COMMAND_LIST: Permission
+COMMAND_CREATE: Permission
+COMMAND_SHOW: Permission
+COMMAND_UPDATE: Permission
+COMMAND_DELETE: Permission
+COMMAND_ME: Permission
+COMMAND_SUB: Permission
+COMMAND_REBRAND_LIST: Permission
+COMMAND_REBRAND_CREATE: Permission
+COMMAND_REBRAND_SHOW: Permission
+COMMAND_REBRAND_UPDATE: Permission
+COMMAND_REBRAND_DELETE: Permission
+COMMAND_REBRAND_ME: Permission
+COMMAND_REBRAND_SUB: Permission
+COMMAND_SEND: Permission
+COMMAND_SEND_LIST: Permission
+COMMAND_SEND_CREATE: Permission
+COMMAND_SEND_SHOW: Permission
+COMMAND_SEND_ME: Permission
+COMMAND_SEND_SUB: Permission
+DEVICE_LIST: Permission
+DEVICE_CREATE: Permission
+DEVICE_SHOW: Permission
+DEVICE_UPDATE: Permission
+DEVICE_DELETE: Permission
+DEVICE_ME: Permission
+DEVICE_SUB: Permission
+DEVICE_IO_LIST: Permission
+DEVICE_IO_CREATE: Permission
+DEVICE_IO_SHOW: Permission
+DEVICE_IO_UPDATE: Permission
+DEVICE_IO_DELETE: Permission
+DEVICE_IO_ME: Permission
+DEVICE_IO_SUB: Permission
+OPERATION_LIST: Permission
+OPERATION_CREATE: Permission
+OPERATION_SHOW: Permission
+OPERATION_UPDATE: Permission
+OPERATION_DELETE: Permission
+OPERATION_ME: Permission
+OPERATION_SUB: Permission
+OPERATION_ACCEPT: Permission
+OPERATION_REJECT: Permission
+OPERATION_REPORT: Permission
+OPERATION_DELETE_AFTER_START: Permission
+AREA_LIST: Permission
+AREA_CREATE: Permission
+AREA_SHOW: Permission
+AREA_UPDATE: Permission
+AREA_DELETE: Permission
+AREA_ME: Permission
+AREA_SUB: Permission
+AREA_CATEGORY_LIST: Permission
+AREA_CATEGORY_CREATE: Permission
+AREA_CATEGORY_SHOW: Permission
+AREA_CATEGORY_UPDATE: Permission
+AREA_CATEGORY_DELETE: Permission
+AREA_CATEGORY_ME: Permission
+AREA_CATEGORY_SUB: Permission
+GPS_LOG_LIST: Permission
+GPS_LOG_CREATE: Permission
+GPS_LOG_SHOW: Permission
+GPS_LOG_UPDATE: Permission
+GPS_LOG_DELETE: Permission
+GPS_LOG_ME: Permission
+GPS_LOG_SUB: Permission
+ICON_LIST: Permission
+ICON_CREATE: Permission
+ICON_SHOW: Permission
+ICON_UPDATE: Permission
+ICON_DELETE: Permission
+ICON_ME: Permission
+ICON_SUB: Permission
+ICON_CREATE_DEFAULT: Permission
+ICON_UPDATE_DEFAULT: Permission
+ICON_DELETE_DEFAULT: Permission
+INVOICE_LIST: Permission
+INVOICE_CREATE: Permission
+INVOICE_SHOW: Permission
+INVOICE_UPDATE: Permission
+INVOICE_DELETE: Permission
+INVOICE_ME: Permission
+INVOICE_SUB: Permission
+NOTIFICATION_LIST: Permission
+NOTIFICATION_CREATE: Permission
+NOTIFICATION_SHOW: Permission
+NOTIFICATION_UPDATE: Permission
+NOTIFICATION_DELETE: Permission
+NOTIFICATION_ME: Permission
+NOTIFICATION_SUB: Permission
+ORGANIZATION_LIST: Permission
+ORGANIZATION_CREATE: Permission
+ORGANIZATION_SHOW: Permission
+ORGANIZATION_UPDATE: Permission
+ORGANIZATION_DELETE: Permission
+ORGANIZATION_ME: Permission
+ORGANIZATION_SUB: Permission
+ORGANIZATION_SETTING_LIST: Permission
+ORGANIZATION_SETTING_CREATE: Permission
+ORGANIZATION_SETTING_SHOW: Permission
+ORGANIZATION_SETTING_UPDATE: Permission
+ORGANIZATION_SETTING_DELETE: Permission
+ORGANIZATION_SETTING_ME: Permission
+ORGANIZATION_SETTING_SUB: Permission
+PERSON_LIST: Permission
+PERSON_CREATE: Permission
+PERSON_SHOW: Permission
+PERSON_UPDATE: Permission
+PERSON_DELETE: Permission
+PERSON_ME: Permission
+PERSON_SUB: Permission
+PRINT_CONFIG_LIST: Permission
+PRINT_CONFIG_CREATE: Permission
+PRINT_CONFIG_SHOW: Permission
+PRINT_CONFIG_UPDATE: Permission
+PRINT_CONFIG_DELETE: Permission
+PRINT_CONFIG_ME: Permission
+PRINT_CONFIG_SUB: Permission
+REMINDER_LIST: Permission
+REMINDER_CREATE: Permission
+REMINDER_SHOW: Permission
+REMINDER_UPDATE: Permission
+REMINDER_DELETE: Permission
+REMINDER_ME: Permission
+REMINDER_SUB: Permission
+SHIFT_LIST: Permission
+SHIFT_CREATE: Permission
+SHIFT_SHOW: Permission
+SHIFT_UPDATE: Permission
+SHIFT_DELETE: Permission
+SHIFT_ME: Permission
+SHIFT_SUB: Permission
+SIM_CARD_LIST: Permission
+SIM_CARD_CREATE: Permission
+SIM_CARD_SHOW: Permission
+SIM_CARD_UPDATE: Permission
+SIM_CARD_DELETE: Permission
+SIM_CARD_ME: Permission
+SIM_CARD_SUB: Permission
+USER_DEVICE_CONFIG_LIST: Permission
+USER_DEVICE_CONFIG_CREATE: Permission
+USER_DEVICE_CONFIG_SHOW: Permission
+USER_DEVICE_CONFIG_UPDATE: Permission
+USER_DEVICE_CONFIG_DELETE: Permission
+USER_DEVICE_CONFIG_ME: Permission
+USER_DEVICE_CONFIG_SUB: Permission
+WAREHOUSE_LIST: Permission
+WAREHOUSE_CREATE: Permission
+WAREHOUSE_SHOW: Permission
+WAREHOUSE_UPDATE: Permission
+WAREHOUSE_DELETE: Permission
+WAREHOUSE_ME: Permission
+WAREHOUSE_SUB: Permission
+PHONE_BOOK_LIST: Permission
+PHONE_BOOK_CREATE: Permission
+PHONE_BOOK_SHOW: Permission
+PHONE_BOOK_UPDATE: Permission
+PHONE_BOOK_DELETE: Permission
+PHONE_BOOK_ME: Permission
+PHONE_BOOK_SUB: Permission
+ROLE_LIST: Permission
+ROLE_CREATE: Permission
+ROLE_SHOW: Permission
+ROLE_UPDATE: Permission
+ROLE_DELETE: Permission
+ROLE_ME: Permission
+ROLE_SUB: Permission
+ROLE_PERMISSION: Permission
+ALERT_CONFIG_CREATE: Permission
+ALERT_CONFIG_SHOW: Permission
+ALERT_CONFIG_UPDATE: Permission
+ALERT_CONFIG_DELETE: Permission
+ALERT_CONFIG_ME: Permission
+ALERT_CONFIG_SUB: Permission
+SERVICE_LIST: Permission
+SERVICE_CREATE: Permission
+SERVICE_SHOW: Permission
+SERVICE_UPDATE: Permission
+SERVICE_DELETE: Permission
+SERVICE_ME: Permission
+SERVICE_SUB: Permission
+SERVICE_CAR_LIST: Permission
+SERVICE_CAR_CREATE: Permission
+SERVICE_CAR_SHOW: Permission
+SERVICE_CAR_UPDATE: Permission
+SERVICE_CAR_DELETE: Permission
+SERVICE_CAR_ME: Permission
+SERVICE_CAR_SUB: Permission
+LIVE_LOCATION_LIST: Permission
+LIVE_LOCATION_CREATE: Permission
+LIVE_LOCATION_SHOW: Permission
+LIVE_LOCATION_UPDATE: Permission
+LIVE_LOCATION_DELETE: Permission
+LIVE_LOCATION_ME: Permission
+LIVE_LOCATION_SUB: Permission
+INSTALLATION_AGENCY_LIST: Permission
+INSTALLATION_AGENCY_CREATE: Permission
+INSTALLATION_AGENCY_SHOW: Permission
+INSTALLATION_AGENCY_UPDATE: Permission
+INSTALLATION_AGENCY_DELETE: Permission
+INSTALLATION_AGENCY_ME: Permission
+INSTALLATION_AGENCY_SUB: Permission
+SALES_AGENCY_REPORT: Permission
+SALES_AGENCY_PRICE_LIST: Permission
+SALES_AGENCY_PRICE_UPDATE: Permission
+SALES_AGENCY_REQUEST_LIST: Permission
+SALES_AGENCY_REQUEST_CREATE: Permission
+SALES_AGENCY_REQUEST_ACCEPT: Permission
+SALES_AGENCY_REQUEST_REJECT: Permission
+SALES_AGENCY_LIST: Permission
+SALES_AGENCY_CREATE: Permission
+SALES_AGENCY_SHOW: Permission
+SALES_AGENCY_UPDATE: Permission
+SALES_AGENCY_DELETE: Permission
+SALES_AGENCY_ME: Permission
+SALES_AGENCY_SUB: Permission
+TRANSACTION_LIST: Permission
+TRANSACTION_CREATE: Permission
+TRANSACTION_SHOW: Permission
+TRANSACTION_UPDATE: Permission
+TRANSACTION_DELETE: Permission
+TRANSACTION_ME: Permission
+TRANSACTION_SUB: Permission
+TRANSACTION_CONFIRM: Permission
+TRANSACTION_SUMMARY_LIST: Permission
+TRANSACTION_SUMMARY_CREATE: Permission
+TRANSACTION_SUMMARY_SHOW: Permission
+TRANSACTION_SUMMARY_UPDATE: Permission
+TRANSACTION_SUMMARY_DELETE: Permission
+TRANSACTION_SUMMARY_ME: Permission
+TRANSACTION_SUMMARY_SUB: Permission
+WALLET_LIST: Permission
+WALLET_CREATE: Permission
+WALLET_SHOW: Permission
+WALLET_UPDATE: Permission
+WALLET_DELETE: Permission
+WALLET_ME: Permission
+WALLET_SUB: Permission
+WALLET_TRANSACTION: Permission
+WALLET_TRANSACTION_SUB: Permission
+BANK_ACCOUNT_LIST: Permission
+BANK_ACCOUNT_CREATE: Permission
+BANK_ACCOUNT_SHOW: Permission
+BANK_ACCOUNT_UPDATE: Permission
+BANK_ACCOUNT_DELETE: Permission
+BANK_ACCOUNT_ME: Permission
+BANK_ACCOUNT_SUB: Permission
+TRACKERS_LIST: Permission
+TRACKERS_CREATE: Permission
+TRACKERS_SHOW: Permission
+TRACKERS_UPDATE: Permission
+TRACKERS_DELETE: Permission
+TRACKERS_ME: Permission
+TRACKERS_SUB: Permission
+TRACKERS_REBRAND_LIST: Permission
+TRACKERS_REBRAND_CREATE: Permission
+TRACKERS_REBRAND_SHOW: Permission
+TRACKERS_REBRAND_UPDATE: Permission
+TRACKERS_REBRAND_DELETE: Permission
+TRACKERS_REBRAND_ME: Permission
+TRACKERS_REBRAND_SUB: Permission
+CAR_TYPE_LIST: Permission
+CAR_TYPE_CREATE: Permission
+CAR_TYPE_SHOW: Permission
+CAR_TYPE_UPDATE: Permission
+CAR_TYPE_DELETE: Permission
+CAR_TYPE_ME: Permission
+CAR_TYPE_SUB: Permission
+CAR_GROUP_LIST: Permission
+CAR_GROUP_CREATE: Permission
+CAR_GROUP_SHOW: Permission
+CAR_GROUP_UPDATE: Permission
+CAR_GROUP_DELETE: Permission
+CAR_GROUP_ME: Permission
+CAR_GROUP_SUB: Permission
+WARRANTY_LIST: Permission
+WARRANTY_CREATE: Permission
+WARRANTY_SHOW: Permission
+WARRANTY_UPDATE: Permission
+WARRANTY_DELETE: Permission
+WARRANTY_ME: Permission
+WARRANTY_SUB: Permission
+WAREHOUSE_PRODUCT_LIST: Permission
+WAREHOUSE_PRODUCT_CREATE: Permission
+WAREHOUSE_PRODUCT_SHOW: Permission
+WAREHOUSE_PRODUCT_UPDATE: Permission
+WAREHOUSE_PRODUCT_DELETE: Permission
+WAREHOUSE_PRODUCT_ME: Permission
+WAREHOUSE_PRODUCT_SUB: Permission
+PRODUCT_LIST: Permission
+PRODUCT_CREATE: Permission
+PRODUCT_SHOW: Permission
+PRODUCT_UPDATE: Permission
+PRODUCT_DELETE: Permission
+PRODUCT_ME: Permission
+PRODUCT_SUB: Permission
+WAREHOUSE_ACTION_LIST: Permission
+WAREHOUSE_ACTION_CREATE: Permission
+WAREHOUSE_ACTION_SHOW: Permission
+WAREHOUSE_ACTION_UPDATE: Permission
+WAREHOUSE_ACTION_DELETE: Permission
+WAREHOUSE_ACTION_ME: Permission
+WAREHOUSE_ACTION_SUB: Permission
+SUBSCRIPTION_LIST: Permission
+SUBSCRIPTION_CREATE: Permission
+SUBSCRIPTION_SHOW: Permission
+SUBSCRIPTION_UPDATE: Permission
+SUBSCRIPTION_DELETE: Permission
+SUBSCRIPTION_ME: Permission
+SUBSCRIPTION_SUB: Permission
+PAYMENT_GATEWAY_LIST: Permission
+PAYMENT_GATEWAY_CREATE: Permission
+PAYMENT_GATEWAY_SHOW: Permission
+PAYMENT_GATEWAY_UPDATE: Permission
+PAYMENT_GATEWAY_DELETE: Permission
+PAYMENT_GATEWAY_ME: Permission
+PAYMENT_GATEWAY_SUB: Permission
+WALLET_TRANSACTION_LOG_LIST: Permission
+WALLET_TRANSACTION_LOG_SHOW: Permission
+CONFIGS_LIST: Permission
+CONFIGS_CREATE: Permission
+CONFIGS_SHOW: Permission
+CONFIGS_UPDATE: Permission
+CONFIGS_DELETE: Permission
+CONFIGS_ME: Permission
+CONFIGS_SUB: Permission
+AVAILABLE_CONFIG_LIST: Permission
+AVAILABLE_CONFIG_CREATE: Permission
+AVAILABLE_CONFIG_SHOW: Permission
+AVAILABLE_CONFIG_UPDATE: Permission
+AVAILABLE_CONFIG_DELETE: Permission
+AVAILABLE_CONFIG_ME: Permission
+AVAILABLE_CONFIG_SUB: Permission
+DRIVERS_LIST: Permission
+DRIVERS_CREATE: Permission
+DRIVERS_SHOW: Permission
+DRIVERS_UPDATE: Permission
+DRIVERS_DELETE: Permission
+DRIVERS_ME: Permission
+DRIVERS_SUB: Permission
+CAR_DRIVERS_LIST: Permission
+CAR_DRIVERS_CREATE: Permission
+CAR_DRIVERS_SHOW: Permission
+CAR_DRIVERS_UPDATE: Permission
+CAR_DRIVERS_DELETE: Permission
+CAR_DRIVERS_ME: Permission
+CAR_DRIVERS_SUB: Permission
+CAR_ASSIGN_DRIVERS_LIST: Permission
+CAR_ASSIGN_DRIVERS_CREATE: Permission
+CAR_ASSIGN_DRIVERS_SHOW: Permission
+CAR_ASSIGN_DRIVERS_UPDATE: Permission
+CAR_ASSIGN_DRIVERS_DELETE: Permission
+CAR_ASSIGN_DRIVERS_ME: Permission
+CAR_ASSIGN_DRIVERS_SUB: Permission
+TASK_LIST: Permission
+TASK_CREATE: Permission
+TASK_SHOW: Permission
+TASK_UPDATE: Permission
+TASK_DELETE: Permission
+TASK_ME: Permission
+TASK_SUB: Permission
+PROJECT_LIST: Permission
+PROJECT_CREATE: Permission
+PROJECT_SHOW: Permission
+PROJECT_UPDATE: Permission
+PROJECT_DELETE: Permission
+PROJECT_ME: Permission
+PROJECT_SUB: Permission
+PROJECT_CAR_LIST: Permission
+PROJECT_CAR_CREATE: Permission
+PROJECT_CAR_SHOW: Permission
+PROJECT_CAR_UPDATE: Permission
+PROJECT_CAR_DELETE: Permission
+PROJECT_CAR_ME: Permission
+PROJECT_CAR_SUB: Permission
+PARTS_LIST: Permission
+PARTS_CREATE: Permission
+PARTS_SHOW: Permission
+PARTS_UPDATE: Permission
+PARTS_DELETE: Permission
+PARTS_ME: Permission
+PARTS_SUB: Permission
+PARTS_WAREHOUSE_LIST: Permission
+PARTS_WAREHOUSE_CREATE: Permission
+PARTS_WAREHOUSE_SHOW: Permission
+PARTS_WAREHOUSE_UPDATE: Permission
+PARTS_WAREHOUSE_DELETE: Permission
+PARTS_WAREHOUSE_ME: Permission
+PARTS_WAREHOUSE_SUB: Permission
+PARTS_PROVIDER_LIST: Permission
+PARTS_PROVIDER_CREATE: Permission
+PARTS_PROVIDER_SHOW: Permission
+PARTS_PROVIDER_UPDATE: Permission
+PARTS_PROVIDER_DELETE: Permission
+PARTS_PROVIDER_ME: Permission
+PARTS_PROVIDER_SUB: Permission
+PARTS_WAREHOUSE_MANAGE_LIST: Permission
+PARTS_WAREHOUSE_MANAGE_CREATE: Permission
+PARTS_WAREHOUSE_MANAGE_SHOW: Permission
+PARTS_WAREHOUSE_MANAGE_UPDATE: Permission
+PARTS_WAREHOUSE_MANAGE_DELETE: Permission
+PARTS_WAREHOUSE_MANAGE_ME: Permission
+PARTS_WAREHOUSE_MANAGE_SUB: Permission
+PAYMENT_LIST: Permission
+PAYMENT_CREATE: Permission
+PAYMENT_SHOW: Permission
+PAYMENT_UPDATE: Permission
+PAYMENT_DELETE: Permission
+PAYMENT_ME: Permission
+PAYMENT_SUB: Permission
+SMS_LIST: Permission
+SMS_CREATE: Permission
+SMS_SHOW: Permission
+SMS_UPDATE: Permission
+SMS_DELETE: Permission
+SMS_ME: Permission
+SMS_SUB: Permission
+ATTENDANCE_LIST: Permission
+ATTENDANCE_CREATE: Permission
+ATTENDANCE_SHOW: Permission
+ATTENDANCE_UPDATE: Permission
+ATTENDANCE_DELETE: Permission
+ATTENDANCE_ME: Permission
+ATTENDANCE_SUB: Permission
+ATTENDANCE_DEVICE_LIST: Permission
+ATTENDANCE_DEVICE_CREATE: Permission
+ATTENDANCE_DEVICE_SHOW: Permission
+ATTENDANCE_DEVICE_UPDATE: Permission
+ATTENDANCE_DEVICE_DELETE: Permission
+ATTENDANCE_DEVICE_ME: Permission
+ATTENDANCE_DEVICE_SUB: Permission
+TRAFFIC_DEVICE_LIST: Permission
+TRAFFIC_DEVICE_CREATE: Permission
+TRAFFIC_DEVICE_SHOW: Permission
+TRAFFIC_DEVICE_UPDATE: Permission
+TRAFFIC_DEVICE_DELETE: Permission
+TRAFFIC_DEVICE_ME: Permission
+TRAFFIC_DEVICE_SUB: Permission
+VACATION_LIST: Permission
+VACATION_CREATE: Permission
+VACATION_SHOW: Permission
+VACATION_UPDATE: Permission
+VACATION_DELETE: Permission
+VACATION_ME: Permission
+VACATION_SUB: Permission
+PERFORMANCE_REPORT: Permission
+AREA_REPORT: Permission
+RAW_DATA_REPORT: Permission
+DATA_REPORT: Permission
+STOP_REPORT: Permission
+HISTORY_REPORT: Permission
+CHART_REPORT: Permission
+TRIP_REPORT: Permission
+TEXT_REPORT: Permission
+INSURANCE_REPORT: Permission
+STATS_REPORT: Permission
+USER_REPORT: Permission
+GUEST_REPORT: Permission
+INVOICE_REPORT: Permission
+CAMERA_REPORT: Permission
+DRIVER_BEHAVIOR_REPORT: Permission
+CALL_REPORT: Permission
+DATA_COUNT_REPORT: Permission
+DEVICE_CHARGE_REPORT: Permission
+CAR_WARRANTY_REPORT: Permission
+LAST_CONNECTION_REPORT: Permission
+CHARGE_DEVICE: Permission
+CHARGE_MANUAL_DEVICE: Permission
+SERVER: Permission
+PARTNER_REPORT: Permission
+EXPIRE_SHOW: Permission
+DRIVING_REPORT: Permission
+ACTIVITY_LOG_LIST: Permission
+REPORT_REPORT: Permission
+REPORT_DRIVER: Permission
+REPORT_STOPS: Permission
+REPORT_TRAFFIC: Permission
+REPORT_GEOFENCE: Permission
+REPORT_DATA: Permission
+NOTIFICATION_REPORT: Permission
+REMOTE_CONTROL: Permission
+PRINT_SETTING: Permission
+TRACKING: Permission
+WAREHOUSE_REPORT: Permission
+BUY_SUBSCRIPTION_METHOD_CREATE: Permission
+CHARGE_WALLET_CREATE: Permission
+ADMIN_CHARGE_WALLET: Permission
+USER_DEVICE_ALERT_LIST: Permission
+USER_DEVICE_ALERT_CREATE: Permission
+USER_DEVICE_ALERT_UPDATE: Permission
+USER_DEVICE_ALERT_SHOW: Permission
+USER_DEVICE_ALERT_DELETE: Permission
+IO_ELEMENT_LIST: Permission
+IO_ELEMENT_CREATE: Permission
+IO_ELEMENT_SHOW: Permission
+IO_ELEMENT_UPDATE: Permission
+IO_ELEMENT_DELETE: Permission
+ORGANIZATION_CONFIG_LIST: Permission
+ORGANIZATION_CONFIG_CREATE: Permission
+ORGANIZATION_CONFIG_SHOW: Permission
+ORGANIZATION_CONFIG_UPDATE: Permission
+ORGANIZATION_CONFIG_DELETE: Permission
+CAR_CATEGORY_CREATE: Permission
+CAR_CATEGORY_UPDATE: Permission
+CAR_CATEGORY_DELETE: Permission
+CAR_BRAND_CREATE: Permission
+CAR_BRAND_UPDATE: Permission
+CAR_BRAND_DELETE: Permission
+PRODUCT_TYPE_CREATE: Permission
+PRODUCT_TYPE_UPDATE: Permission
+PRODUCT_TYPE_DELETE: Permission
+NOTIFICATION_ALERT_LIST: Permission
+NOTIFICATION_ALERT_SHOW: Permission
+NOTIFICATION_ALERT_CREATE: Permission
+NOTIFICATION_ALERT_UPDATE: Permission
+NOTIFICATION_ALERT_DELETE: Permission
+MODULE_PRICE_LIST: Permission
+MODULE_PRICE_SHOW: Permission
+MODULE_PRICE_CREATE: Permission
+MODULE_PRICE_UPDATE: Permission
+MODULE_PRICE_DELETE: Permission
+ACTIVITY_LOGS_LIST: Permission
+ACTIVITY_LOGS_LAST: Permission
+ACTIVITY_LOGS_SHOW: Permission
+USER_DEVICE_IO_LIST: Permission
+USER_DEVICE_IO_SHOW: Permission
+USER_DEVICE_IO_CREATE: Permission
+USER_DEVICE_IO_UPDATE: Permission
+USER_DEVICE_IO_DELETE: Permission
+MODULE_PACKAGE_LIST: Permission
+MODULE_PACKAGE_SHOW: Permission
+MODULE_PACKAGE_CREATE: Permission
+MODULE_PACKAGE_UPDATE: Permission
+MODULE_PACKAGE_DELETE: Permission
+APP_VERSION_LIST: Permission
+APP_VERSION_SHOW: Permission
+APP_VERSION_CREATE: Permission
+APP_VERSION_UPDATE: Permission
+APP_VERSION_DELETE: Permission
+PERMISSIONS_LIST: Permission
+SERVICE_CREATE_DEFAULT: Permission
+REPORT_WORK_CYCLE: Permission
+REPORT_NOTIFICATION: Permission
+REPORT_CHART: Permission
+MAINTENANCE_LIST: Permission
+MAINTENANCE_CREATE: Permission
+MAINTENANCE_SHOW: Permission
+MAINTENANCE_UPDATE: Permission
+MAINTENANCE_DELETE: Permission
+MAINTENANCE_ME: Permission
+MAINTENANCE_SUB: Permission
+WORK_CYCLE_LIST: Permission
+WORK_CYCLE_CREATE: Permission
+WORK_CYCLE_SHOW: Permission
+WORK_CYCLE_UPDATE: Permission
+WORK_CYCLE_DELETE: Permission
+WORK_CYCLE_ME: Permission
+WORK_CYCLE_SUB: Permission
+ORDER_LIST: Permission
+ORDER_CREATE: Permission
+ORDER_SHOW: Permission
+ORDER_UPDATE: Permission
+ORDER_DELETE: Permission
+ORDER_ME: Permission
+ORDER_SUB: Permission
+APP_SETTING_LIST: Permission
+APP_SETTING_SHOW: Permission
+APP_SETTING_CREATE: Permission
+APP_SETTING_UPDATE: Permission
+APP_SETTING_DELETE: Permission
+BLOCK_IP: Permission
+SEND_SMS_COMMAND: Permission
+WORK_FLOW_LIST: Permission
+WORK_FLOW_SHOW: Permission
+WORK_FLOW_CREATE: Permission
+WORK_FLOW_UPDATE: Permission
+WORK_FLOW_DELETE: Permission
+WORK_FLOW_SUB: Permission
+WORK_FLOW_ME: Permission
+COMMAND_SEND_SMS: Permission
+COMMAND_SEND_GPRS: Permission
+COMMAND_SEND_MANUAL: Permission
+ATTENDANCE_REPORT: Permission
+SMS_GATEWAY_LIST: Permission
+SMS_GATEWAY_CREATE: Permission
+SMS_GATEWAY_SHOW: Permission
+SMS_GATEWAY_UPDATE: Permission
+SMS_GATEWAY_DELETE: Permission
+SMS_GATEWAY_ME: Permission
+SMS_GATEWAY_SUB: Permission
+PB_WORK_FLOW_TASK_LIST: Permission
+PB_WORK_FLOW_TASK_SHOW: Permission
+PB_WORK_FLOW_TASK_CREATE: Permission
+PB_WORK_FLOW_TASK_UPDATE: Permission
+PB_WORK_FLOW_TASK_DELETE: Permission
+PB_WORK_FLOW_TASK_SUB: Permission
+PB_WORK_FLOW_TASK_ME: Permission
+PB_WORK_FLOW_TASK_CONFIRM_REJECT: Permission
+TRIP_WORK_FLOW_TASK_LIST: Permission
+TRIP_WORK_FLOW_TASK_SHOW: Permission
+TRIP_WORK_FLOW_TASK_CREATE: Permission
+TRIP_WORK_FLOW_TASK_UPDATE: Permission
+TRIP_WORK_FLOW_TASK_DELETE: Permission
+TRIP_WORK_FLOW_TASK_SUB: Permission
+TRIP_WORK_FLOW_TASK_ME: Permission
+TRIP_WORK_FLOW_TASK_CONFIRM: Permission
+CHANGE_ORGANIZATION_IS_UNLIMITED: Permission
+LIVE_VIDEO_MONITORING: Permission
+PLAYBACK_VIDEO_MONITORING: Permission
+LISTEN_VIDEO_MONITORING: Permission
+CALL_VIDEO_MONITORING: Permission
+WORKFLOW_TASK_LIST: Permission
+WORKFLOW_TASK_SHOW: Permission
+WORKFLOW_TASK_CREATE: Permission
+WORKFLOW_TASK_UPDATE: Permission
+WORKFLOW_TASK_DELETE: Permission
+WORKFLOW_TASK_SUB: Permission
+WORKFLOW_TASK_ME: Permission
+TRIP_WORK_FLOW_TASK_REJECT: Permission
+MONITORING: Permission
+DEBUGGING: Permission
+USER_UPDATE_IMEI: Permission
+PARTNER_UPDATE_IMEI: Permission
+ADMIN_UPDATE_IMEI: Permission
+EVENTS_LIST: Permission
+EVENTS_CREATE: Permission
+EVENTS_UPDATE: Permission
+EVENTS_DELETE: Permission
+EVENT_TEMPLATE_CREATE: Permission
+EVENT_TEMPLATE_UPDATE: Permission
+EVENT_TEMPLATE_DELETE: Permission
+QUESTION_LIST: Permission
+QUESTION_CREATE: Permission
+QUESTION_SHOW: Permission
+QUESTION_UPDATE: Permission
+QUESTION_DELETE: Permission
+QUESTION_ME: Permission
+QUESTION_SUB: Permission
+QUESTION_ANSWER: Permission
+TRACKER_OUTPUT_COMMAND_LIST: Permission
+TRACKER_OUTPUT_COMMAND_CREATE: Permission
+TRACKER_OUTPUT_COMMAND_SHOW: Permission
+TRACKER_OUTPUT_COMMAND_UPDATE: Permission
+TRACKER_OUTPUT_COMMAND_DELETE: Permission
+
+class Auth(_message.Message):
+    __slots__ = ("user", "person", "access_token", "permissions")
+    USER_FIELD_NUMBER: _ClassVar[int]
+    PERSON_FIELD_NUMBER: _ClassVar[int]
+    ACCESS_TOKEN_FIELD_NUMBER: _ClassVar[int]
+    PERMISSIONS_FIELD_NUMBER: _ClassVar[int]
+    user: User
+    person: Person
+    access_token: PersonalAccessToken
+    permissions: _containers.RepeatedScalarFieldContainer[Permission]
+    def __init__(self, user: _Optional[_Union[User, _Mapping]] = ..., person: _Optional[_Union[Person, _Mapping]] = ..., access_token: _Optional[_Union[PersonalAccessToken, _Mapping]] = ..., permissions: _Optional[_Iterable[_Union[Permission, str]]] = ...) -> None: ...
+
 class User(_message.Message):
-    __slots__ = ("id", "email", "telegram_id", "phone", "status", "created_by", "updated_by", "created_at", "updated_at", "persons", "token")
+    __slots__ = ("id", "email", "telegram_id", "phone", "status", "created_by", "updated_by", "created_at", "updated_at", "is_complete", "password", "token", "persons")
     ID_FIELD_NUMBER: _ClassVar[int]
     EMAIL_FIELD_NUMBER: _ClassVar[int]
     TELEGRAM_ID_FIELD_NUMBER: _ClassVar[int]
@@ -20,8 +1368,10 @@ class User(_message.Message):
     UPDATED_BY_FIELD_NUMBER: _ClassVar[int]
     CREATED_AT_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    PERSONS_FIELD_NUMBER: _ClassVar[int]
+    IS_COMPLETE_FIELD_NUMBER: _ClassVar[int]
+    PASSWORD_FIELD_NUMBER: _ClassVar[int]
     TOKEN_FIELD_NUMBER: _ClassVar[int]
+    PERSONS_FIELD_NUMBER: _ClassVar[int]
     id: int
     email: str
     telegram_id: str
@@ -31,9 +1381,11 @@ class User(_message.Message):
     updated_by: int
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
-    persons: _containers.RepeatedCompositeFieldContainer[Person]
+    is_complete: bool
+    password: str
     token: str
-    def __init__(self, id: _Optional[int] = ..., email: _Optional[str] = ..., telegram_id: _Optional[str] = ..., phone: _Optional[str] = ..., status: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., persons: _Optional[_Iterable[_Union[Person, _Mapping]]] = ..., token: _Optional[str] = ...) -> None: ...
+    persons: _containers.RepeatedCompositeFieldContainer[Person]
+    def __init__(self, id: _Optional[int] = ..., email: _Optional[str] = ..., telegram_id: _Optional[str] = ..., phone: _Optional[str] = ..., status: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., is_complete: bool = ..., password: _Optional[str] = ..., token: _Optional[str] = ..., persons: _Optional[_Iterable[_Union[Person, _Mapping]]] = ...) -> None: ...
 
 class Person(_message.Message):
     __slots__ = ("id", "type", "organization_id", "role_id", "user_id", "partner_id", "created_by", "updated_by", "is_complete", "name", "image", "national_id", "economical_id", "identification_number", "postal_code", "address", "birth_date", "contact_mobile", "contact_phone", "created_at", "updated_at", "organization")
@@ -67,7 +1419,7 @@ class Person(_message.Message):
     partner_id: int
     created_by: int
     updated_by: int
-    is_complete: int
+    is_complete: bool
     name: str
     image: str
     national_id: str
@@ -81,7 +1433,7 @@ class Person(_message.Message):
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
     organization: Organization
-    def __init__(self, id: _Optional[int] = ..., type: _Optional[int] = ..., organization_id: _Optional[int] = ..., role_id: _Optional[int] = ..., user_id: _Optional[int] = ..., partner_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., is_complete: _Optional[int] = ..., name: _Optional[str] = ..., image: _Optional[str] = ..., national_id: _Optional[str] = ..., economical_id: _Optional[str] = ..., identification_number: _Optional[str] = ..., postal_code: _Optional[str] = ..., address: _Optional[str] = ..., birth_date: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., contact_mobile: _Optional[str] = ..., contact_phone: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., organization: _Optional[_Union[Organization, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., type: _Optional[int] = ..., organization_id: _Optional[int] = ..., role_id: _Optional[int] = ..., user_id: _Optional[int] = ..., partner_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., is_complete: bool = ..., name: _Optional[str] = ..., image: _Optional[str] = ..., national_id: _Optional[str] = ..., economical_id: _Optional[str] = ..., identification_number: _Optional[str] = ..., postal_code: _Optional[str] = ..., address: _Optional[str] = ..., birth_date: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., contact_mobile: _Optional[str] = ..., contact_phone: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., organization: _Optional[_Union[Organization, _Mapping]] = ...) -> None: ...
 
 class Organization(_message.Message):
     __slots__ = ("id", "name", "number", "picture", "status", "is_partner", "metadata", "domains", "generation", "parent_id", "level", "owner_id", "created_by", "deleted_at", "created_at", "updated_at")
@@ -164,18 +1516,6 @@ class Organization(_message.Message):
     updated_at: _timestamp_pb2.Timestamp
     def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., number: _Optional[str] = ..., picture: _Optional[str] = ..., status: bool = ..., is_partner: bool = ..., metadata: _Optional[_Union[Organization.MetaData, _Mapping]] = ..., domains: _Optional[_Iterable[str]] = ..., generation: _Optional[str] = ..., parent_id: _Optional[int] = ..., level: _Optional[int] = ..., owner_id: _Optional[int] = ..., created_by: _Optional[int] = ..., deleted_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
-class Permission(_message.Message):
-    __slots__ = ("id", "name", "created_at", "updated_at")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    id: int
-    name: str
-    created_at: _timestamp_pb2.Timestamp
-    updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
-
 class Driver(_message.Message):
     __slots__ = ("id", "organization_id", "created_by", "updated_by", "person_id", "driver_identify", "license_number", "hiring_date", "monthly_salary", "license_type", "license_expire", "commission_percentage", "status", "mobile_number", "phone_number", "address", "postal_code", "created_at", "updated_at")
     ID_FIELD_NUMBER: _ClassVar[int]
@@ -217,3 +1557,108 @@ class Driver(_message.Message):
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
     def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., person_id: _Optional[int] = ..., driver_identify: _Optional[str] = ..., license_number: _Optional[str] = ..., hiring_date: _Optional[str] = ..., monthly_salary: _Optional[int] = ..., license_type: _Optional[int] = ..., license_expire: _Optional[str] = ..., commission_percentage: _Optional[int] = ..., status: bool = ..., mobile_number: _Optional[str] = ..., phone_number: _Optional[str] = ..., address: _Optional[str] = ..., postal_code: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+
+class Receiver(_message.Message):
+    __slots__ = ("phone", "email", "telegram_id", "tokens")
+    class Token(_message.Message):
+        __slots__ = ("fcm", "expires_at")
+        FCM_FIELD_NUMBER: _ClassVar[int]
+        EXPIRES_AT_FIELD_NUMBER: _ClassVar[int]
+        fcm: str
+        expires_at: _timestamp_pb2.Timestamp
+        def __init__(self, fcm: _Optional[str] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    PHONE_FIELD_NUMBER: _ClassVar[int]
+    EMAIL_FIELD_NUMBER: _ClassVar[int]
+    TELEGRAM_ID_FIELD_NUMBER: _ClassVar[int]
+    TOKENS_FIELD_NUMBER: _ClassVar[int]
+    phone: str
+    email: str
+    telegram_id: int
+    tokens: _containers.RepeatedCompositeFieldContainer[Receiver.Token]
+    def __init__(self, phone: _Optional[str] = ..., email: _Optional[str] = ..., telegram_id: _Optional[int] = ..., tokens: _Optional[_Iterable[_Union[Receiver.Token, _Mapping]]] = ...) -> None: ...
+
+class PersonalAccessToken(_message.Message):
+    __slots__ = ("id", "tokenable_type", "tokenable_id", "goau_id", "name", "token", "abilities", "fcm", "ip", "domain", "partner_id", "user_agent", "device_type", "last_used_at", "expires_at", "created_at", "updated_at")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    TOKENABLE_TYPE_FIELD_NUMBER: _ClassVar[int]
+    TOKENABLE_ID_FIELD_NUMBER: _ClassVar[int]
+    GOAU_ID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    TOKEN_FIELD_NUMBER: _ClassVar[int]
+    ABILITIES_FIELD_NUMBER: _ClassVar[int]
+    FCM_FIELD_NUMBER: _ClassVar[int]
+    IP_FIELD_NUMBER: _ClassVar[int]
+    DOMAIN_FIELD_NUMBER: _ClassVar[int]
+    PARTNER_ID_FIELD_NUMBER: _ClassVar[int]
+    USER_AGENT_FIELD_NUMBER: _ClassVar[int]
+    DEVICE_TYPE_FIELD_NUMBER: _ClassVar[int]
+    LAST_USED_AT_FIELD_NUMBER: _ClassVar[int]
+    EXPIRES_AT_FIELD_NUMBER: _ClassVar[int]
+    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    id: int
+    tokenable_type: str
+    tokenable_id: int
+    goau_id: int
+    name: str
+    token: str
+    abilities: str
+    fcm: str
+    ip: str
+    domain: str
+    partner_id: int
+    user_agent: str
+    device_type: str
+    last_used_at: _timestamp_pb2.Timestamp
+    expires_at: _timestamp_pb2.Timestamp
+    created_at: _timestamp_pb2.Timestamp
+    updated_at: _timestamp_pb2.Timestamp
+    def __init__(self, id: _Optional[int] = ..., tokenable_type: _Optional[str] = ..., tokenable_id: _Optional[int] = ..., goau_id: _Optional[int] = ..., name: _Optional[str] = ..., token: _Optional[str] = ..., abilities: _Optional[str] = ..., fcm: _Optional[str] = ..., ip: _Optional[str] = ..., domain: _Optional[str] = ..., partner_id: _Optional[int] = ..., user_agent: _Optional[str] = ..., device_type: _Optional[str] = ..., last_used_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+
+class GoMoJWT(_message.Message):
+    __slots__ = ("user_id", "identity_id", "organization_id", "person_id", "role_id", "name", "picture", "permissions")
+    USER_ID_FIELD_NUMBER: _ClassVar[int]
+    IDENTITY_ID_FIELD_NUMBER: _ClassVar[int]
+    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
+    PERSON_ID_FIELD_NUMBER: _ClassVar[int]
+    ROLE_ID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    PICTURE_FIELD_NUMBER: _ClassVar[int]
+    PERMISSIONS_FIELD_NUMBER: _ClassVar[int]
+    user_id: int
+    identity_id: int
+    organization_id: int
+    person_id: int
+    role_id: int
+    name: str
+    picture: str
+    permissions: _containers.RepeatedScalarFieldContainer[Permission]
+    def __init__(self, user_id: _Optional[int] = ..., identity_id: _Optional[int] = ..., organization_id: _Optional[int] = ..., person_id: _Optional[int] = ..., role_id: _Optional[int] = ..., name: _Optional[str] = ..., picture: _Optional[str] = ..., permissions: _Optional[_Iterable[_Union[Permission, str]]] = ...) -> None: ...
+
+class Application(_message.Message):
+    __slots__ = ("id", "name", "domain", "status", "secret", "app_key", "webhook", "created_at", "updated_at")
+    class Status(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+        __slots__ = ()
+        INACTIVE: _ClassVar[Application.Status]
+        ACTIVE: _ClassVar[Application.Status]
+    INACTIVE: Application.Status
+    ACTIVE: Application.Status
+    ID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    DOMAIN_FIELD_NUMBER: _ClassVar[int]
+    STATUS_FIELD_NUMBER: _ClassVar[int]
+    SECRET_FIELD_NUMBER: _ClassVar[int]
+    APP_KEY_FIELD_NUMBER: _ClassVar[int]
+    WEBHOOK_FIELD_NUMBER: _ClassVar[int]
+    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    id: int
+    name: str
+    domain: str
+    status: Application.Status
+    secret: bytes
+    app_key: bytes
+    webhook: str
+    created_at: _timestamp_pb2.Timestamp
+    updated_at: _timestamp_pb2.Timestamp
+    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., domain: _Optional[str] = ..., status: _Optional[_Union[Application.Status, str]] = ..., secret: _Optional[bytes] = ..., app_key: _Optional[bytes] = ..., webhook: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...

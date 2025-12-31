@@ -5,6 +5,9 @@ from notifies import notify_pb2 as _notify_pb2
 from identities import identities_pb2 as _identities_pb2
 from financial import financial_pb2 as _financial_pb2
 from devices import devices_pb2 as _devices_pb2
+from devices import maintenance_pb2 as _maintenance_pb2
+from packets import messages_pb2 as _messages_pb2
+from models import models_pb2 as _models_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -71,10 +74,10 @@ class Me(_message.Message):
     user: _identities_pb2.User
     person: _containers.RepeatedCompositeFieldContainer[_identities_pb2.Person]
     currencies: _containers.RepeatedCompositeFieldContainer[_financial_pb2.Currency]
-    permissions: _containers.RepeatedCompositeFieldContainer[_identities_pb2.Permission]
+    permissions: _containers.RepeatedScalarFieldContainer[_identities_pb2.Permission]
     device: _devices_pb2.Device
     device_count: int
-    def __init__(self, user: _Optional[_Union[_identities_pb2.User, _Mapping]] = ..., person: _Optional[_Iterable[_Union[_identities_pb2.Person, _Mapping]]] = ..., currencies: _Optional[_Iterable[_Union[_financial_pb2.Currency, _Mapping]]] = ..., permissions: _Optional[_Iterable[_Union[_identities_pb2.Permission, _Mapping]]] = ..., device: _Optional[_Union[_devices_pb2.Device, _Mapping]] = ..., device_count: _Optional[int] = ...) -> None: ...
+    def __init__(self, user: _Optional[_Union[_identities_pb2.User, _Mapping]] = ..., person: _Optional[_Iterable[_Union[_identities_pb2.Person, _Mapping]]] = ..., currencies: _Optional[_Iterable[_Union[_financial_pb2.Currency, _Mapping]]] = ..., permissions: _Optional[_Iterable[_Union[_identities_pb2.Permission, str]]] = ..., device: _Optional[_Union[_devices_pb2.Device, _Mapping]] = ..., device_count: _Optional[int] = ...) -> None: ...
 
 class DevicePagination(_message.Message):
     __slots__ = ("current_page", "first_page_url", "last_page_url", "next_page_url", "prev_page_url", "path", "last_page", "per_page", "to", "data")
@@ -188,225 +191,6 @@ class Transaction(_message.Message):
     organization: _identities_pb2.Organization
     def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., from_user_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., transaction_reason: _Optional[str] = ..., picture: _Optional[str] = ..., description: _Optional[str] = ..., from_currency_id: _Optional[int] = ..., to_currency_id: _Optional[int] = ..., price: _Optional[str] = ..., type: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., currency: _Optional[_Union[_financial_pb2.Currency, _Mapping]] = ..., organization: _Optional[_Union[_identities_pb2.Organization, _Mapping]] = ...) -> None: ...
 
-class PaymentGateway(_message.Message):
-    __slots__ = ("id", "organization_id", "created_by", "updated_by", "gateway", "name", "default", "status", "config", "created_at", "updated_at")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
-    CREATED_BY_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_BY_FIELD_NUMBER: _ClassVar[int]
-    GATEWAY_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    DEFAULT_FIELD_NUMBER: _ClassVar[int]
-    STATUS_FIELD_NUMBER: _ClassVar[int]
-    CONFIG_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    id: int
-    organization_id: int
-    created_by: int
-    updated_by: int
-    gateway: str
-    name: str
-    default: bool
-    status: bool
-    config: _containers.RepeatedCompositeFieldContainer[Config]
-    created_at: _timestamp_pb2.Timestamp
-    updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., gateway: _Optional[str] = ..., name: _Optional[str] = ..., default: bool = ..., status: bool = ..., config: _Optional[_Iterable[_Union[Config, _Mapping]]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
-
-class Partner(_message.Message):
-    __slots__ = ("id", "name", "domains")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    DOMAINS_FIELD_NUMBER: _ClassVar[int]
-    id: int
-    name: str
-    domains: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., domains: _Optional[_Iterable[str]] = ...) -> None: ...
-
-class ProductType(_message.Message):
-    __slots__ = ("id", "name", "description", "months", "key_type", "picture", "created_by", "updated_by", "created_at", "updated_at")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
-    MONTHS_FIELD_NUMBER: _ClassVar[int]
-    KEY_TYPE_FIELD_NUMBER: _ClassVar[int]
-    PICTURE_FIELD_NUMBER: _ClassVar[int]
-    CREATED_BY_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_BY_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    id: int
-    name: str
-    description: str
-    months: int
-    key_type: str
-    picture: str
-    created_by: int
-    updated_by: int
-    created_at: _timestamp_pb2.Timestamp
-    updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., months: _Optional[int] = ..., key_type: _Optional[str] = ..., picture: _Optional[str] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
-
-class OrderPagination(_message.Message):
-    __slots__ = ("current_page", "first_page_url", "last_page_url", "next_page_url", "prev_page_url", "path", "last_page", "per_page", "to", "data")
-    CURRENT_PAGE_FIELD_NUMBER: _ClassVar[int]
-    FIRST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
-    LAST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
-    NEXT_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
-    PREV_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
-    PATH_FIELD_NUMBER: _ClassVar[int]
-    FROM_FIELD_NUMBER: _ClassVar[int]
-    LAST_PAGE_FIELD_NUMBER: _ClassVar[int]
-    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
-    TO_FIELD_NUMBER: _ClassVar[int]
-    DATA_FIELD_NUMBER: _ClassVar[int]
-    current_page: int
-    first_page_url: str
-    last_page_url: str
-    next_page_url: str
-    prev_page_url: str
-    path: str
-    last_page: int
-    per_page: int
-    to: int
-    data: _containers.RepeatedCompositeFieldContainer[Order]
-    def __init__(self, current_page: _Optional[int] = ..., first_page_url: _Optional[str] = ..., last_page_url: _Optional[str] = ..., next_page_url: _Optional[str] = ..., prev_page_url: _Optional[str] = ..., path: _Optional[str] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., to: _Optional[int] = ..., data: _Optional[_Iterable[_Union[Order, _Mapping]]] = ..., **kwargs) -> None: ...
-
-class Order(_message.Message):
-    __slots__ = ("id", "uuid", "organization_id", "created_by", "payment_gateway_id", "currency_id", "partner_id", "total_price", "tax", "tax_percent", "discount", "subtotal", "payment_url", "transaction_id", "ref_id", "paid_at", "months", "status", "created_at", "updated_at", "products", "partner", "payment_gateway", "currency", "person")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    UUID_FIELD_NUMBER: _ClassVar[int]
-    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
-    CREATED_BY_FIELD_NUMBER: _ClassVar[int]
-    PAYMENT_GATEWAY_ID_FIELD_NUMBER: _ClassVar[int]
-    CURRENCY_ID_FIELD_NUMBER: _ClassVar[int]
-    PARTNER_ID_FIELD_NUMBER: _ClassVar[int]
-    TOTAL_PRICE_FIELD_NUMBER: _ClassVar[int]
-    TAX_FIELD_NUMBER: _ClassVar[int]
-    TAX_PERCENT_FIELD_NUMBER: _ClassVar[int]
-    DISCOUNT_FIELD_NUMBER: _ClassVar[int]
-    SUBTOTAL_FIELD_NUMBER: _ClassVar[int]
-    PAYMENT_URL_FIELD_NUMBER: _ClassVar[int]
-    TRANSACTION_ID_FIELD_NUMBER: _ClassVar[int]
-    REF_ID_FIELD_NUMBER: _ClassVar[int]
-    PAID_AT_FIELD_NUMBER: _ClassVar[int]
-    MONTHS_FIELD_NUMBER: _ClassVar[int]
-    STATUS_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    PRODUCTS_FIELD_NUMBER: _ClassVar[int]
-    PARTNER_FIELD_NUMBER: _ClassVar[int]
-    PAYMENT_GATEWAY_FIELD_NUMBER: _ClassVar[int]
-    CURRENCY_FIELD_NUMBER: _ClassVar[int]
-    PERSON_FIELD_NUMBER: _ClassVar[int]
-    id: int
-    uuid: str
-    organization_id: int
-    created_by: int
-    payment_gateway_id: int
-    currency_id: int
-    partner_id: int
-    total_price: float
-    tax: float
-    tax_percent: int
-    discount: float
-    subtotal: float
-    payment_url: str
-    transaction_id: str
-    ref_id: str
-    paid_at: _timestamp_pb2.Timestamp
-    months: int
-    status: str
-    created_at: _timestamp_pb2.Timestamp
-    updated_at: _timestamp_pb2.Timestamp
-    products: _containers.RepeatedCompositeFieldContainer[OrderProduct]
-    partner: Partner
-    payment_gateway: PaymentGateway
-    currency: _financial_pb2.Currency
-    person: _identities_pb2.Person
-    def __init__(self, id: _Optional[int] = ..., uuid: _Optional[str] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., payment_gateway_id: _Optional[int] = ..., currency_id: _Optional[int] = ..., partner_id: _Optional[int] = ..., total_price: _Optional[float] = ..., tax: _Optional[float] = ..., tax_percent: _Optional[int] = ..., discount: _Optional[float] = ..., subtotal: _Optional[float] = ..., payment_url: _Optional[str] = ..., transaction_id: _Optional[str] = ..., ref_id: _Optional[str] = ..., paid_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., months: _Optional[int] = ..., status: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., products: _Optional[_Iterable[_Union[OrderProduct, _Mapping]]] = ..., partner: _Optional[_Union[Partner, _Mapping]] = ..., payment_gateway: _Optional[_Union[PaymentGateway, _Mapping]] = ..., currency: _Optional[_Union[_financial_pb2.Currency, _Mapping]] = ..., person: _Optional[_Union[_identities_pb2.Person, _Mapping]] = ...) -> None: ...
-
-class OrderProduct(_message.Message):
-    __slots__ = ("id", "order_id", "product_id", "product_type", "product_name", "product_detail", "currency_id", "discount_percent", "tax_price", "discount", "price", "months", "created_at", "updated_at", "product")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    ORDER_ID_FIELD_NUMBER: _ClassVar[int]
-    PRODUCT_ID_FIELD_NUMBER: _ClassVar[int]
-    PRODUCT_TYPE_FIELD_NUMBER: _ClassVar[int]
-    PRODUCT_NAME_FIELD_NUMBER: _ClassVar[int]
-    PRODUCT_DETAIL_FIELD_NUMBER: _ClassVar[int]
-    CURRENCY_ID_FIELD_NUMBER: _ClassVar[int]
-    DISCOUNT_PERCENT_FIELD_NUMBER: _ClassVar[int]
-    TAX_PRICE_FIELD_NUMBER: _ClassVar[int]
-    DISCOUNT_FIELD_NUMBER: _ClassVar[int]
-    PRICE_FIELD_NUMBER: _ClassVar[int]
-    MONTHS_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    PRODUCT_FIELD_NUMBER: _ClassVar[int]
-    id: int
-    order_id: int
-    product_id: int
-    product_type: str
-    product_name: str
-    product_detail: str
-    currency_id: int
-    discount_percent: int
-    tax_price: float
-    discount: float
-    price: float
-    months: int
-    created_at: _timestamp_pb2.Timestamp
-    updated_at: _timestamp_pb2.Timestamp
-    product: Product
-    def __init__(self, id: _Optional[int] = ..., order_id: _Optional[int] = ..., product_id: _Optional[int] = ..., product_type: _Optional[str] = ..., product_name: _Optional[str] = ..., product_detail: _Optional[str] = ..., currency_id: _Optional[int] = ..., discount_percent: _Optional[int] = ..., tax_price: _Optional[float] = ..., discount: _Optional[float] = ..., price: _Optional[float] = ..., months: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., product: _Optional[_Union[Product, _Mapping]] = ...) -> None: ...
-
-class Product(_message.Message):
-    __slots__ = ("id", "organization_id", "product_type_id", "created_by", "updated_by", "name", "display_name", "description", "properties", "picture", "slug", "uuid", "object_type", "object_id", "currency_id", "price", "created_at", "updated_at", "components", "currency", "product_type")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
-    PRODUCT_TYPE_ID_FIELD_NUMBER: _ClassVar[int]
-    CREATED_BY_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_BY_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    DISPLAY_NAME_FIELD_NUMBER: _ClassVar[int]
-    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
-    PROPERTIES_FIELD_NUMBER: _ClassVar[int]
-    PICTURE_FIELD_NUMBER: _ClassVar[int]
-    SLUG_FIELD_NUMBER: _ClassVar[int]
-    UUID_FIELD_NUMBER: _ClassVar[int]
-    OBJECT_TYPE_FIELD_NUMBER: _ClassVar[int]
-    OBJECT_ID_FIELD_NUMBER: _ClassVar[int]
-    CURRENCY_ID_FIELD_NUMBER: _ClassVar[int]
-    PRICE_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    COMPONENTS_FIELD_NUMBER: _ClassVar[int]
-    CURRENCY_FIELD_NUMBER: _ClassVar[int]
-    PRODUCT_TYPE_FIELD_NUMBER: _ClassVar[int]
-    id: int
-    organization_id: int
-    product_type_id: int
-    created_by: int
-    updated_by: int
-    name: str
-    display_name: str
-    description: str
-    properties: str
-    picture: str
-    slug: str
-    uuid: str
-    object_type: str
-    object_id: int
-    currency_id: int
-    price: int
-    created_at: _timestamp_pb2.Timestamp
-    updated_at: _timestamp_pb2.Timestamp
-    components: _containers.RepeatedCompositeFieldContainer[Product]
-    currency: _financial_pb2.Currency
-    product_type: ProductType
-    def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., product_type_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., name: _Optional[str] = ..., display_name: _Optional[str] = ..., description: _Optional[str] = ..., properties: _Optional[str] = ..., picture: _Optional[str] = ..., slug: _Optional[str] = ..., uuid: _Optional[str] = ..., object_type: _Optional[str] = ..., object_id: _Optional[int] = ..., currency_id: _Optional[int] = ..., price: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., components: _Optional[_Iterable[_Union[Product, _Mapping]]] = ..., currency: _Optional[_Union[_financial_pb2.Currency, _Mapping]] = ..., product_type: _Optional[_Union[ProductType, _Mapping]] = ...) -> None: ...
-
 class Channel(_message.Message):
     __slots__ = ("name", "count")
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -518,3 +302,191 @@ class NotificationPagination(_message.Message):
     to: int
     data: _containers.RepeatedCompositeFieldContainer[NotificationFull]
     def __init__(self, current_page: _Optional[int] = ..., first_page_url: _Optional[str] = ..., last_page_url: _Optional[str] = ..., next_page_url: _Optional[str] = ..., prev_page_url: _Optional[str] = ..., path: _Optional[str] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., to: _Optional[int] = ..., data: _Optional[_Iterable[_Union[NotificationFull, _Mapping]]] = ..., **kwargs) -> None: ...
+
+class SessionPagination(_message.Message):
+    __slots__ = ("current_page", "first_page_url", "last_page_url", "next_page_url", "prev_page_url", "path", "last_page", "per_page", "to", "data")
+    CURRENT_PAGE_FIELD_NUMBER: _ClassVar[int]
+    FIRST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    NEXT_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PREV_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PATH_FIELD_NUMBER: _ClassVar[int]
+    FROM_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_FIELD_NUMBER: _ClassVar[int]
+    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
+    TO_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    current_page: int
+    first_page_url: str
+    last_page_url: str
+    next_page_url: str
+    prev_page_url: str
+    path: str
+    last_page: int
+    per_page: int
+    to: int
+    data: _containers.RepeatedCompositeFieldContainer[Session]
+    def __init__(self, current_page: _Optional[int] = ..., first_page_url: _Optional[str] = ..., last_page_url: _Optional[str] = ..., next_page_url: _Optional[str] = ..., prev_page_url: _Optional[str] = ..., path: _Optional[str] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., to: _Optional[int] = ..., data: _Optional[_Iterable[_Union[Session, _Mapping]]] = ..., **kwargs) -> None: ...
+
+class TrackerPagination(_message.Message):
+    __slots__ = ("current_page", "first_page_url", "last_page_url", "next_page_url", "prev_page_url", "path", "last_page", "per_page", "to", "data")
+    CURRENT_PAGE_FIELD_NUMBER: _ClassVar[int]
+    FIRST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    NEXT_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PREV_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PATH_FIELD_NUMBER: _ClassVar[int]
+    FROM_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_FIELD_NUMBER: _ClassVar[int]
+    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
+    TO_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    current_page: int
+    first_page_url: str
+    last_page_url: str
+    next_page_url: str
+    prev_page_url: str
+    path: str
+    last_page: int
+    per_page: int
+    to: int
+    data: _containers.RepeatedCompositeFieldContainer[_devices_pb2.Tracker]
+    def __init__(self, current_page: _Optional[int] = ..., first_page_url: _Optional[str] = ..., last_page_url: _Optional[str] = ..., next_page_url: _Optional[str] = ..., prev_page_url: _Optional[str] = ..., path: _Optional[str] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., to: _Optional[int] = ..., data: _Optional[_Iterable[_Union[_devices_pb2.Tracker, _Mapping]]] = ..., **kwargs) -> None: ...
+
+class Session(_message.Message):
+    __slots__ = ("id", "tokenable_type", "tokenable_id", "name", "abilities", "fcm", "ip", "domain", "partner_id", "user_agent", "device_type", "last_used_at", "expires_at", "created_at", "updated_at", "current_session", "is_expired")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    TOKENABLE_TYPE_FIELD_NUMBER: _ClassVar[int]
+    TOKENABLE_ID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    ABILITIES_FIELD_NUMBER: _ClassVar[int]
+    FCM_FIELD_NUMBER: _ClassVar[int]
+    IP_FIELD_NUMBER: _ClassVar[int]
+    DOMAIN_FIELD_NUMBER: _ClassVar[int]
+    PARTNER_ID_FIELD_NUMBER: _ClassVar[int]
+    USER_AGENT_FIELD_NUMBER: _ClassVar[int]
+    DEVICE_TYPE_FIELD_NUMBER: _ClassVar[int]
+    LAST_USED_AT_FIELD_NUMBER: _ClassVar[int]
+    EXPIRES_AT_FIELD_NUMBER: _ClassVar[int]
+    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    CURRENT_SESSION_FIELD_NUMBER: _ClassVar[int]
+    IS_EXPIRED_FIELD_NUMBER: _ClassVar[int]
+    id: int
+    tokenable_type: str
+    tokenable_id: int
+    name: str
+    abilities: _containers.RepeatedScalarFieldContainer[str]
+    fcm: str
+    ip: str
+    domain: str
+    partner_id: int
+    user_agent: str
+    device_type: str
+    last_used_at: _timestamp_pb2.Timestamp
+    expires_at: _timestamp_pb2.Timestamp
+    created_at: _timestamp_pb2.Timestamp
+    updated_at: _timestamp_pb2.Timestamp
+    current_session: bool
+    is_expired: bool
+    def __init__(self, id: _Optional[int] = ..., tokenable_type: _Optional[str] = ..., tokenable_id: _Optional[int] = ..., name: _Optional[str] = ..., abilities: _Optional[_Iterable[str]] = ..., fcm: _Optional[str] = ..., ip: _Optional[str] = ..., domain: _Optional[str] = ..., partner_id: _Optional[int] = ..., user_agent: _Optional[str] = ..., device_type: _Optional[str] = ..., last_used_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., current_session: bool = ..., is_expired: bool = ...) -> None: ...
+
+class CommandPagination(_message.Message):
+    __slots__ = ("current_page", "first_page_url", "last_page_url", "next_page_url", "prev_page_url", "path", "last_page", "per_page", "to", "data")
+    CURRENT_PAGE_FIELD_NUMBER: _ClassVar[int]
+    FIRST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    NEXT_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PREV_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PATH_FIELD_NUMBER: _ClassVar[int]
+    FROM_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_FIELD_NUMBER: _ClassVar[int]
+    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
+    TO_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    current_page: int
+    first_page_url: str
+    last_page_url: str
+    next_page_url: str
+    prev_page_url: str
+    path: str
+    last_page: int
+    per_page: int
+    to: int
+    data: _containers.RepeatedCompositeFieldContainer[_messages_pb2.CommandStruct]
+    def __init__(self, current_page: _Optional[int] = ..., first_page_url: _Optional[str] = ..., last_page_url: _Optional[str] = ..., next_page_url: _Optional[str] = ..., prev_page_url: _Optional[str] = ..., path: _Optional[str] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., to: _Optional[int] = ..., data: _Optional[_Iterable[_Union[_messages_pb2.CommandStruct, _Mapping]]] = ..., **kwargs) -> None: ...
+
+class LiveLocationPagination(_message.Message):
+    __slots__ = ("current_page", "first_page_url", "last_page_url", "next_page_url", "prev_page_url", "path", "last_page", "per_page", "to", "data")
+    CURRENT_PAGE_FIELD_NUMBER: _ClassVar[int]
+    FIRST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    NEXT_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PREV_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PATH_FIELD_NUMBER: _ClassVar[int]
+    FROM_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_FIELD_NUMBER: _ClassVar[int]
+    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
+    TO_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    current_page: int
+    first_page_url: str
+    last_page_url: str
+    next_page_url: str
+    prev_page_url: str
+    path: str
+    last_page: int
+    per_page: int
+    to: int
+    data: _containers.RepeatedCompositeFieldContainer[_models_pb2.LiveLocation]
+    def __init__(self, current_page: _Optional[int] = ..., first_page_url: _Optional[str] = ..., last_page_url: _Optional[str] = ..., next_page_url: _Optional[str] = ..., prev_page_url: _Optional[str] = ..., path: _Optional[str] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., to: _Optional[int] = ..., data: _Optional[_Iterable[_Union[_models_pb2.LiveLocation, _Mapping]]] = ..., **kwargs) -> None: ...
+
+class MaintenancePagination(_message.Message):
+    __slots__ = ("current_page", "first_page_url", "last_page_url", "next_page_url", "prev_page_url", "path", "last_page", "per_page", "to", "data")
+    CURRENT_PAGE_FIELD_NUMBER: _ClassVar[int]
+    FIRST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    NEXT_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PREV_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PATH_FIELD_NUMBER: _ClassVar[int]
+    FROM_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_FIELD_NUMBER: _ClassVar[int]
+    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
+    TO_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    current_page: int
+    first_page_url: str
+    last_page_url: str
+    next_page_url: str
+    prev_page_url: str
+    path: str
+    last_page: int
+    per_page: int
+    to: int
+    data: _containers.RepeatedCompositeFieldContainer[_maintenance_pb2.Maintenance]
+    def __init__(self, current_page: _Optional[int] = ..., first_page_url: _Optional[str] = ..., last_page_url: _Optional[str] = ..., next_page_url: _Optional[str] = ..., prev_page_url: _Optional[str] = ..., path: _Optional[str] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., to: _Optional[int] = ..., data: _Optional[_Iterable[_Union[_maintenance_pb2.Maintenance, _Mapping]]] = ..., **kwargs) -> None: ...
+
+class ServicePagination(_message.Message):
+    __slots__ = ("current_page", "first_page_url", "last_page_url", "next_page_url", "prev_page_url", "path", "last_page", "per_page", "to", "data")
+    CURRENT_PAGE_FIELD_NUMBER: _ClassVar[int]
+    FIRST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    NEXT_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PREV_PAGE_URL_FIELD_NUMBER: _ClassVar[int]
+    PATH_FIELD_NUMBER: _ClassVar[int]
+    FROM_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_FIELD_NUMBER: _ClassVar[int]
+    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
+    TO_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    current_page: int
+    first_page_url: str
+    last_page_url: str
+    next_page_url: str
+    prev_page_url: str
+    path: str
+    last_page: int
+    per_page: int
+    to: int
+    data: _containers.RepeatedCompositeFieldContainer[_maintenance_pb2.MaintenanceService]
+    def __init__(self, current_page: _Optional[int] = ..., first_page_url: _Optional[str] = ..., last_page_url: _Optional[str] = ..., next_page_url: _Optional[str] = ..., prev_page_url: _Optional[str] = ..., path: _Optional[str] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., to: _Optional[int] = ..., data: _Optional[_Iterable[_Union[_maintenance_pb2.MaintenanceService, _Mapping]]] = ..., **kwargs) -> None: ...

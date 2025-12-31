@@ -28,6 +28,8 @@ class GreenDrivingTypeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     harshCornering: _ClassVar[GreenDrivingTypeEnum]
     bloodAlcoholContent: _ClassVar[GreenDrivingTypeEnum]
     overSpeeding: _ClassVar[GreenDrivingTypeEnum]
+    idling: _ClassVar[GreenDrivingTypeEnum]
+    score: _ClassVar[GreenDrivingTypeEnum]
 
 class HumidityEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
@@ -185,6 +187,8 @@ harshBraking: GreenDrivingTypeEnum
 harshCornering: GreenDrivingTypeEnum
 bloodAlcoholContent: GreenDrivingTypeEnum
 overSpeeding: GreenDrivingTypeEnum
+idling: GreenDrivingTypeEnum
+score: GreenDrivingTypeEnum
 DefaultHumidityMin: HumidityEnum
 DefaultHumidityMax: HumidityEnum
 DefaultHumidityAvg: HumidityEnum

@@ -75,3 +75,27 @@ class CarModelRepo(_message.Message):
     car_model: _devices_pb2.CarModel
     car_brand: _devices_pb2.CarBrand
     def __init__(self, car_model: _Optional[_Union[_devices_pb2.CarModel, _Mapping]] = ..., car_brand: _Optional[_Union[_devices_pb2.CarBrand, _Mapping]] = ...) -> None: ...
+
+class SubscriptionRepo(_message.Message):
+    __slots__ = ("partner_id", "custom_subs", "packages", "gateways")
+    PARTNER_ID_FIELD_NUMBER: _ClassVar[int]
+    CUSTOM_SUBS_FIELD_NUMBER: _ClassVar[int]
+    PACKAGES_FIELD_NUMBER: _ClassVar[int]
+    GATEWAYS_FIELD_NUMBER: _ClassVar[int]
+    partner_id: int
+    custom_subs: _containers.RepeatedCompositeFieldContainer[_financial_pb2.Product]
+    packages: _containers.RepeatedCompositeFieldContainer[_financial_pb2.Product]
+    gateways: _containers.RepeatedCompositeFieldContainer[_financial_pb2.PaymentGateway]
+    def __init__(self, partner_id: _Optional[int] = ..., custom_subs: _Optional[_Iterable[_Union[_financial_pb2.Product, _Mapping]]] = ..., packages: _Optional[_Iterable[_Union[_financial_pb2.Product, _Mapping]]] = ..., gateways: _Optional[_Iterable[_Union[_financial_pb2.PaymentGateway, _Mapping]]] = ...) -> None: ...
+
+class ProductRepo(_message.Message):
+    __slots__ = ("components", "currency", "product_type", "properties")
+    COMPONENTS_FIELD_NUMBER: _ClassVar[int]
+    CURRENCY_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_TYPE_FIELD_NUMBER: _ClassVar[int]
+    PROPERTIES_FIELD_NUMBER: _ClassVar[int]
+    components: _containers.RepeatedCompositeFieldContainer[_financial_pb2.Product]
+    currency: _financial_pb2.Currency
+    product_type: _financial_pb2.ProductType
+    properties: str
+    def __init__(self, components: _Optional[_Iterable[_Union[_financial_pb2.Product, _Mapping]]] = ..., currency: _Optional[_Union[_financial_pb2.Currency, _Mapping]] = ..., product_type: _Optional[_Union[_financial_pb2.ProductType, _Mapping]] = ..., properties: _Optional[str] = ...) -> None: ...

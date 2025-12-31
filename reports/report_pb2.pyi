@@ -1,11 +1,11 @@
 import datetime
 
+from activities import workflow_pb2 as _workflow_pb2
+from areas import area_pb2 as _area_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from packets import dataModel_pb2 as _dataModel_pb2
 from packets import messages_pb2 as _messages_pb2
 from trips import trip_pb2 as _trip_pb2
-from areas import area_pb2 as _area_pb2
-from devices import devices_pb2 as _devices_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -40,19 +40,168 @@ BOTH: StopCalculateIo
 SPEED: StopCalculateIo
 IGNITION: StopCalculateIo
 
-class SystemIoRequest(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
-
-class SystemIoResponse(_message.Message):
-    __slots__ = ("cost", "records", "ios")
+class DriverBehaviorReportResponse(_message.Message):
+    __slots__ = ("cost", "records", "points", "chunks")
+    class Chunk(_message.Message):
+        __slots__ = ("device_id", "organization_name", "car_name", "driver_name", "mileage", "idling", "parking", "moving", "towing", "avg_speed", "total_speed", "sum_speed", "max_speed", "i_button", "ignition", "door_opened", "fuel_used", "crashes", "speeds", "green_driving", "temperature", "humidity", "started_at", "finished_at")
+        class CrashesEntry(_message.Message):
+            __slots__ = ("key", "value")
+            KEY_FIELD_NUMBER: _ClassVar[int]
+            VALUE_FIELD_NUMBER: _ClassVar[int]
+            key: int
+            value: int
+            def __init__(self, key: _Optional[int] = ..., value: _Optional[int] = ...) -> None: ...
+        class SpeedsEntry(_message.Message):
+            __slots__ = ("key", "value")
+            KEY_FIELD_NUMBER: _ClassVar[int]
+            VALUE_FIELD_NUMBER: _ClassVar[int]
+            key: int
+            value: _trip_pb2.TripDurationStat
+            def __init__(self, key: _Optional[int] = ..., value: _Optional[_Union[_trip_pb2.TripDurationStat, _Mapping]] = ...) -> None: ...
+        class GreenDrivingEntry(_message.Message):
+            __slots__ = ("key", "value")
+            KEY_FIELD_NUMBER: _ClassVar[int]
+            VALUE_FIELD_NUMBER: _ClassVar[int]
+            key: int
+            value: int
+            def __init__(self, key: _Optional[int] = ..., value: _Optional[int] = ...) -> None: ...
+        class TemperatureEntry(_message.Message):
+            __slots__ = ("key", "value")
+            KEY_FIELD_NUMBER: _ClassVar[int]
+            VALUE_FIELD_NUMBER: _ClassVar[int]
+            key: int
+            value: int
+            def __init__(self, key: _Optional[int] = ..., value: _Optional[int] = ...) -> None: ...
+        class HumidityEntry(_message.Message):
+            __slots__ = ("key", "value")
+            KEY_FIELD_NUMBER: _ClassVar[int]
+            VALUE_FIELD_NUMBER: _ClassVar[int]
+            key: int
+            value: int
+            def __init__(self, key: _Optional[int] = ..., value: _Optional[int] = ...) -> None: ...
+        DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
+        ORGANIZATION_NAME_FIELD_NUMBER: _ClassVar[int]
+        CAR_NAME_FIELD_NUMBER: _ClassVar[int]
+        DRIVER_NAME_FIELD_NUMBER: _ClassVar[int]
+        MILEAGE_FIELD_NUMBER: _ClassVar[int]
+        IDLING_FIELD_NUMBER: _ClassVar[int]
+        PARKING_FIELD_NUMBER: _ClassVar[int]
+        MOVING_FIELD_NUMBER: _ClassVar[int]
+        TOWING_FIELD_NUMBER: _ClassVar[int]
+        AVG_SPEED_FIELD_NUMBER: _ClassVar[int]
+        TOTAL_SPEED_FIELD_NUMBER: _ClassVar[int]
+        SUM_SPEED_FIELD_NUMBER: _ClassVar[int]
+        MAX_SPEED_FIELD_NUMBER: _ClassVar[int]
+        I_BUTTON_FIELD_NUMBER: _ClassVar[int]
+        IGNITION_FIELD_NUMBER: _ClassVar[int]
+        DOOR_OPENED_FIELD_NUMBER: _ClassVar[int]
+        FUEL_USED_FIELD_NUMBER: _ClassVar[int]
+        CRASHES_FIELD_NUMBER: _ClassVar[int]
+        SPEEDS_FIELD_NUMBER: _ClassVar[int]
+        GREEN_DRIVING_FIELD_NUMBER: _ClassVar[int]
+        TEMPERATURE_FIELD_NUMBER: _ClassVar[int]
+        HUMIDITY_FIELD_NUMBER: _ClassVar[int]
+        STARTED_AT_FIELD_NUMBER: _ClassVar[int]
+        FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
+        device_id: int
+        organization_name: str
+        car_name: str
+        driver_name: str
+        mileage: int
+        idling: int
+        parking: int
+        moving: int
+        towing: int
+        avg_speed: int
+        total_speed: int
+        sum_speed: int
+        max_speed: int
+        i_button: int
+        ignition: int
+        door_opened: int
+        fuel_used: int
+        crashes: _containers.ScalarMap[int, int]
+        speeds: _containers.MessageMap[int, _trip_pb2.TripDurationStat]
+        green_driving: _containers.ScalarMap[int, int]
+        temperature: _containers.ScalarMap[int, int]
+        humidity: _containers.ScalarMap[int, int]
+        started_at: _timestamp_pb2.Timestamp
+        finished_at: _timestamp_pb2.Timestamp
+        def __init__(self, device_id: _Optional[int] = ..., organization_name: _Optional[str] = ..., car_name: _Optional[str] = ..., driver_name: _Optional[str] = ..., mileage: _Optional[int] = ..., idling: _Optional[int] = ..., parking: _Optional[int] = ..., moving: _Optional[int] = ..., towing: _Optional[int] = ..., avg_speed: _Optional[int] = ..., total_speed: _Optional[int] = ..., sum_speed: _Optional[int] = ..., max_speed: _Optional[int] = ..., i_button: _Optional[int] = ..., ignition: _Optional[int] = ..., door_opened: _Optional[int] = ..., fuel_used: _Optional[int] = ..., crashes: _Optional[_Mapping[int, int]] = ..., speeds: _Optional[_Mapping[int, _trip_pb2.TripDurationStat]] = ..., green_driving: _Optional[_Mapping[int, int]] = ..., temperature: _Optional[_Mapping[int, int]] = ..., humidity: _Optional[_Mapping[int, int]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
     COST_FIELD_NUMBER: _ClassVar[int]
     RECORDS_FIELD_NUMBER: _ClassVar[int]
-    IOS_FIELD_NUMBER: _ClassVar[int]
+    POINTS_FIELD_NUMBER: _ClassVar[int]
+    CHUNKS_FIELD_NUMBER: _ClassVar[int]
     cost: int
     records: int
-    ios: _containers.RepeatedCompositeFieldContainer[_devices_pb2.SystemIo]
-    def __init__(self, cost: _Optional[int] = ..., records: _Optional[int] = ..., ios: _Optional[_Iterable[_Union[_devices_pb2.SystemIo, _Mapping]]] = ...) -> None: ...
+    points: _containers.RepeatedCompositeFieldContainer[_trip_pb2.TripPoint]
+    chunks: _containers.RepeatedCompositeFieldContainer[DriverBehaviorReportResponse.Chunk]
+    def __init__(self, cost: _Optional[int] = ..., records: _Optional[int] = ..., points: _Optional[_Iterable[_Union[_trip_pb2.TripPoint, _Mapping]]] = ..., chunks: _Optional[_Iterable[_Union[DriverBehaviorReportResponse.Chunk, _Mapping]]] = ...) -> None: ...
+
+class DriverBehaviorReportRequest(_message.Message):
+    __slots__ = ("organization_id", "group_by", "started_at", "finished_at", "device_ids")
+    class GroupBy(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+        __slots__ = ()
+        GROUP_BY_UNSPECIFIED: _ClassVar[DriverBehaviorReportRequest.GroupBy]
+        GROUP_BY_DEVICE: _ClassVar[DriverBehaviorReportRequest.GroupBy]
+        GROUP_BY_DATETIME: _ClassVar[DriverBehaviorReportRequest.GroupBy]
+        GROUP_BY_DEVICE_DATETIME: _ClassVar[DriverBehaviorReportRequest.GroupBy]
+    GROUP_BY_UNSPECIFIED: DriverBehaviorReportRequest.GroupBy
+    GROUP_BY_DEVICE: DriverBehaviorReportRequest.GroupBy
+    GROUP_BY_DATETIME: DriverBehaviorReportRequest.GroupBy
+    GROUP_BY_DEVICE_DATETIME: DriverBehaviorReportRequest.GroupBy
+    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
+    GROUP_BY_FIELD_NUMBER: _ClassVar[int]
+    STARTED_AT_FIELD_NUMBER: _ClassVar[int]
+    FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
+    DEVICE_IDS_FIELD_NUMBER: _ClassVar[int]
+    organization_id: int
+    group_by: DriverBehaviorReportRequest.GroupBy
+    started_at: _timestamp_pb2.Timestamp
+    finished_at: _timestamp_pb2.Timestamp
+    device_ids: _containers.RepeatedScalarFieldContainer[int]
+    def __init__(self, organization_id: _Optional[int] = ..., group_by: _Optional[_Union[DriverBehaviorReportRequest.GroupBy, str]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., device_ids: _Optional[_Iterable[int]] = ...) -> None: ...
+
+class WorkflowRequest(_message.Message):
+    __slots__ = ("organization_id", "workflow_id", "device_id", "status", "started_at", "finished_at", "disable_pagination", "page", "per_page")
+    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
+    WORKFLOW_ID_FIELD_NUMBER: _ClassVar[int]
+    DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
+    STATUS_FIELD_NUMBER: _ClassVar[int]
+    STARTED_AT_FIELD_NUMBER: _ClassVar[int]
+    FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
+    DISABLE_PAGINATION_FIELD_NUMBER: _ClassVar[int]
+    PAGE_FIELD_NUMBER: _ClassVar[int]
+    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
+    organization_id: int
+    workflow_id: int
+    device_id: int
+    status: _workflow_pb2.WorkflowStat
+    started_at: _timestamp_pb2.Timestamp
+    finished_at: _timestamp_pb2.Timestamp
+    disable_pagination: bool
+    page: int
+    per_page: int
+    def __init__(self, organization_id: _Optional[int] = ..., workflow_id: _Optional[int] = ..., device_id: _Optional[int] = ..., status: _Optional[_Union[_workflow_pb2.WorkflowStat, str]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., disable_pagination: bool = ..., page: _Optional[int] = ..., per_page: _Optional[int] = ...) -> None: ...
+
+class WorkflowResponse(_message.Message):
+    __slots__ = ("current_page", "to", "last_page", "per_page", "cost", "total", "data")
+    CURRENT_PAGE_FIELD_NUMBER: _ClassVar[int]
+    FROM_FIELD_NUMBER: _ClassVar[int]
+    TO_FIELD_NUMBER: _ClassVar[int]
+    LAST_PAGE_FIELD_NUMBER: _ClassVar[int]
+    PER_PAGE_FIELD_NUMBER: _ClassVar[int]
+    COST_FIELD_NUMBER: _ClassVar[int]
+    TOTAL_FIELD_NUMBER: _ClassVar[int]
+    DATA_FIELD_NUMBER: _ClassVar[int]
+    current_page: int
+    to: int
+    last_page: int
+    per_page: int
+    cost: int
+    total: int
+    data: _containers.RepeatedCompositeFieldContainer[_workflow_pb2.WorkflowTask]
+    def __init__(self, current_page: _Optional[int] = ..., to: _Optional[int] = ..., last_page: _Optional[int] = ..., per_page: _Optional[int] = ..., cost: _Optional[int] = ..., total: _Optional[int] = ..., data: _Optional[_Iterable[_Union[_workflow_pb2.WorkflowTask, _Mapping]]] = ..., **kwargs) -> None: ...
 
 class ChartRequest(_message.Message):
     __slots__ = ("device_ids", "ios", "started_at", "finished_at")
@@ -127,18 +276,28 @@ class CommandHistoryResponse(_message.Message):
     def __init__(self, records: _Optional[int] = ..., cost: _Optional[int] = ..., page: _Optional[int] = ..., list: _Optional[_Iterable[_Union[_messages_pb2.Command, _Mapping]]] = ...) -> None: ...
 
 class WorkCycleRequest(_message.Message):
-    __slots__ = ("device_ids", "started_at", "finished_at", "shovel_stop_seconds", "area_stop_seconds")
+    __slots__ = ("device_ids", "org_id", "started_at", "finished_at", "shovel_stop_seconds", "area_stop_seconds", "source")
+    class Source(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+        __slots__ = ()
+        FUSION: _ClassVar[WorkCycleRequest.Source]
+        ODYSSEY: _ClassVar[WorkCycleRequest.Source]
+    FUSION: WorkCycleRequest.Source
+    ODYSSEY: WorkCycleRequest.Source
     DEVICE_IDS_FIELD_NUMBER: _ClassVar[int]
+    ORG_ID_FIELD_NUMBER: _ClassVar[int]
     STARTED_AT_FIELD_NUMBER: _ClassVar[int]
     FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
     SHOVEL_STOP_SECONDS_FIELD_NUMBER: _ClassVar[int]
     AREA_STOP_SECONDS_FIELD_NUMBER: _ClassVar[int]
+    SOURCE_FIELD_NUMBER: _ClassVar[int]
     device_ids: _containers.RepeatedScalarFieldContainer[int]
+    org_id: int
     started_at: _timestamp_pb2.Timestamp
     finished_at: _timestamp_pb2.Timestamp
     shovel_stop_seconds: float
     area_stop_seconds: float
-    def __init__(self, device_ids: _Optional[_Iterable[int]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., shovel_stop_seconds: _Optional[float] = ..., area_stop_seconds: _Optional[float] = ...) -> None: ...
+    source: WorkCycleRequest.Source
+    def __init__(self, device_ids: _Optional[_Iterable[int]] = ..., org_id: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., shovel_stop_seconds: _Optional[float] = ..., area_stop_seconds: _Optional[float] = ..., source: _Optional[_Union[WorkCycleRequest.Source, str]] = ...) -> None: ...
 
 class WorkCycleResponse(_message.Message):
     __slots__ = ("work_cycles", "cost", "threads", "records")
@@ -216,168 +375,35 @@ class AreaSplitterResponse(_message.Message):
     finished_at: _timestamp_pb2.Timestamp
     def __init__(self, reports: _Optional[_Iterable[_Union[AreaSplitterResponse.Record, _Mapping]]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
-class MaintenanceRequest(_message.Message):
-    __slots__ = ("device_ids", "started_at", "finished_at", "group_by")
-    class GroupBy(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-        __slots__ = ()
-        None: _ClassVar[MaintenanceRequest.GroupBy]
-        Day: _ClassVar[MaintenanceRequest.GroupBy]
-        Week: _ClassVar[MaintenanceRequest.GroupBy]
-        Month: _ClassVar[MaintenanceRequest.GroupBy]
-        Year: _ClassVar[MaintenanceRequest.GroupBy]
-    None: MaintenanceRequest.GroupBy
-    Day: MaintenanceRequest.GroupBy
-    Week: MaintenanceRequest.GroupBy
-    Month: MaintenanceRequest.GroupBy
-    Year: MaintenanceRequest.GroupBy
-    DEVICE_IDS_FIELD_NUMBER: _ClassVar[int]
-    STARTED_AT_FIELD_NUMBER: _ClassVar[int]
-    FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-    GROUP_BY_FIELD_NUMBER: _ClassVar[int]
-    device_ids: _containers.RepeatedScalarFieldContainer[int]
-    started_at: _timestamp_pb2.Timestamp
-    finished_at: _timestamp_pb2.Timestamp
-    group_by: MaintenanceRequest.GroupBy
-    def __init__(self, device_ids: _Optional[_Iterable[int]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., group_by: _Optional[_Union[MaintenanceRequest.GroupBy, str]] = ...) -> None: ...
-
-class MaintenanceResponse(_message.Message):
-    __slots__ = ("organization_id", "uptime", "mileage", "price", "started_at", "finished_at", "services", "devices")
-    class Cost(_message.Message):
-        __slots__ = ("name", "price", "description")
-        NAME_FIELD_NUMBER: _ClassVar[int]
-        PRICE_FIELD_NUMBER: _ClassVar[int]
-        DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
-        name: str
-        price: int
-        description: str
-        def __init__(self, name: _Optional[str] = ..., price: _Optional[int] = ..., description: _Optional[str] = ...) -> None: ...
-    class List(_message.Message):
-        __slots__ = ("id", "service_id", "started_at", "expires_at", "duration_percentage", "current_uptime", "uptime", "uptime_percentage", "current_mileage", "mileage", "mileage_percentage", "status", "cost", "price", "count", "created_at", "updated_at")
-        ID_FIELD_NUMBER: _ClassVar[int]
-        SERVICE_ID_FIELD_NUMBER: _ClassVar[int]
-        STARTED_AT_FIELD_NUMBER: _ClassVar[int]
-        EXPIRES_AT_FIELD_NUMBER: _ClassVar[int]
-        DURATION_PERCENTAGE_FIELD_NUMBER: _ClassVar[int]
-        CURRENT_UPTIME_FIELD_NUMBER: _ClassVar[int]
-        UPTIME_FIELD_NUMBER: _ClassVar[int]
-        UPTIME_PERCENTAGE_FIELD_NUMBER: _ClassVar[int]
-        CURRENT_MILEAGE_FIELD_NUMBER: _ClassVar[int]
-        MILEAGE_FIELD_NUMBER: _ClassVar[int]
-        MILEAGE_PERCENTAGE_FIELD_NUMBER: _ClassVar[int]
-        STATUS_FIELD_NUMBER: _ClassVar[int]
-        COST_FIELD_NUMBER: _ClassVar[int]
-        PRICE_FIELD_NUMBER: _ClassVar[int]
-        COUNT_FIELD_NUMBER: _ClassVar[int]
-        CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-        UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-        id: int
-        service_id: int
-        started_at: _timestamp_pb2.Timestamp
-        expires_at: _timestamp_pb2.Timestamp
-        duration_percentage: int
-        current_uptime: int
-        uptime: int
-        uptime_percentage: int
-        current_mileage: int
-        mileage: int
-        mileage_percentage: int
-        status: int
-        cost: _containers.RepeatedCompositeFieldContainer[MaintenanceResponse.Cost]
-        price: int
-        count: int
-        created_at: _timestamp_pb2.Timestamp
-        updated_at: _timestamp_pb2.Timestamp
-        def __init__(self, id: _Optional[int] = ..., service_id: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., duration_percentage: _Optional[int] = ..., current_uptime: _Optional[int] = ..., uptime: _Optional[int] = ..., uptime_percentage: _Optional[int] = ..., current_mileage: _Optional[int] = ..., mileage: _Optional[int] = ..., mileage_percentage: _Optional[int] = ..., status: _Optional[int] = ..., cost: _Optional[_Iterable[_Union[MaintenanceResponse.Cost, _Mapping]]] = ..., price: _Optional[int] = ..., count: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
-    class Group(_message.Message):
-        __slots__ = ("uptime", "mileage", "price", "started_at", "finished_at", "services", "list")
-        UPTIME_FIELD_NUMBER: _ClassVar[int]
-        MILEAGE_FIELD_NUMBER: _ClassVar[int]
-        PRICE_FIELD_NUMBER: _ClassVar[int]
-        STARTED_AT_FIELD_NUMBER: _ClassVar[int]
-        FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-        SERVICES_FIELD_NUMBER: _ClassVar[int]
-        LIST_FIELD_NUMBER: _ClassVar[int]
-        uptime: int
-        mileage: int
-        price: int
-        started_at: _timestamp_pb2.Timestamp
-        finished_at: _timestamp_pb2.Timestamp
-        services: _containers.RepeatedCompositeFieldContainer[MaintenanceResponse.Service]
-        list: _containers.RepeatedCompositeFieldContainer[MaintenanceResponse.List]
-        def __init__(self, uptime: _Optional[int] = ..., mileage: _Optional[int] = ..., price: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., services: _Optional[_Iterable[_Union[MaintenanceResponse.Service, _Mapping]]] = ..., list: _Optional[_Iterable[_Union[MaintenanceResponse.List, _Mapping]]] = ...) -> None: ...
-    class Service(_message.Message):
-        __slots__ = ("service_id", "name", "price", "count")
-        SERVICE_ID_FIELD_NUMBER: _ClassVar[int]
-        NAME_FIELD_NUMBER: _ClassVar[int]
-        PRICE_FIELD_NUMBER: _ClassVar[int]
-        COUNT_FIELD_NUMBER: _ClassVar[int]
-        service_id: int
-        name: str
-        price: int
-        count: int
-        def __init__(self, service_id: _Optional[int] = ..., name: _Optional[str] = ..., price: _Optional[int] = ..., count: _Optional[int] = ...) -> None: ...
-    class Device(_message.Message):
-        __slots__ = ("device_id", "organization_id", "uptime", "mileage", "price", "services", "groups")
-        DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
-        ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
-        UPTIME_FIELD_NUMBER: _ClassVar[int]
-        MILEAGE_FIELD_NUMBER: _ClassVar[int]
-        PRICE_FIELD_NUMBER: _ClassVar[int]
-        SERVICES_FIELD_NUMBER: _ClassVar[int]
-        GROUPS_FIELD_NUMBER: _ClassVar[int]
-        device_id: int
-        organization_id: int
-        uptime: int
-        mileage: int
-        price: int
-        services: _containers.RepeatedCompositeFieldContainer[MaintenanceResponse.Service]
-        groups: _containers.RepeatedCompositeFieldContainer[MaintenanceResponse.Group]
-        def __init__(self, device_id: _Optional[int] = ..., organization_id: _Optional[int] = ..., uptime: _Optional[int] = ..., mileage: _Optional[int] = ..., price: _Optional[int] = ..., services: _Optional[_Iterable[_Union[MaintenanceResponse.Service, _Mapping]]] = ..., groups: _Optional[_Iterable[_Union[MaintenanceResponse.Group, _Mapping]]] = ...) -> None: ...
-    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
-    UPTIME_FIELD_NUMBER: _ClassVar[int]
-    MILEAGE_FIELD_NUMBER: _ClassVar[int]
-    PRICE_FIELD_NUMBER: _ClassVar[int]
-    STARTED_AT_FIELD_NUMBER: _ClassVar[int]
-    FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-    SERVICES_FIELD_NUMBER: _ClassVar[int]
-    DEVICES_FIELD_NUMBER: _ClassVar[int]
-    organization_id: int
-    uptime: int
-    mileage: int
-    price: int
-    started_at: _timestamp_pb2.Timestamp
-    finished_at: _timestamp_pb2.Timestamp
-    services: _containers.RepeatedCompositeFieldContainer[MaintenanceResponse.Service]
-    devices: _containers.RepeatedCompositeFieldContainer[MaintenanceResponse.Device]
-    def __init__(self, organization_id: _Optional[int] = ..., uptime: _Optional[int] = ..., mileage: _Optional[int] = ..., price: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., services: _Optional[_Iterable[_Union[MaintenanceResponse.Service, _Mapping]]] = ..., devices: _Optional[_Iterable[_Union[MaintenanceResponse.Device, _Mapping]]] = ...) -> None: ...
-
 class TripPerformanceRequest(_message.Message):
-    __slots__ = ("device_id", "started_at", "finished_at", "group_by_device", "group_by_datetime", "hourly")
+    __slots__ = ("device_id", "started_at", "finished_at", "group_by_device", "group_by_datetime", "hourly", "org_id")
     class GroupBy(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
-        All: _ClassVar[TripPerformanceRequest.GroupBy]
-        Day: _ClassVar[TripPerformanceRequest.GroupBy]
-        Month: _ClassVar[TripPerformanceRequest.GroupBy]
-        Year: _ClassVar[TripPerformanceRequest.GroupBy]
-        Hour: _ClassVar[TripPerformanceRequest.GroupBy]
-    All: TripPerformanceRequest.GroupBy
-    Day: TripPerformanceRequest.GroupBy
-    Month: TripPerformanceRequest.GroupBy
-    Year: TripPerformanceRequest.GroupBy
-    Hour: TripPerformanceRequest.GroupBy
+        ALL: _ClassVar[TripPerformanceRequest.GroupBy]
+        DAY: _ClassVar[TripPerformanceRequest.GroupBy]
+        MONTH: _ClassVar[TripPerformanceRequest.GroupBy]
+        YEAR: _ClassVar[TripPerformanceRequest.GroupBy]
+        HOUR: _ClassVar[TripPerformanceRequest.GroupBy]
+    ALL: TripPerformanceRequest.GroupBy
+    DAY: TripPerformanceRequest.GroupBy
+    MONTH: TripPerformanceRequest.GroupBy
+    YEAR: TripPerformanceRequest.GroupBy
+    HOUR: TripPerformanceRequest.GroupBy
     DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
     STARTED_AT_FIELD_NUMBER: _ClassVar[int]
     FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
     GROUP_BY_DEVICE_FIELD_NUMBER: _ClassVar[int]
     GROUP_BY_DATETIME_FIELD_NUMBER: _ClassVar[int]
     HOURLY_FIELD_NUMBER: _ClassVar[int]
+    ORG_ID_FIELD_NUMBER: _ClassVar[int]
     device_id: _containers.RepeatedScalarFieldContainer[int]
     started_at: _timestamp_pb2.Timestamp
     finished_at: _timestamp_pb2.Timestamp
     group_by_device: bool
     group_by_datetime: TripPerformanceRequest.GroupBy
     hourly: bool
-    def __init__(self, device_id: _Optional[_Iterable[int]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., group_by_device: bool = ..., group_by_datetime: _Optional[_Union[TripPerformanceRequest.GroupBy, str]] = ..., hourly: bool = ...) -> None: ...
+    org_id: int
+    def __init__(self, device_id: _Optional[_Iterable[int]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., group_by_device: bool = ..., group_by_datetime: _Optional[_Union[TripPerformanceRequest.GroupBy, str]] = ..., hourly: bool = ..., org_id: _Optional[int] = ...) -> None: ...
 
 class TripPerformanceResponse(_message.Message):
     __slots__ = ("data", "cost", "threads", "records")
@@ -392,7 +418,7 @@ class TripPerformanceResponse(_message.Message):
     def __init__(self, data: _Optional[_Iterable[_Union[TripPerformance, _Mapping]]] = ..., cost: _Optional[int] = ..., threads: _Optional[int] = ..., records: _Optional[int] = ...) -> None: ...
 
 class TripPerformance(_message.Message):
-    __slots__ = ("device_id", "mileage", "idling", "parking", "moving", "towing", "total_speed", "sum_speed", "max_speed", "started_at", "finished_at", "driving", "temperature", "humidity", "i_button", "ignition", "door_opened", "fuel_used", "fuel_rate", "engine_rpm", "engine_load", "crashes", "speeds", "points", "records", "average")
+    __slots__ = ("device_id", "mileage", "idling", "parking", "moving", "towing", "total_speed", "sum_speed", "max_speed", "started_at", "finished_at", "driving", "temperature", "humidity", "i_button", "ignition", "door_opened", "fuel_used", "fuel_rate", "engine_rpm", "engine_load", "crashes", "speeds", "points", "records", "average", "device_name", "driver_name", "organization_name")
     class Average(_message.Message):
         __slots__ = ("name", "uint_value", "int_value", "seconds", "kind")
         NAME_FIELD_NUMBER: _ClassVar[int]
@@ -467,6 +493,9 @@ class TripPerformance(_message.Message):
     POINTS_FIELD_NUMBER: _ClassVar[int]
     RECORDS_FIELD_NUMBER: _ClassVar[int]
     AVERAGE_FIELD_NUMBER: _ClassVar[int]
+    DEVICE_NAME_FIELD_NUMBER: _ClassVar[int]
+    DRIVER_NAME_FIELD_NUMBER: _ClassVar[int]
+    ORGANIZATION_NAME_FIELD_NUMBER: _ClassVar[int]
     device_id: int
     mileage: int
     idling: int
@@ -493,13 +522,10 @@ class TripPerformance(_message.Message):
     points: int
     records: int
     average: _containers.RepeatedCompositeFieldContainer[TripPerformance.Average]
-    def __init__(self, device_id: _Optional[int] = ..., mileage: _Optional[int] = ..., idling: _Optional[int] = ..., parking: _Optional[int] = ..., moving: _Optional[int] = ..., towing: _Optional[int] = ..., total_speed: _Optional[int] = ..., sum_speed: _Optional[int] = ..., max_speed: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., driving: _Optional[_Mapping[str, int]] = ..., temperature: _Optional[_Mapping[str, int]] = ..., humidity: _Optional[_Mapping[str, int]] = ..., i_button: _Optional[_Iterable[int]] = ..., ignition: _Optional[int] = ..., door_opened: _Optional[int] = ..., fuel_used: _Optional[int] = ..., fuel_rate: _Optional[int] = ..., engine_rpm: _Optional[int] = ..., engine_load: _Optional[int] = ..., crashes: _Optional[_Mapping[str, int]] = ..., speeds: _Optional[_Mapping[int, _trip_pb2.TripDurationStat]] = ..., points: _Optional[int] = ..., records: _Optional[int] = ..., average: _Optional[_Iterable[_Union[TripPerformance.Average, _Mapping]]] = ...) -> None: ...
-
-class LatestDataModelRequest(_message.Message):
-    __slots__ = ("device_id",)
-    DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
-    device_id: int
-    def __init__(self, device_id: _Optional[int] = ...) -> None: ...
+    device_name: str
+    driver_name: str
+    organization_name: str
+    def __init__(self, device_id: _Optional[int] = ..., mileage: _Optional[int] = ..., idling: _Optional[int] = ..., parking: _Optional[int] = ..., moving: _Optional[int] = ..., towing: _Optional[int] = ..., total_speed: _Optional[int] = ..., sum_speed: _Optional[int] = ..., max_speed: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., driving: _Optional[_Mapping[str, int]] = ..., temperature: _Optional[_Mapping[str, int]] = ..., humidity: _Optional[_Mapping[str, int]] = ..., i_button: _Optional[_Iterable[int]] = ..., ignition: _Optional[int] = ..., door_opened: _Optional[int] = ..., fuel_used: _Optional[int] = ..., fuel_rate: _Optional[int] = ..., engine_rpm: _Optional[int] = ..., engine_load: _Optional[int] = ..., crashes: _Optional[_Mapping[str, int]] = ..., speeds: _Optional[_Mapping[int, _trip_pb2.TripDurationStat]] = ..., points: _Optional[int] = ..., records: _Optional[int] = ..., average: _Optional[_Iterable[_Union[TripPerformance.Average, _Mapping]]] = ..., device_name: _Optional[str] = ..., driver_name: _Optional[str] = ..., organization_name: _Optional[str] = ...) -> None: ...
 
 class DashboardIndividualResponse(_message.Message):
     __slots__ = ("data_list", "title", "mileage", "weight", "fuel_used", "fuel_rate", "trips", "idling", "parking", "moving", "towing", "total_speed", "sum_speed", "max_speed", "points", "environmental", "green_driving", "speeds", "crashes", "cost", "threads", "records")
@@ -698,18 +724,18 @@ class AreaSummaryReviewRequest(_message.Message):
     __slots__ = ("started_at", "finished_at", "scope", "source", "area_source", "area_ids", "device_ids")
     class ScopeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
-        inside_only: _ClassVar[AreaSummaryReviewRequest.ScopeEnum]
-        outside_only: _ClassVar[AreaSummaryReviewRequest.ScopeEnum]
-        both_side: _ClassVar[AreaSummaryReviewRequest.ScopeEnum]
-    inside_only: AreaSummaryReviewRequest.ScopeEnum
-    outside_only: AreaSummaryReviewRequest.ScopeEnum
-    both_side: AreaSummaryReviewRequest.ScopeEnum
+        INSIDE_ONLY: _ClassVar[AreaSummaryReviewRequest.ScopeEnum]
+        OUTSIDE_ONLY: _ClassVar[AreaSummaryReviewRequest.ScopeEnum]
+        BOTH_SIDE: _ClassVar[AreaSummaryReviewRequest.ScopeEnum]
+    INSIDE_ONLY: AreaSummaryReviewRequest.ScopeEnum
+    OUTSIDE_ONLY: AreaSummaryReviewRequest.ScopeEnum
+    BOTH_SIDE: AreaSummaryReviewRequest.ScopeEnum
     class AreaSourceEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
-        fusion: _ClassVar[AreaSummaryReviewRequest.AreaSourceEnum]
-        odyssey: _ClassVar[AreaSummaryReviewRequest.AreaSourceEnum]
-    fusion: AreaSummaryReviewRequest.AreaSourceEnum
-    odyssey: AreaSummaryReviewRequest.AreaSourceEnum
+        FUSION: _ClassVar[AreaSummaryReviewRequest.AreaSourceEnum]
+        ODYSSEY: _ClassVar[AreaSummaryReviewRequest.AreaSourceEnum]
+    FUSION: AreaSummaryReviewRequest.AreaSourceEnum
+    ODYSSEY: AreaSummaryReviewRequest.AreaSourceEnum
     STARTED_AT_FIELD_NUMBER: _ClassVar[int]
     FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
     SCOPE_FIELD_NUMBER: _ClassVar[int]
@@ -728,12 +754,12 @@ class AreaSummaryReviewRequest(_message.Message):
 
 class AreaSummaryReviewResponse(_message.Message):
     __slots__ = ("records", "cost", "total_duration_inside", "total_duration_outside", "total_mileage_inside", "total_mileage_outside", "total_inside_records", "total_outside_records", "reports")
-    class trafficType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    class TrafficType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
-        inside: _ClassVar[AreaSummaryReviewResponse.trafficType]
-        outSide: _ClassVar[AreaSummaryReviewResponse.trafficType]
-    inside: AreaSummaryReviewResponse.trafficType
-    outSide: AreaSummaryReviewResponse.trafficType
+        INSIDE: _ClassVar[AreaSummaryReviewResponse.TrafficType]
+        OUT_SIDE: _ClassVar[AreaSummaryReviewResponse.TrafficType]
+    INSIDE: AreaSummaryReviewResponse.TrafficType
+    OUT_SIDE: AreaSummaryReviewResponse.TrafficType
     class Review(_message.Message):
         __slots__ = ("device_id", "area_id", "started", "finished", "mileage", "duration", "max_speed", "total_speed", "count_speed", "type", "area")
         DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
@@ -756,9 +782,9 @@ class AreaSummaryReviewResponse(_message.Message):
         max_speed: int
         total_speed: int
         count_speed: int
-        type: AreaSummaryReviewResponse.trafficType
+        type: AreaSummaryReviewResponse.TrafficType
         area: _area_pb2.Area
-        def __init__(self, device_id: _Optional[int] = ..., area_id: _Optional[int] = ..., started: _Optional[_Union[_dataModel_pb2.Data, _Mapping]] = ..., finished: _Optional[_Union[_dataModel_pb2.Data, _Mapping]] = ..., mileage: _Optional[int] = ..., duration: _Optional[int] = ..., max_speed: _Optional[int] = ..., total_speed: _Optional[int] = ..., count_speed: _Optional[int] = ..., type: _Optional[_Union[AreaSummaryReviewResponse.trafficType, str]] = ..., area: _Optional[_Union[_area_pb2.Area, _Mapping]] = ...) -> None: ...
+        def __init__(self, device_id: _Optional[int] = ..., area_id: _Optional[int] = ..., started: _Optional[_Union[_dataModel_pb2.Data, _Mapping]] = ..., finished: _Optional[_Union[_dataModel_pb2.Data, _Mapping]] = ..., mileage: _Optional[int] = ..., duration: _Optional[int] = ..., max_speed: _Optional[int] = ..., total_speed: _Optional[int] = ..., count_speed: _Optional[int] = ..., type: _Optional[_Union[AreaSummaryReviewResponse.TrafficType, str]] = ..., area: _Optional[_Union[_area_pb2.Area, _Mapping]] = ...) -> None: ...
     RECORDS_FIELD_NUMBER: _ClassVar[int]
     COST_FIELD_NUMBER: _ClassVar[int]
     TOTAL_DURATION_INSIDE_FIELD_NUMBER: _ClassVar[int]
@@ -780,9 +806,9 @@ class AreaSummaryReviewResponse(_message.Message):
     def __init__(self, records: _Optional[int] = ..., cost: _Optional[int] = ..., total_duration_inside: _Optional[int] = ..., total_duration_outside: _Optional[int] = ..., total_mileage_inside: _Optional[int] = ..., total_mileage_outside: _Optional[int] = ..., total_inside_records: _Optional[int] = ..., total_outside_records: _Optional[int] = ..., reports: _Optional[_Iterable[_Union[AreaSummaryReviewResponse.Review, _Mapping]]] = ...) -> None: ...
 
 class ShiftSummaryResponse(_message.Message):
-    __slots__ = ("Reports", "trip_records", "trip_milliseconds", "started_at", "finished_at")
+    __slots__ = ("reports", "trip_records", "trip_milliseconds", "started_at", "finished_at")
     class Summary(_message.Message):
-        __slots__ = ("device_id", "mileage", "idling", "parking", "moving", "towing", "speed_total", "speed_sum", "speed_max", "records", "harsh_acceleration", "harsh_break", "harsh_corner", "min_temp_01", "max_temp_01", "min_temp_02", "max_temp_02", "min_temp_03", "max_temp_03", "min_temp_04", "max_temp_04", "min_humidity", "max_humidity", "started_at", "finished_at", "totalSeconds", "includingSeconds", "different")
+        __slots__ = ("device_id", "mileage", "idling", "parking", "moving", "towing", "speed_total", "speed_sum", "speed_max", "records", "harsh_acceleration", "harsh_break", "harsh_corner", "min_temp_01", "max_temp_01", "min_temp_02", "max_temp_02", "min_temp_03", "max_temp_03", "min_temp_04", "max_temp_04", "min_humidity", "max_humidity", "started_at", "finished_at", "total_seconds", "including_seconds", "different")
         DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
         MILEAGE_FIELD_NUMBER: _ClassVar[int]
         IDLING_FIELD_NUMBER: _ClassVar[int]
@@ -808,8 +834,8 @@ class ShiftSummaryResponse(_message.Message):
         MAX_HUMIDITY_FIELD_NUMBER: _ClassVar[int]
         STARTED_AT_FIELD_NUMBER: _ClassVar[int]
         FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-        TOTALSECONDS_FIELD_NUMBER: _ClassVar[int]
-        INCLUDINGSECONDS_FIELD_NUMBER: _ClassVar[int]
+        TOTAL_SECONDS_FIELD_NUMBER: _ClassVar[int]
+        INCLUDING_SECONDS_FIELD_NUMBER: _ClassVar[int]
         DIFFERENT_FIELD_NUMBER: _ClassVar[int]
         device_id: int
         mileage: int
@@ -836,21 +862,21 @@ class ShiftSummaryResponse(_message.Message):
         max_humidity: int
         started_at: _timestamp_pb2.Timestamp
         finished_at: _timestamp_pb2.Timestamp
-        totalSeconds: int
-        includingSeconds: int
+        total_seconds: int
+        including_seconds: int
         different: int
-        def __init__(self, device_id: _Optional[int] = ..., mileage: _Optional[int] = ..., idling: _Optional[int] = ..., parking: _Optional[int] = ..., moving: _Optional[int] = ..., towing: _Optional[int] = ..., speed_total: _Optional[int] = ..., speed_sum: _Optional[int] = ..., speed_max: _Optional[int] = ..., records: _Optional[int] = ..., harsh_acceleration: _Optional[int] = ..., harsh_break: _Optional[int] = ..., harsh_corner: _Optional[int] = ..., min_temp_01: _Optional[int] = ..., max_temp_01: _Optional[int] = ..., min_temp_02: _Optional[int] = ..., max_temp_02: _Optional[int] = ..., min_temp_03: _Optional[int] = ..., max_temp_03: _Optional[int] = ..., min_temp_04: _Optional[int] = ..., max_temp_04: _Optional[int] = ..., min_humidity: _Optional[int] = ..., max_humidity: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., totalSeconds: _Optional[int] = ..., includingSeconds: _Optional[int] = ..., different: _Optional[int] = ...) -> None: ...
+        def __init__(self, device_id: _Optional[int] = ..., mileage: _Optional[int] = ..., idling: _Optional[int] = ..., parking: _Optional[int] = ..., moving: _Optional[int] = ..., towing: _Optional[int] = ..., speed_total: _Optional[int] = ..., speed_sum: _Optional[int] = ..., speed_max: _Optional[int] = ..., records: _Optional[int] = ..., harsh_acceleration: _Optional[int] = ..., harsh_break: _Optional[int] = ..., harsh_corner: _Optional[int] = ..., min_temp_01: _Optional[int] = ..., max_temp_01: _Optional[int] = ..., min_temp_02: _Optional[int] = ..., max_temp_02: _Optional[int] = ..., min_temp_03: _Optional[int] = ..., max_temp_03: _Optional[int] = ..., min_temp_04: _Optional[int] = ..., max_temp_04: _Optional[int] = ..., min_humidity: _Optional[int] = ..., max_humidity: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., total_seconds: _Optional[int] = ..., including_seconds: _Optional[int] = ..., different: _Optional[int] = ...) -> None: ...
     REPORTS_FIELD_NUMBER: _ClassVar[int]
     TRIP_RECORDS_FIELD_NUMBER: _ClassVar[int]
     TRIP_MILLISECONDS_FIELD_NUMBER: _ClassVar[int]
     STARTED_AT_FIELD_NUMBER: _ClassVar[int]
     FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-    Reports: _containers.RepeatedCompositeFieldContainer[ShiftSummaryResponse.Summary]
+    reports: _containers.RepeatedCompositeFieldContainer[ShiftSummaryResponse.Summary]
     trip_records: int
     trip_milliseconds: int
     started_at: str
     finished_at: str
-    def __init__(self, Reports: _Optional[_Iterable[_Union[ShiftSummaryResponse.Summary, _Mapping]]] = ..., trip_records: _Optional[int] = ..., trip_milliseconds: _Optional[int] = ..., started_at: _Optional[str] = ..., finished_at: _Optional[str] = ...) -> None: ...
+    def __init__(self, reports: _Optional[_Iterable[_Union[ShiftSummaryResponse.Summary, _Mapping]]] = ..., trip_records: _Optional[int] = ..., trip_milliseconds: _Optional[int] = ..., started_at: _Optional[str] = ..., finished_at: _Optional[str] = ...) -> None: ...
 
 class ShiftRequest(_message.Message):
     __slots__ = ("started_at", "finished_at", "device_ids")
@@ -863,7 +889,7 @@ class ShiftRequest(_message.Message):
     def __init__(self, started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., device_ids: _Optional[_Iterable[int]] = ...) -> None: ...
 
 class ShiftResponse(_message.Message):
-    __slots__ = ("Reports",)
+    __slots__ = ("reports",)
     class Shift(_message.Message):
         __slots__ = ("id", "device_id", "shift_id", "mileage", "idling", "parking", "moving", "towing", "speed_total", "speed_sum", "speed_max", "records", "harsh_acceleration", "harsh_break", "harsh_corner", "min_temp_01", "max_temp_01", "min_temp_02", "max_temp_02", "min_temp_03", "max_temp_03", "min_temp_04", "max_temp_04", "min_humidity", "max_humidity", "start_lat", "start_lng", "finish_lat", "finish_lng", "started_at", "finished_at", "created_at", "updated_at")
         ID_FIELD_NUMBER: _ClassVar[int]
@@ -934,8 +960,8 @@ class ShiftResponse(_message.Message):
         updated_at: _timestamp_pb2.Timestamp
         def __init__(self, id: _Optional[int] = ..., device_id: _Optional[int] = ..., shift_id: _Optional[int] = ..., mileage: _Optional[int] = ..., idling: _Optional[int] = ..., parking: _Optional[int] = ..., moving: _Optional[int] = ..., towing: _Optional[int] = ..., speed_total: _Optional[int] = ..., speed_sum: _Optional[int] = ..., speed_max: _Optional[int] = ..., records: _Optional[int] = ..., harsh_acceleration: _Optional[int] = ..., harsh_break: _Optional[int] = ..., harsh_corner: _Optional[int] = ..., min_temp_01: _Optional[int] = ..., max_temp_01: _Optional[int] = ..., min_temp_02: _Optional[int] = ..., max_temp_02: _Optional[int] = ..., min_temp_03: _Optional[int] = ..., max_temp_03: _Optional[int] = ..., min_temp_04: _Optional[int] = ..., max_temp_04: _Optional[int] = ..., min_humidity: _Optional[int] = ..., max_humidity: _Optional[int] = ..., start_lat: _Optional[float] = ..., start_lng: _Optional[float] = ..., finish_lat: _Optional[float] = ..., finish_lng: _Optional[float] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
     REPORTS_FIELD_NUMBER: _ClassVar[int]
-    Reports: _containers.RepeatedCompositeFieldContainer[ShiftResponse.Shift]
-    def __init__(self, Reports: _Optional[_Iterable[_Union[ShiftResponse.Shift, _Mapping]]] = ...) -> None: ...
+    reports: _containers.RepeatedCompositeFieldContainer[ShiftResponse.Shift]
+    def __init__(self, reports: _Optional[_Iterable[_Union[ShiftResponse.Shift, _Mapping]]] = ...) -> None: ...
 
 class ShiftSummaryRequest(_message.Message):
     __slots__ = ("started_at", "finished_at", "device_ids")
@@ -947,31 +973,8 @@ class ShiftSummaryRequest(_message.Message):
     device_ids: _containers.RepeatedScalarFieldContainer[int]
     def __init__(self, started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., device_ids: _Optional[_Iterable[int]] = ...) -> None: ...
 
-class DeviceDataCountRequest(_message.Message):
-    __slots__ = ("started_at", "finished_at", "device_ids")
-    STARTED_AT_FIELD_NUMBER: _ClassVar[int]
-    FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-    DEVICE_IDS_FIELD_NUMBER: _ClassVar[int]
-    started_at: _timestamp_pb2.Timestamp
-    finished_at: _timestamp_pb2.Timestamp
-    device_ids: _containers.RepeatedScalarFieldContainer[int]
-    def __init__(self, started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., device_ids: _Optional[_Iterable[int]] = ...) -> None: ...
-
-class DeviceDataCountResponse(_message.Message):
-    __slots__ = ("Reports",)
-    class DeviceDataCount(_message.Message):
-        __slots__ = ("device_id", "count")
-        DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
-        COUNT_FIELD_NUMBER: _ClassVar[int]
-        device_id: int
-        count: int
-        def __init__(self, device_id: _Optional[int] = ..., count: _Optional[int] = ...) -> None: ...
-    REPORTS_FIELD_NUMBER: _ClassVar[int]
-    Reports: _containers.RepeatedCompositeFieldContainer[DeviceDataCountResponse.DeviceDataCount]
-    def __init__(self, Reports: _Optional[_Iterable[_Union[DeviceDataCountResponse.DeviceDataCount, _Mapping]]] = ...) -> None: ...
-
 class DailyTrafficResponse(_message.Message):
-    __slots__ = ("Reports",)
+    __slots__ = ("reports",)
     class Traffic(_message.Message):
         __slots__ = ("entered_at", "exited_at", "mileage", "geo_id", "geo_name")
         ENTERED_AT_FIELD_NUMBER: _ClassVar[int]
@@ -995,8 +998,8 @@ class DailyTrafficResponse(_message.Message):
         traffics: _containers.RepeatedCompositeFieldContainer[DailyTrafficResponse.Traffic]
         def __init__(self, device_id: _Optional[int] = ..., date: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., traffics: _Optional[_Iterable[_Union[DailyTrafficResponse.Traffic, _Mapping]]] = ...) -> None: ...
     REPORTS_FIELD_NUMBER: _ClassVar[int]
-    Reports: _containers.RepeatedCompositeFieldContainer[DailyTrafficResponse.DailyTraffic]
-    def __init__(self, Reports: _Optional[_Iterable[_Union[DailyTrafficResponse.DailyTraffic, _Mapping]]] = ...) -> None: ...
+    reports: _containers.RepeatedCompositeFieldContainer[DailyTrafficResponse.DailyTraffic]
+    def __init__(self, reports: _Optional[_Iterable[_Union[DailyTrafficResponse.DailyTraffic, _Mapping]]] = ...) -> None: ...
 
 class DailyTrafficRequest(_message.Message):
     __slots__ = ("started_at", "finished_at", "between", "device_ids")
@@ -1081,51 +1084,6 @@ class RouteReviewResponse(_message.Message):
     cost: int
     threads: int
     def __init__(self, route_list: _Optional[_Iterable[_Union[_dataModel_pb2.Data, _Mapping]]] = ..., stop_list: _Optional[_Iterable[_Union[RouteStopPoint, _Mapping]]] = ..., trip_list: _Optional[_Iterable[_Union[_trip_pb2.Trip, _Mapping]]] = ..., records: _Optional[int] = ..., cost: _Optional[int] = ..., threads: _Optional[int] = ...) -> None: ...
-
-class AreaReviewRequest(_message.Message):
-    __slots__ = ("started_at", "finished_at", "group_by_day", "area_ids", "device_ids")
-    STARTED_AT_FIELD_NUMBER: _ClassVar[int]
-    FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-    GROUP_BY_DAY_FIELD_NUMBER: _ClassVar[int]
-    AREA_IDS_FIELD_NUMBER: _ClassVar[int]
-    DEVICE_IDS_FIELD_NUMBER: _ClassVar[int]
-    started_at: _timestamp_pb2.Timestamp
-    finished_at: _timestamp_pb2.Timestamp
-    group_by_day: bool
-    area_ids: _containers.RepeatedScalarFieldContainer[int]
-    device_ids: _containers.RepeatedScalarFieldContainer[int]
-    def __init__(self, started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., group_by_day: bool = ..., area_ids: _Optional[_Iterable[int]] = ..., device_ids: _Optional[_Iterable[int]] = ...) -> None: ...
-
-class AreaReviewResponse(_message.Message):
-    __slots__ = ("reports",)
-    class AreaReview(_message.Message):
-        __slots__ = ("device_id", "area_id", "started_at", "finished_at", "mileage", "duration", "type")
-        class AreaEventType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-            __slots__ = ()
-            NONE: _ClassVar[AreaReviewResponse.AreaReview.AreaEventType]
-            ENTER: _ClassVar[AreaReviewResponse.AreaReview.AreaEventType]
-            EXIT: _ClassVar[AreaReviewResponse.AreaReview.AreaEventType]
-        NONE: AreaReviewResponse.AreaReview.AreaEventType
-        ENTER: AreaReviewResponse.AreaReview.AreaEventType
-        EXIT: AreaReviewResponse.AreaReview.AreaEventType
-        DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
-        AREA_ID_FIELD_NUMBER: _ClassVar[int]
-        STARTED_AT_FIELD_NUMBER: _ClassVar[int]
-        FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-        MILEAGE_FIELD_NUMBER: _ClassVar[int]
-        DURATION_FIELD_NUMBER: _ClassVar[int]
-        TYPE_FIELD_NUMBER: _ClassVar[int]
-        device_id: int
-        area_id: int
-        started_at: _timestamp_pb2.Timestamp
-        finished_at: _timestamp_pb2.Timestamp
-        mileage: int
-        duration: int
-        type: AreaReviewResponse.AreaReview.AreaEventType
-        def __init__(self, device_id: _Optional[int] = ..., area_id: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., mileage: _Optional[int] = ..., duration: _Optional[int] = ..., type: _Optional[_Union[AreaReviewResponse.AreaReview.AreaEventType, str]] = ...) -> None: ...
-    REPORTS_FIELD_NUMBER: _ClassVar[int]
-    reports: _containers.RepeatedCompositeFieldContainer[AreaReviewResponse.AreaReview]
-    def __init__(self, reports: _Optional[_Iterable[_Union[AreaReviewResponse.AreaReview, _Mapping]]] = ...) -> None: ...
 
 class DeviceDataRequest(_message.Message):
     __slots__ = ("limit", "device_id", "started_at", "finished_at")
@@ -1231,18 +1189,18 @@ class AttendanceRequest(_message.Message):
     def __init__(self, device_ids: _Optional[_Iterable[int]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class AttendanceXRequest(_message.Message):
-    __slots__ = ("device_ids", "started_at", "finished_at", "excludeLeaves", "source")
+    __slots__ = ("device_ids", "started_at", "finished_at", "exclude_leaves", "source")
     DEVICE_IDS_FIELD_NUMBER: _ClassVar[int]
     STARTED_AT_FIELD_NUMBER: _ClassVar[int]
     FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-    EXCLUDELEAVES_FIELD_NUMBER: _ClassVar[int]
+    EXCLUDE_LEAVES_FIELD_NUMBER: _ClassVar[int]
     SOURCE_FIELD_NUMBER: _ClassVar[int]
     device_ids: _containers.RepeatedScalarFieldContainer[int]
     started_at: _timestamp_pb2.Timestamp
     finished_at: _timestamp_pb2.Timestamp
-    excludeLeaves: bool
+    exclude_leaves: bool
     source: Source
-    def __init__(self, device_ids: _Optional[_Iterable[int]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., excludeLeaves: bool = ..., source: _Optional[_Union[Source, str]] = ...) -> None: ...
+    def __init__(self, device_ids: _Optional[_Iterable[int]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., exclude_leaves: bool = ..., source: _Optional[_Union[Source, str]] = ...) -> None: ...
 
 class AttendanceResponse(_message.Message):
     __slots__ = ("reports",)
@@ -1321,21 +1279,21 @@ class TripsRequest(_message.Message):
     def __init__(self, started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., device_ids: _Optional[_Iterable[int]] = ...) -> None: ...
 
 class TripsResponse(_message.Message):
-    __slots__ = ("Reports",)
+    __slots__ = ("reports",)
     REPORTS_FIELD_NUMBER: _ClassVar[int]
-    Reports: _containers.RepeatedCompositeFieldContainer[_trip_pb2.FusionTrip]
-    def __init__(self, Reports: _Optional[_Iterable[_Union[_trip_pb2.FusionTrip, _Mapping]]] = ...) -> None: ...
+    reports: _containers.RepeatedCompositeFieldContainer[_trip_pb2.FusionTrip]
+    def __init__(self, reports: _Optional[_Iterable[_Union[_trip_pb2.FusionTrip, _Mapping]]] = ...) -> None: ...
 
 class TripsSummaryRequest(_message.Message):
     __slots__ = ("started_at", "finished_at", "device_ids", "group_by")
     class GroupBy(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
-        All: _ClassVar[TripsSummaryRequest.GroupBy]
-        Day: _ClassVar[TripsSummaryRequest.GroupBy]
-        Month: _ClassVar[TripsSummaryRequest.GroupBy]
-    All: TripsSummaryRequest.GroupBy
-    Day: TripsSummaryRequest.GroupBy
-    Month: TripsSummaryRequest.GroupBy
+        ALL: _ClassVar[TripsSummaryRequest.GroupBy]
+        DAY: _ClassVar[TripsSummaryRequest.GroupBy]
+        MONTH: _ClassVar[TripsSummaryRequest.GroupBy]
+    ALL: TripsSummaryRequest.GroupBy
+    DAY: TripsSummaryRequest.GroupBy
+    MONTH: TripsSummaryRequest.GroupBy
     STARTED_AT_FIELD_NUMBER: _ClassVar[int]
     FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
     DEVICE_IDS_FIELD_NUMBER: _ClassVar[int]
@@ -1347,15 +1305,15 @@ class TripsSummaryRequest(_message.Message):
     def __init__(self, started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., device_ids: _Optional[_Iterable[int]] = ..., group_by: _Optional[_Union[TripsSummaryRequest.GroupBy, str]] = ...) -> None: ...
 
 class TripsSummaryResponse(_message.Message):
-    __slots__ = ("Reports", "records", "cost", "started_at", "finished_at")
+    __slots__ = ("reports", "records", "cost", "started_at", "finished_at")
     REPORTS_FIELD_NUMBER: _ClassVar[int]
     RECORDS_FIELD_NUMBER: _ClassVar[int]
     COST_FIELD_NUMBER: _ClassVar[int]
     STARTED_AT_FIELD_NUMBER: _ClassVar[int]
     FINISHED_AT_FIELD_NUMBER: _ClassVar[int]
-    Reports: _containers.RepeatedCompositeFieldContainer[_trip_pb2.FusionTrip]
+    reports: _containers.RepeatedCompositeFieldContainer[_trip_pb2.FusionTrip]
     records: int
     cost: int
     started_at: _timestamp_pb2.Timestamp
     finished_at: _timestamp_pb2.Timestamp
-    def __init__(self, Reports: _Optional[_Iterable[_Union[_trip_pb2.FusionTrip, _Mapping]]] = ..., records: _Optional[int] = ..., cost: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, reports: _Optional[_Iterable[_Union[_trip_pb2.FusionTrip, _Mapping]]] = ..., records: _Optional[int] = ..., cost: _Optional[int] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...

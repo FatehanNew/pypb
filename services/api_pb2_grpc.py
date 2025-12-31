@@ -3,8 +3,10 @@
 import grpc
 import warnings
 
-from activities import workflow_pb2 as activities_dot_workflow__pb2
+from devices import devices_pb2 as devices_dot_devices__pb2
+from notifies import notify_pb2 as notifies_dot_notify__pb2
 from services import api_pb2 as services_dot_api__pb2
+from services import repositories_pb2 as services_dot_repositories__pb2
 
 GRPC_GENERATED_VERSION = '1.74.0'
 GRPC_VERSION = grpc.__version__
@@ -27,7 +29,8 @@ if _version_not_supported:
 
 
 class ApiServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """ApiService provides core API operations for authentication, device management, events, and notifications.
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -35,6 +38,11 @@ class ApiServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.Authentication = channel.unary_unary(
+                '/com.fatehan.services.ApiService/Authentication',
+                request_serializer=services_dot_api__pb2.AuthRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.AuthResponse.FromString,
+                _registered_method=True)
         self.MeIndex = channel.unary_unary(
                 '/com.fatehan.services.ApiService/MeIndex',
                 request_serializer=services_dot_api__pb2.MeRequest.SerializeToString,
@@ -50,74 +58,264 @@ class ApiServiceStub(object):
                 request_serializer=services_dot_api__pb2.DeviceRequest.SerializeToString,
                 response_deserializer=services_dot_api__pb2.DeviceResponse.FromString,
                 _registered_method=True)
+        self.DeviceShow = channel.unary_unary(
+                '/com.fatehan.services.ApiService/DeviceShow',
+                request_serializer=services_dot_api__pb2.DeviceShowRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.DeviceShowResponse.FromString,
+                _registered_method=True)
         self.ConfigIndex = channel.unary_unary(
                 '/com.fatehan.services.ApiService/ConfigIndex',
                 request_serializer=services_dot_api__pb2.ConfigRequest.SerializeToString,
                 response_deserializer=services_dot_api__pb2.ConfigResponse.FromString,
                 _registered_method=True)
-        self.WorkflowStore = channel.unary_unary(
-                '/com.fatehan.services.ApiService/WorkflowStore',
-                request_serializer=activities_dot_workflow__pb2.Workflow.SerializeToString,
-                response_deserializer=activities_dot_workflow__pb2.Workflow.FromString,
+        self.UserIndex = channel.unary_unary(
+                '/com.fatehan.services.ApiService/UserIndex',
+                request_serializer=services_dot_api__pb2.UserRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.UserResponse.FromString,
                 _registered_method=True)
-        self.WorkflowUpdate = channel.unary_unary(
-                '/com.fatehan.services.ApiService/WorkflowUpdate',
-                request_serializer=activities_dot_workflow__pb2.Workflow.SerializeToString,
-                response_deserializer=activities_dot_workflow__pb2.Workflow.FromString,
+        self.IoIndex = channel.unary_unary(
+                '/com.fatehan.services.ApiService/IoIndex',
+                request_serializer=services_dot_api__pb2.IoRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.IoResponse.FromString,
                 _registered_method=True)
-        self.WorkflowIndex = channel.unary_unary(
-                '/com.fatehan.services.ApiService/WorkflowIndex',
-                request_serializer=services_dot_api__pb2.WorkflowRequest.SerializeToString,
-                response_deserializer=services_dot_api__pb2.WorkflowResponse.FromString,
+        self.MaintenanceIndex = channel.unary_unary(
+                '/com.fatehan.services.ApiService/MaintenanceIndex',
+                request_serializer=services_dot_api__pb2.MaintenanceIndexRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.MaintenanceIndexResponse.FromString,
+                _registered_method=True)
+        self.SubscriptionMethodIndex = channel.unary_unary(
+                '/com.fatehan.services.ApiService/SubscriptionMethodIndex',
+                request_serializer=services_dot_api__pb2.SubscriptionMethodIndexRequest.SerializeToString,
+                response_deserializer=services_dot_repositories__pb2.SubscriptionRepo.FromString,
+                _registered_method=True)
+        self.EventTemplateIndex = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventTemplateIndex',
+                request_serializer=services_dot_api__pb2.EventTemplateIndexRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.EventTemplateIndexResponse.FromString,
+                _registered_method=True)
+        self.EventTemplateStore = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventTemplateStore',
+                request_serializer=notifies_dot_notify__pb2.EventTemplate.SerializeToString,
+                response_deserializer=notifies_dot_notify__pb2.EventTemplate.FromString,
+                _registered_method=True)
+        self.EventTemplateUpdate = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventTemplateUpdate',
+                request_serializer=notifies_dot_notify__pb2.EventTemplate.SerializeToString,
+                response_deserializer=notifies_dot_notify__pb2.EventTemplate.FromString,
+                _registered_method=True)
+        self.EventTemplateDestroy = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventTemplateDestroy',
+                request_serializer=services_dot_api__pb2.EventTemplateDestroyRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.EventTemplateDestroyResponse.FromString,
+                _registered_method=True)
+        self.EventTemplateShow = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventTemplateShow',
+                request_serializer=services_dot_api__pb2.EventTemplateShowRequest.SerializeToString,
+                response_deserializer=notifies_dot_notify__pb2.EventTemplate.FromString,
+                _registered_method=True)
+        self.EventStore = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventStore',
+                request_serializer=notifies_dot_notify__pb2.Event.SerializeToString,
+                response_deserializer=notifies_dot_notify__pb2.Event.FromString,
+                _registered_method=True)
+        self.EventUpdate = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventUpdate',
+                request_serializer=notifies_dot_notify__pb2.Event.SerializeToString,
+                response_deserializer=notifies_dot_notify__pb2.Event.FromString,
+                _registered_method=True)
+        self.EventDestroy = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventDestroy',
+                request_serializer=services_dot_api__pb2.EventDestroyRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.EventDestroyResponse.FromString,
+                _registered_method=True)
+        self.EventIndex = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventIndex',
+                request_serializer=services_dot_api__pb2.EventIndexRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.EventIndexResponse.FromString,
+                _registered_method=True)
+        self.EventShow = channel.unary_unary(
+                '/com.fatehan.services.ApiService/EventShow',
+                request_serializer=services_dot_api__pb2.EventShowRequest.SerializeToString,
+                response_deserializer=notifies_dot_notify__pb2.Event.FromString,
+                _registered_method=True)
+        self.CommandActionIndex = channel.unary_unary(
+                '/com.fatehan.services.ApiService/CommandActionIndex',
+                request_serializer=services_dot_api__pb2.CommandActionIndexRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.CommandActionIndexResponse.FromString,
+                _registered_method=True)
+        self.CommandActionShow = channel.unary_unary(
+                '/com.fatehan.services.ApiService/CommandActionShow',
+                request_serializer=services_dot_api__pb2.CommandActionShowRequest.SerializeToString,
+                response_deserializer=devices_dot_devices__pb2.CommandAction.FromString,
+                _registered_method=True)
+        self.CommandActionList = channel.unary_unary(
+                '/com.fatehan.services.ApiService/CommandActionList',
+                request_serializer=services_dot_api__pb2.CommandActionListRequest.SerializeToString,
+                response_deserializer=services_dot_api__pb2.CommandActionListResponse.FromString,
                 _registered_method=True)
 
 
 class ApiServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """ApiService provides core API operations for authentication, device management, events, and notifications.
+    """
+
+    def Authentication(self, request, context):
+        """Authenticate a user and return auth tokens and profile data.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def MeIndex(self, request, context):
-        """* combined *
+        """Return the current authenticated user profile and related data.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def AreaIndex(self, request, context):
-        """* areas *
+        """List available areas and related metadata.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DeviceIndex(self, request, context):
-        """* devices *
+        """List devices for the current account.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeviceShow(self, request, context):
+        """Show detailed information for a single device.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ConfigIndex(self, request, context):
-        """* configs *
+        """Fetch configuration values used by clients.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def WorkflowStore(self, request, context):
-        """* workflows *
+    def UserIndex(self, request, context):
+        """List users with optional filters and pagination.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def WorkflowUpdate(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+    def IoIndex(self, request, context):
+        """List IO (input/output) entities for devices.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def WorkflowIndex(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+    def MaintenanceIndex(self, request, context):
+        """List maintenance records or tasks.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SubscriptionMethodIndex(self, request, context):
+        """List available subscription methods and related metadata.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventTemplateIndex(self, request, context):
+        """List available event templates.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventTemplateStore(self, request, context):
+        """Create a new event template.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventTemplateUpdate(self, request, context):
+        """Update an existing event template.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventTemplateDestroy(self, request, context):
+        """Delete an existing event template by id.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventTemplateShow(self, request, context):
+        """Show details of a single event template.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventStore(self, request, context):
+        """Create a new event.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventUpdate(self, request, context):
+        """Update an existing event.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventDestroy(self, request, context):
+        """Delete an event by id.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventIndex(self, request, context):
+        """List events with filters and pagination.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def EventShow(self, request, context):
+        """Show details of a single event.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CommandActionIndex(self, request, context):
+        """Index List available command actions.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CommandActionShow(self, request, context):
+        """Show details of a single command action
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CommandActionList(self, request, context):
+        """List available command  actions.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -125,6 +323,11 @@ class ApiServiceServicer(object):
 
 def add_ApiServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'Authentication': grpc.unary_unary_rpc_method_handler(
+                    servicer.Authentication,
+                    request_deserializer=services_dot_api__pb2.AuthRequest.FromString,
+                    response_serializer=services_dot_api__pb2.AuthResponse.SerializeToString,
+            ),
             'MeIndex': grpc.unary_unary_rpc_method_handler(
                     servicer.MeIndex,
                     request_deserializer=services_dot_api__pb2.MeRequest.FromString,
@@ -140,25 +343,100 @@ def add_ApiServiceServicer_to_server(servicer, server):
                     request_deserializer=services_dot_api__pb2.DeviceRequest.FromString,
                     response_serializer=services_dot_api__pb2.DeviceResponse.SerializeToString,
             ),
+            'DeviceShow': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeviceShow,
+                    request_deserializer=services_dot_api__pb2.DeviceShowRequest.FromString,
+                    response_serializer=services_dot_api__pb2.DeviceShowResponse.SerializeToString,
+            ),
             'ConfigIndex': grpc.unary_unary_rpc_method_handler(
                     servicer.ConfigIndex,
                     request_deserializer=services_dot_api__pb2.ConfigRequest.FromString,
                     response_serializer=services_dot_api__pb2.ConfigResponse.SerializeToString,
             ),
-            'WorkflowStore': grpc.unary_unary_rpc_method_handler(
-                    servicer.WorkflowStore,
-                    request_deserializer=activities_dot_workflow__pb2.Workflow.FromString,
-                    response_serializer=activities_dot_workflow__pb2.Workflow.SerializeToString,
+            'UserIndex': grpc.unary_unary_rpc_method_handler(
+                    servicer.UserIndex,
+                    request_deserializer=services_dot_api__pb2.UserRequest.FromString,
+                    response_serializer=services_dot_api__pb2.UserResponse.SerializeToString,
             ),
-            'WorkflowUpdate': grpc.unary_unary_rpc_method_handler(
-                    servicer.WorkflowUpdate,
-                    request_deserializer=activities_dot_workflow__pb2.Workflow.FromString,
-                    response_serializer=activities_dot_workflow__pb2.Workflow.SerializeToString,
+            'IoIndex': grpc.unary_unary_rpc_method_handler(
+                    servicer.IoIndex,
+                    request_deserializer=services_dot_api__pb2.IoRequest.FromString,
+                    response_serializer=services_dot_api__pb2.IoResponse.SerializeToString,
             ),
-            'WorkflowIndex': grpc.unary_unary_rpc_method_handler(
-                    servicer.WorkflowIndex,
-                    request_deserializer=services_dot_api__pb2.WorkflowRequest.FromString,
-                    response_serializer=services_dot_api__pb2.WorkflowResponse.SerializeToString,
+            'MaintenanceIndex': grpc.unary_unary_rpc_method_handler(
+                    servicer.MaintenanceIndex,
+                    request_deserializer=services_dot_api__pb2.MaintenanceIndexRequest.FromString,
+                    response_serializer=services_dot_api__pb2.MaintenanceIndexResponse.SerializeToString,
+            ),
+            'SubscriptionMethodIndex': grpc.unary_unary_rpc_method_handler(
+                    servicer.SubscriptionMethodIndex,
+                    request_deserializer=services_dot_api__pb2.SubscriptionMethodIndexRequest.FromString,
+                    response_serializer=services_dot_repositories__pb2.SubscriptionRepo.SerializeToString,
+            ),
+            'EventTemplateIndex': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventTemplateIndex,
+                    request_deserializer=services_dot_api__pb2.EventTemplateIndexRequest.FromString,
+                    response_serializer=services_dot_api__pb2.EventTemplateIndexResponse.SerializeToString,
+            ),
+            'EventTemplateStore': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventTemplateStore,
+                    request_deserializer=notifies_dot_notify__pb2.EventTemplate.FromString,
+                    response_serializer=notifies_dot_notify__pb2.EventTemplate.SerializeToString,
+            ),
+            'EventTemplateUpdate': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventTemplateUpdate,
+                    request_deserializer=notifies_dot_notify__pb2.EventTemplate.FromString,
+                    response_serializer=notifies_dot_notify__pb2.EventTemplate.SerializeToString,
+            ),
+            'EventTemplateDestroy': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventTemplateDestroy,
+                    request_deserializer=services_dot_api__pb2.EventTemplateDestroyRequest.FromString,
+                    response_serializer=services_dot_api__pb2.EventTemplateDestroyResponse.SerializeToString,
+            ),
+            'EventTemplateShow': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventTemplateShow,
+                    request_deserializer=services_dot_api__pb2.EventTemplateShowRequest.FromString,
+                    response_serializer=notifies_dot_notify__pb2.EventTemplate.SerializeToString,
+            ),
+            'EventStore': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventStore,
+                    request_deserializer=notifies_dot_notify__pb2.Event.FromString,
+                    response_serializer=notifies_dot_notify__pb2.Event.SerializeToString,
+            ),
+            'EventUpdate': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventUpdate,
+                    request_deserializer=notifies_dot_notify__pb2.Event.FromString,
+                    response_serializer=notifies_dot_notify__pb2.Event.SerializeToString,
+            ),
+            'EventDestroy': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventDestroy,
+                    request_deserializer=services_dot_api__pb2.EventDestroyRequest.FromString,
+                    response_serializer=services_dot_api__pb2.EventDestroyResponse.SerializeToString,
+            ),
+            'EventIndex': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventIndex,
+                    request_deserializer=services_dot_api__pb2.EventIndexRequest.FromString,
+                    response_serializer=services_dot_api__pb2.EventIndexResponse.SerializeToString,
+            ),
+            'EventShow': grpc.unary_unary_rpc_method_handler(
+                    servicer.EventShow,
+                    request_deserializer=services_dot_api__pb2.EventShowRequest.FromString,
+                    response_serializer=notifies_dot_notify__pb2.Event.SerializeToString,
+            ),
+            'CommandActionIndex': grpc.unary_unary_rpc_method_handler(
+                    servicer.CommandActionIndex,
+                    request_deserializer=services_dot_api__pb2.CommandActionIndexRequest.FromString,
+                    response_serializer=services_dot_api__pb2.CommandActionIndexResponse.SerializeToString,
+            ),
+            'CommandActionShow': grpc.unary_unary_rpc_method_handler(
+                    servicer.CommandActionShow,
+                    request_deserializer=services_dot_api__pb2.CommandActionShowRequest.FromString,
+                    response_serializer=devices_dot_devices__pb2.CommandAction.SerializeToString,
+            ),
+            'CommandActionList': grpc.unary_unary_rpc_method_handler(
+                    servicer.CommandActionList,
+                    request_deserializer=services_dot_api__pb2.CommandActionListRequest.FromString,
+                    response_serializer=services_dot_api__pb2.CommandActionListResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -169,7 +447,35 @@ def add_ApiServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class ApiService(object):
-    """Missing associated documentation comment in .proto file."""
+    """ApiService provides core API operations for authentication, device management, events, and notifications.
+    """
+
+    @staticmethod
+    def Authentication(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/Authentication',
+            services_dot_api__pb2.AuthRequest.SerializeToString,
+            services_dot_api__pb2.AuthResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def MeIndex(request,
@@ -253,6 +559,33 @@ class ApiService(object):
             _registered_method=True)
 
     @staticmethod
+    def DeviceShow(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/DeviceShow',
+            services_dot_api__pb2.DeviceShowRequest.SerializeToString,
+            services_dot_api__pb2.DeviceShowResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
     def ConfigIndex(request,
             target,
             options=(),
@@ -280,7 +613,7 @@ class ApiService(object):
             _registered_method=True)
 
     @staticmethod
-    def WorkflowStore(request,
+    def UserIndex(request,
             target,
             options=(),
             channel_credentials=None,
@@ -293,9 +626,9 @@ class ApiService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/com.fatehan.services.ApiService/WorkflowStore',
-            activities_dot_workflow__pb2.Workflow.SerializeToString,
-            activities_dot_workflow__pb2.Workflow.FromString,
+            '/com.fatehan.services.ApiService/UserIndex',
+            services_dot_api__pb2.UserRequest.SerializeToString,
+            services_dot_api__pb2.UserResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -307,7 +640,7 @@ class ApiService(object):
             _registered_method=True)
 
     @staticmethod
-    def WorkflowUpdate(request,
+    def IoIndex(request,
             target,
             options=(),
             channel_credentials=None,
@@ -320,9 +653,9 @@ class ApiService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/com.fatehan.services.ApiService/WorkflowUpdate',
-            activities_dot_workflow__pb2.Workflow.SerializeToString,
-            activities_dot_workflow__pb2.Workflow.FromString,
+            '/com.fatehan.services.ApiService/IoIndex',
+            services_dot_api__pb2.IoRequest.SerializeToString,
+            services_dot_api__pb2.IoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -334,7 +667,7 @@ class ApiService(object):
             _registered_method=True)
 
     @staticmethod
-    def WorkflowIndex(request,
+    def MaintenanceIndex(request,
             target,
             options=(),
             channel_credentials=None,
@@ -347,9 +680,387 @@ class ApiService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/com.fatehan.services.ApiService/WorkflowIndex',
-            services_dot_api__pb2.WorkflowRequest.SerializeToString,
-            services_dot_api__pb2.WorkflowResponse.FromString,
+            '/com.fatehan.services.ApiService/MaintenanceIndex',
+            services_dot_api__pb2.MaintenanceIndexRequest.SerializeToString,
+            services_dot_api__pb2.MaintenanceIndexResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SubscriptionMethodIndex(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/SubscriptionMethodIndex',
+            services_dot_api__pb2.SubscriptionMethodIndexRequest.SerializeToString,
+            services_dot_repositories__pb2.SubscriptionRepo.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventTemplateIndex(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventTemplateIndex',
+            services_dot_api__pb2.EventTemplateIndexRequest.SerializeToString,
+            services_dot_api__pb2.EventTemplateIndexResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventTemplateStore(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventTemplateStore',
+            notifies_dot_notify__pb2.EventTemplate.SerializeToString,
+            notifies_dot_notify__pb2.EventTemplate.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventTemplateUpdate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventTemplateUpdate',
+            notifies_dot_notify__pb2.EventTemplate.SerializeToString,
+            notifies_dot_notify__pb2.EventTemplate.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventTemplateDestroy(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventTemplateDestroy',
+            services_dot_api__pb2.EventTemplateDestroyRequest.SerializeToString,
+            services_dot_api__pb2.EventTemplateDestroyResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventTemplateShow(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventTemplateShow',
+            services_dot_api__pb2.EventTemplateShowRequest.SerializeToString,
+            notifies_dot_notify__pb2.EventTemplate.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventStore(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventStore',
+            notifies_dot_notify__pb2.Event.SerializeToString,
+            notifies_dot_notify__pb2.Event.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventUpdate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventUpdate',
+            notifies_dot_notify__pb2.Event.SerializeToString,
+            notifies_dot_notify__pb2.Event.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventDestroy(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventDestroy',
+            services_dot_api__pb2.EventDestroyRequest.SerializeToString,
+            services_dot_api__pb2.EventDestroyResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventIndex(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventIndex',
+            services_dot_api__pb2.EventIndexRequest.SerializeToString,
+            services_dot_api__pb2.EventIndexResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def EventShow(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/EventShow',
+            services_dot_api__pb2.EventShowRequest.SerializeToString,
+            notifies_dot_notify__pb2.Event.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CommandActionIndex(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/CommandActionIndex',
+            services_dot_api__pb2.CommandActionIndexRequest.SerializeToString,
+            services_dot_api__pb2.CommandActionIndexResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CommandActionShow(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/CommandActionShow',
+            services_dot_api__pb2.CommandActionShowRequest.SerializeToString,
+            devices_dot_devices__pb2.CommandAction.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CommandActionList(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.services.ApiService/CommandActionList',
+            services_dot_api__pb2.CommandActionListRequest.SerializeToString,
+            services_dot_api__pb2.CommandActionListResponse.FromString,
             options,
             channel_credentials,
             insecure,

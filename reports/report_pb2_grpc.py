@@ -26,7 +26,8 @@ if _version_not_supported:
 
 
 class ReportServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """ReportService defines the gRPC service for generating various reports.
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -139,15 +140,21 @@ class ReportServiceStub(object):
                 request_serializer=reports_dot_report__pb2.ChartRequest.SerializeToString,
                 response_deserializer=reports_dot_report__pb2.ChartResponse.FromString,
                 _registered_method=True)
-        self.SystemIoReport = channel.unary_unary(
-                '/com.fatehan.reports.ReportService/SystemIoReport',
-                request_serializer=reports_dot_report__pb2.SystemIoRequest.SerializeToString,
-                response_deserializer=reports_dot_report__pb2.SystemIoResponse.FromString,
+        self.WorkflowReport = channel.unary_unary(
+                '/com.fatehan.reports.ReportService/WorkflowReport',
+                request_serializer=reports_dot_report__pb2.WorkflowRequest.SerializeToString,
+                response_deserializer=reports_dot_report__pb2.WorkflowResponse.FromString,
+                _registered_method=True)
+        self.DriverBehaviorReport = channel.unary_unary(
+                '/com.fatehan.reports.ReportService/DriverBehaviorReport',
+                request_serializer=reports_dot_report__pb2.DriverBehaviorReportRequest.SerializeToString,
+                response_deserializer=reports_dot_report__pb2.DriverBehaviorReportResponse.FromString,
                 _registered_method=True)
 
 
 class ReportServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """ReportService defines the gRPC service for generating various reports.
+    """
 
     def TraffixReport(self, request, context):
         """global (maybe)
@@ -157,20 +164,23 @@ class ReportServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def AreaSummaryReviewReport(self, request, context):
-        """grpc-web:✅
+        """Generates a summary review report of areas with traffic details.
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def AreaSplitterReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Generates a trip report for specified devices and time range.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def LogReport(self, request, context):
-        """grpc-web:✅
+        """Generates a log report based on the provided request parameters.
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -178,61 +188,71 @@ class ReportServiceServicer(object):
 
     def ShiftReport(self, request, context):
         """fusion
+        Short report generation methods
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def TripsReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Detailed report generation methods
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def TrafficReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """The traffic report generation method
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def AttendanceReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Attendance report generation methods
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def AttendanceXReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Extended attendance report generation method
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DailyTrafficReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Daily traffic report generation method
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def TripsSummaryReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Trip summary report generation method
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ShiftSummaryReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Shift summary report generation method
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def WorkCycleReport(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Work cycle report generation method
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def TripReport(self, request, context):
         """odyssey
+        Trip report generation method
         grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -240,56 +260,72 @@ class ReportServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def DeviceDataReport(self, request, context):
-        """grpc-web:✅
+        """Device data report generation method
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def RouteReviewReport(self, request, context):
-        """grpc-web:✅
+        """Route review report generation method
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def TripPerformanceReport(self, request, context):
-        """grpc-web:✅
+        """Traffix report generation method
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DashboardIndividual(self, request, context):
-        """grpc-web:✅
+        """Dashboard individual report generation method
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def RouteStopReport(self, request, context):
-        """grpc-web:✅
+        """Route stop report generation method
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def CommandHistoryReport(self, request, context):
-        """grpc-web:✅
+        """Command history report generation method
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ChartReport(self, request, context):
-        """grpc-web:✅
+        """Chart report generation method
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def SystemIoReport(self, request, context):
-        """grpc-web:✅
+    def WorkflowReport(self, request, context):
+        """Workflow report generation method
+        grpc-web:✅
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DriverBehaviorReport(self, request, context):
+        """Driver behavior report generation method
+        grpc-web:✅
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -403,10 +439,15 @@ def add_ReportServiceServicer_to_server(servicer, server):
                     request_deserializer=reports_dot_report__pb2.ChartRequest.FromString,
                     response_serializer=reports_dot_report__pb2.ChartResponse.SerializeToString,
             ),
-            'SystemIoReport': grpc.unary_unary_rpc_method_handler(
-                    servicer.SystemIoReport,
-                    request_deserializer=reports_dot_report__pb2.SystemIoRequest.FromString,
-                    response_serializer=reports_dot_report__pb2.SystemIoResponse.SerializeToString,
+            'WorkflowReport': grpc.unary_unary_rpc_method_handler(
+                    servicer.WorkflowReport,
+                    request_deserializer=reports_dot_report__pb2.WorkflowRequest.FromString,
+                    response_serializer=reports_dot_report__pb2.WorkflowResponse.SerializeToString,
+            ),
+            'DriverBehaviorReport': grpc.unary_unary_rpc_method_handler(
+                    servicer.DriverBehaviorReport,
+                    request_deserializer=reports_dot_report__pb2.DriverBehaviorReportRequest.FromString,
+                    response_serializer=reports_dot_report__pb2.DriverBehaviorReportResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -417,7 +458,8 @@ def add_ReportServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class ReportService(object):
-    """Missing associated documentation comment in .proto file."""
+    """ReportService defines the gRPC service for generating various reports.
+    """
 
     @staticmethod
     def TraffixReport(request,
@@ -987,7 +1029,7 @@ class ReportService(object):
             _registered_method=True)
 
     @staticmethod
-    def SystemIoReport(request,
+    def WorkflowReport(request,
             target,
             options=(),
             channel_credentials=None,
@@ -1000,9 +1042,36 @@ class ReportService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/com.fatehan.reports.ReportService/SystemIoReport',
-            reports_dot_report__pb2.SystemIoRequest.SerializeToString,
-            reports_dot_report__pb2.SystemIoResponse.FromString,
+            '/com.fatehan.reports.ReportService/WorkflowReport',
+            reports_dot_report__pb2.WorkflowRequest.SerializeToString,
+            reports_dot_report__pb2.WorkflowResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DriverBehaviorReport(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/com.fatehan.reports.ReportService/DriverBehaviorReport',
+            reports_dot_report__pb2.DriverBehaviorReportRequest.SerializeToString,
+            reports_dot_report__pb2.DriverBehaviorReportResponse.FromString,
             options,
             channel_credentials,
             insecure,

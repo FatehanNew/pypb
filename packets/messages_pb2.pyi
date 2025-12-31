@@ -92,7 +92,7 @@ class CommandFormat(_message.Message):
     def __init__(self, structure: _Optional[str] = ..., parameters: _Optional[_Iterable[_Union[CommandValidation, _Mapping]]] = ...) -> None: ...
 
 class CommandStruct(_message.Message):
-    __slots__ = ("id", "tracker_id", "user_created_id", "user_updated_id", "organization_id", "name", "sort_order", "visible", "description", "sms", "grpc", "created_at", "updated_at")
+    __slots__ = ("id", "tracker_id", "user_created_id", "user_updated_id", "organization_id", "name", "sort_order", "visible", "description", "sms", "gprs", "created_at", "updated_at")
     ID_FIELD_NUMBER: _ClassVar[int]
     TRACKER_ID_FIELD_NUMBER: _ClassVar[int]
     USER_CREATED_ID_FIELD_NUMBER: _ClassVar[int]
@@ -103,7 +103,7 @@ class CommandStruct(_message.Message):
     VISIBLE_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     SMS_FIELD_NUMBER: _ClassVar[int]
-    GRPC_FIELD_NUMBER: _ClassVar[int]
+    GPRS_FIELD_NUMBER: _ClassVar[int]
     CREATED_AT_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
     id: int
@@ -116,10 +116,10 @@ class CommandStruct(_message.Message):
     visible: int
     description: str
     sms: CommandFormat
-    grpc: CommandFormat
+    gprs: CommandFormat
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., tracker_id: _Optional[int] = ..., user_created_id: _Optional[int] = ..., user_updated_id: _Optional[int] = ..., organization_id: _Optional[int] = ..., name: _Optional[str] = ..., sort_order: _Optional[int] = ..., visible: _Optional[int] = ..., description: _Optional[str] = ..., sms: _Optional[_Union[CommandFormat, _Mapping]] = ..., grpc: _Optional[_Union[CommandFormat, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., tracker_id: _Optional[int] = ..., user_created_id: _Optional[int] = ..., user_updated_id: _Optional[int] = ..., organization_id: _Optional[int] = ..., name: _Optional[str] = ..., sort_order: _Optional[int] = ..., visible: _Optional[int] = ..., description: _Optional[str] = ..., sms: _Optional[_Union[CommandFormat, _Mapping]] = ..., gprs: _Optional[_Union[CommandFormat, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class DevicePoolRequestRefetch(_message.Message):
     __slots__ = ()

@@ -1,6 +1,7 @@
 import datetime
 
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
+from packets import dataModule_pb2 as _dataModule_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -11,7 +12,7 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class Device(_message.Message):
-    __slots__ = ("id", "organization_id", "partner_id", "generation", "device_id", "object_id", "object_type", "tracker_id", "owner_id", "icon_id", "warehouse_id", "created_by", "sim_card", "sim_provider", "id_changed", "icc_id", "sms_username", "sms_password", "config_password", "test", "sim_card_id", "timezone", "is_unlimited", "trip_type", "receive_at", "expires_at", "connect_at", "created_at", "updated_at")
+    __slots__ = ("id", "organization_id", "partner_id", "generation", "device_id", "object_id", "object_type", "tracker_id", "owner_id", "icon_id", "warehouse_id", "created_by", "sim_card", "sim_provider", "id_changed", "icc_id", "sms_username", "sms_password", "config_password", "test", "sim_card_id", "timezone", "is_unlimited", "trip_type", "modules", "receive_at", "expires_at", "connect_at", "created_at", "updated_at")
     ID_FIELD_NUMBER: _ClassVar[int]
     ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
     PARTNER_ID_FIELD_NUMBER: _ClassVar[int]
@@ -36,6 +37,7 @@ class Device(_message.Message):
     TIMEZONE_FIELD_NUMBER: _ClassVar[int]
     IS_UNLIMITED_FIELD_NUMBER: _ClassVar[int]
     TRIP_TYPE_FIELD_NUMBER: _ClassVar[int]
+    MODULES_FIELD_NUMBER: _ClassVar[int]
     RECEIVE_AT_FIELD_NUMBER: _ClassVar[int]
     EXPIRES_AT_FIELD_NUMBER: _ClassVar[int]
     CONNECT_AT_FIELD_NUMBER: _ClassVar[int]
@@ -55,7 +57,7 @@ class Device(_message.Message):
     created_by: int
     sim_card: str
     sim_provider: int
-    id_changed: bool
+    id_changed: int
     icc_id: str
     sms_username: str
     sms_password: str
@@ -65,12 +67,13 @@ class Device(_message.Message):
     timezone: str
     is_unlimited: bool
     trip_type: str
+    modules: _dataModule_pb2.DataModule
     receive_at: _timestamp_pb2.Timestamp
     expires_at: _timestamp_pb2.Timestamp
     connect_at: _timestamp_pb2.Timestamp
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., partner_id: _Optional[int] = ..., generation: _Optional[str] = ..., device_id: _Optional[str] = ..., object_id: _Optional[int] = ..., object_type: _Optional[str] = ..., tracker_id: _Optional[int] = ..., owner_id: _Optional[int] = ..., icon_id: _Optional[int] = ..., warehouse_id: _Optional[int] = ..., created_by: _Optional[int] = ..., sim_card: _Optional[str] = ..., sim_provider: _Optional[int] = ..., id_changed: bool = ..., icc_id: _Optional[str] = ..., sms_username: _Optional[str] = ..., sms_password: _Optional[str] = ..., config_password: _Optional[str] = ..., test: bool = ..., sim_card_id: _Optional[str] = ..., timezone: _Optional[str] = ..., is_unlimited: bool = ..., trip_type: _Optional[str] = ..., receive_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., connect_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., partner_id: _Optional[int] = ..., generation: _Optional[str] = ..., device_id: _Optional[str] = ..., object_id: _Optional[int] = ..., object_type: _Optional[str] = ..., tracker_id: _Optional[int] = ..., owner_id: _Optional[int] = ..., icon_id: _Optional[int] = ..., warehouse_id: _Optional[int] = ..., created_by: _Optional[int] = ..., sim_card: _Optional[str] = ..., sim_provider: _Optional[int] = ..., id_changed: _Optional[int] = ..., icc_id: _Optional[str] = ..., sms_username: _Optional[str] = ..., sms_password: _Optional[str] = ..., config_password: _Optional[str] = ..., test: bool = ..., sim_card_id: _Optional[str] = ..., timezone: _Optional[str] = ..., is_unlimited: bool = ..., trip_type: _Optional[str] = ..., modules: _Optional[_Union[_dataModule_pb2.DataModule, _Mapping]] = ..., receive_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., connect_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class DeviceIcon(_message.Message):
     __slots__ = ("id", "organization_id", "created_by", "updated_by", "icon_type", "image_type", "name", "images", "is_default", "created_at", "updated_at")
@@ -112,7 +115,7 @@ class DeviceIcon(_message.Message):
     def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., icon_type: _Optional[int] = ..., image_type: _Optional[int] = ..., name: _Optional[str] = ..., images: _Optional[_Union[DeviceIcon.Image, _Mapping]] = ..., is_default: bool = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class Tracker(_message.Message):
-    __slots__ = ("id", "name", "picture", "metadata", "generation", "level", "parent_id", "created_by", "created_at", "updated_at", "documents")
+    __slots__ = ("id", "name", "picture", "metadata", "generation", "level", "parent_id", "created_by", "created_at", "updated_at", "documents", "camera")
     class Metadata(_message.Message):
         __slots__ = ("port", "tags", "type", "id_type", "id_start", "odo_type", "call_type", "id_length", "analog_input", "sms_password", "sms_username", "digital_input", "digital_output", "movement_sensor", "sms_credentials", "device_config_commands")
         class SmsCredentials(_message.Message):
@@ -181,6 +184,7 @@ class Tracker(_message.Message):
     CREATED_AT_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
     DOCUMENTS_FIELD_NUMBER: _ClassVar[int]
+    CAMERA_FIELD_NUMBER: _ClassVar[int]
     id: int
     name: str
     picture: str
@@ -192,7 +196,8 @@ class Tracker(_message.Message):
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
     documents: _containers.RepeatedCompositeFieldContainer[Tracker.Document]
-    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., picture: _Optional[str] = ..., metadata: _Optional[_Union[Tracker.Metadata, _Mapping]] = ..., generation: _Optional[str] = ..., level: _Optional[int] = ..., parent_id: _Optional[int] = ..., created_by: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., documents: _Optional[_Iterable[_Union[Tracker.Document, _Mapping]]] = ...) -> None: ...
+    camera: str
+    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., picture: _Optional[str] = ..., metadata: _Optional[_Union[Tracker.Metadata, _Mapping]] = ..., generation: _Optional[str] = ..., level: _Optional[int] = ..., parent_id: _Optional[int] = ..., created_by: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., documents: _Optional[_Iterable[_Union[Tracker.Document, _Mapping]]] = ..., camera: _Optional[str] = ...) -> None: ...
 
 class CarModel(_message.Message):
     __slots__ = ("id", "car_brand_id", "name", "picture", "description", "sord", "is_active", "created_by", "updated_by", "metadata", "created_at", "updated_at")
@@ -301,17 +306,17 @@ class Car(_message.Message):
     engine_number: str
     chassis_number: str
     model_year: int
-    fuel_usage: float
-    fuel_usage_per_hour: float
+    fuel_usage: int
+    fuel_usage_per_hour: int
     fuel_type: str
-    fuel_capacity: float
+    fuel_capacity: int
     description: str
     guaranty_expiration_date: _timestamp_pb2.Timestamp
     guaranty_expiration_km: int
     color: str
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., name: _Optional[str] = ..., picture: _Optional[str] = ..., plate_number: _Optional[str] = ..., car_group_id: _Optional[int] = ..., car_type: _Optional[int] = ..., code: _Optional[str] = ..., tonnage: _Optional[int] = ..., max_speed: _Optional[int] = ..., vin: _Optional[str] = ..., engine_number: _Optional[str] = ..., chassis_number: _Optional[str] = ..., model_year: _Optional[int] = ..., fuel_usage: _Optional[float] = ..., fuel_usage_per_hour: _Optional[float] = ..., fuel_type: _Optional[str] = ..., fuel_capacity: _Optional[float] = ..., description: _Optional[str] = ..., guaranty_expiration_date: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., guaranty_expiration_km: _Optional[int] = ..., color: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., name: _Optional[str] = ..., picture: _Optional[str] = ..., plate_number: _Optional[str] = ..., car_group_id: _Optional[int] = ..., car_type: _Optional[int] = ..., code: _Optional[str] = ..., tonnage: _Optional[int] = ..., max_speed: _Optional[int] = ..., vin: _Optional[str] = ..., engine_number: _Optional[str] = ..., chassis_number: _Optional[str] = ..., model_year: _Optional[int] = ..., fuel_usage: _Optional[int] = ..., fuel_usage_per_hour: _Optional[int] = ..., fuel_type: _Optional[str] = ..., fuel_capacity: _Optional[int] = ..., description: _Optional[str] = ..., guaranty_expiration_date: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., guaranty_expiration_km: _Optional[int] = ..., color: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class SystemIoStyle(_message.Message):
     __slots__ = ("icon", "name", "color")
@@ -324,7 +329,7 @@ class SystemIoStyle(_message.Message):
     def __init__(self, icon: _Optional[str] = ..., name: _Optional[str] = ..., color: _Optional[str] = ...) -> None: ...
 
 class SystemIo(_message.Message):
-    __slots__ = ("id", "name", "device_id", "formula", "type", "unit", "description", "active_style", "inactive_style", "active", "graphable", "sord", "hidden", "unknown", "created_by", "created_at", "updated_at")
+    __slots__ = ("id", "device_id", "organization_id", "formula", "name", "description", "type", "unit", "active_style", "inactive_style", "active", "graphable", "sord", "hidden", "unknown", "created_by", "created_at", "updated_at", "separators_count", "decimal_count")
     class SystemIoType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
         STRING: _ClassVar[SystemIo.SystemIoType]
@@ -343,12 +348,13 @@ class SystemIo(_message.Message):
         value: str
         def __init__(self, key: _Optional[str] = ..., value: _Optional[str] = ...) -> None: ...
     ID_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
     DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
+    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
     FORMULA_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     UNIT_FIELD_NUMBER: _ClassVar[int]
-    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     ACTIVE_STYLE_FIELD_NUMBER: _ClassVar[int]
     INACTIVE_STYLE_FIELD_NUMBER: _ClassVar[int]
     ACTIVE_FIELD_NUMBER: _ClassVar[int]
@@ -359,13 +365,16 @@ class SystemIo(_message.Message):
     CREATED_BY_FIELD_NUMBER: _ClassVar[int]
     CREATED_AT_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    SEPARATORS_COUNT_FIELD_NUMBER: _ClassVar[int]
+    DECIMAL_COUNT_FIELD_NUMBER: _ClassVar[int]
     id: int
-    name: str
     device_id: int
+    organization_id: int
     formula: str
+    name: str
+    description: str
     type: SystemIo.SystemIoType
     unit: str
-    description: str
     active_style: SystemIoStyle
     inactive_style: SystemIoStyle
     active: bool
@@ -376,7 +385,9 @@ class SystemIo(_message.Message):
     created_by: int
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., device_id: _Optional[int] = ..., formula: _Optional[str] = ..., type: _Optional[_Union[SystemIo.SystemIoType, str]] = ..., unit: _Optional[str] = ..., description: _Optional[str] = ..., active_style: _Optional[_Union[SystemIoStyle, _Mapping]] = ..., inactive_style: _Optional[_Union[SystemIoStyle, _Mapping]] = ..., active: bool = ..., graphable: bool = ..., sord: _Optional[int] = ..., hidden: _Optional[_Iterable[str]] = ..., unknown: _Optional[_Mapping[str, str]] = ..., created_by: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    separators_count: int
+    decimal_count: int
+    def __init__(self, id: _Optional[int] = ..., device_id: _Optional[int] = ..., organization_id: _Optional[int] = ..., formula: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., type: _Optional[_Union[SystemIo.SystemIoType, str]] = ..., unit: _Optional[str] = ..., active_style: _Optional[_Union[SystemIoStyle, _Mapping]] = ..., inactive_style: _Optional[_Union[SystemIoStyle, _Mapping]] = ..., active: bool = ..., graphable: bool = ..., sord: _Optional[int] = ..., hidden: _Optional[_Iterable[str]] = ..., unknown: _Optional[_Mapping[str, str]] = ..., created_by: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., separators_count: _Optional[int] = ..., decimal_count: _Optional[int] = ...) -> None: ...
 
 class ShownIo(_message.Message):
     __slots__ = ("name", "style", "unit", "description", "value", "active", "graphable", "sord")
@@ -397,3 +408,27 @@ class ShownIo(_message.Message):
     graphable: bool
     sord: int
     def __init__(self, name: _Optional[str] = ..., style: _Optional[_Union[SystemIoStyle, _Mapping]] = ..., unit: _Optional[str] = ..., description: _Optional[str] = ..., value: _Optional[str] = ..., active: bool = ..., graphable: bool = ..., sord: _Optional[int] = ...) -> None: ...
+
+class CommandAction(_message.Message):
+    __slots__ = ("id", "name", "description", "picture", "sord", "organization_id", "created_by", "updated_by", "created_at", "updated_at")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    PICTURE_FIELD_NUMBER: _ClassVar[int]
+    SORD_FIELD_NUMBER: _ClassVar[int]
+    ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
+    CREATED_BY_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_BY_FIELD_NUMBER: _ClassVar[int]
+    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    id: int
+    name: str
+    description: str
+    picture: str
+    sord: int
+    organization_id: int
+    created_by: int
+    updated_by: int
+    created_at: _timestamp_pb2.Timestamp
+    updated_at: _timestamp_pb2.Timestamp
+    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., picture: _Optional[str] = ..., sord: _Optional[int] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...

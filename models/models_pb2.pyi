@@ -50,6 +50,20 @@ class IoList(_message.Message):
     items: _containers.ScalarMap[int, bytes]
     def __init__(self, items: _Optional[_Mapping[int, bytes]] = ...) -> None: ...
 
+class ArioCache(_message.Message):
+    __slots__ = ("towing", "door", "unplug", "ignition", "movement")
+    TOWING_FIELD_NUMBER: _ClassVar[int]
+    DOOR_FIELD_NUMBER: _ClassVar[int]
+    UNPLUG_FIELD_NUMBER: _ClassVar[int]
+    IGNITION_FIELD_NUMBER: _ClassVar[int]
+    MOVEMENT_FIELD_NUMBER: _ClassVar[int]
+    towing: bool
+    door: bool
+    unplug: bool
+    ignition: bool
+    movement: bool
+    def __init__(self, towing: bool = ..., door: bool = ..., unplug: bool = ..., ignition: bool = ..., movement: bool = ...) -> None: ...
+
 class HeartbeatCache(_message.Message):
     __slots__ = ("ignition", "gsm", "battery_percent", "external_voltage", "command_id", "command", "mileage", "terminal_id", "temperature", "ai1", "odyssey_command_id", "schedule_alert")
     IGNITION_FIELD_NUMBER: _ClassVar[int]
@@ -92,41 +106,13 @@ class SinotrackCache(_message.Message):
     command: str
     def __init__(self, gps_time: _Optional[int] = ..., fuel_used_gps: _Optional[int] = ..., ignition: bool = ..., command_id: _Optional[int] = ..., command: _Optional[str] = ...) -> None: ...
 
-class PersonalAccessToken(_message.Message):
-    __slots__ = ("id", "tokenable_type", "tokenable_id", "name", "token", "abilities", "fcm", "ip", "domain", "partner_id", "user_agent", "device_type", "last_used_at", "expires_at", "created_at", "updated_at")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    TOKENABLE_TYPE_FIELD_NUMBER: _ClassVar[int]
-    TOKENABLE_ID_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    TOKEN_FIELD_NUMBER: _ClassVar[int]
-    ABILITIES_FIELD_NUMBER: _ClassVar[int]
-    FCM_FIELD_NUMBER: _ClassVar[int]
-    IP_FIELD_NUMBER: _ClassVar[int]
-    DOMAIN_FIELD_NUMBER: _ClassVar[int]
-    PARTNER_ID_FIELD_NUMBER: _ClassVar[int]
-    USER_AGENT_FIELD_NUMBER: _ClassVar[int]
-    DEVICE_TYPE_FIELD_NUMBER: _ClassVar[int]
-    LAST_USED_AT_FIELD_NUMBER: _ClassVar[int]
-    EXPIRES_AT_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    id: int
-    tokenable_type: str
-    tokenable_id: int
-    name: str
-    token: str
-    abilities: str
-    fcm: str
-    ip: str
-    domain: str
-    partner_id: int
-    user_agent: str
-    device_type: str
-    last_used_at: _timestamp_pb2.Timestamp
-    expires_at: _timestamp_pb2.Timestamp
-    created_at: _timestamp_pb2.Timestamp
-    updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., tokenable_type: _Optional[str] = ..., tokenable_id: _Optional[int] = ..., name: _Optional[str] = ..., token: _Optional[str] = ..., abilities: _Optional[str] = ..., fcm: _Optional[str] = ..., ip: _Optional[str] = ..., domain: _Optional[str] = ..., partner_id: _Optional[int] = ..., user_agent: _Optional[str] = ..., device_type: _Optional[str] = ..., last_used_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+class GitinamaCache(_message.Message):
+    __slots__ = ("lat", "lng")
+    LAT_FIELD_NUMBER: _ClassVar[int]
+    LNG_FIELD_NUMBER: _ClassVar[int]
+    lat: float
+    lng: float
+    def __init__(self, lat: _Optional[float] = ..., lng: _Optional[float] = ...) -> None: ...
 
 class DeviceStatusList(_message.Message):
     __slots__ = ("cost", "accepted", "list")
@@ -142,20 +128,20 @@ class ChargeLog(_message.Message):
     __slots__ = ("id", "user_id", "device_id", "imei", "object_id", "object_type", "type", "description", "ip", "user_agent", "previous_expiration", "next_expiration", "is_unlimited", "refund", "created_at", "updated_at")
     class Type(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = ()
-        None: _ClassVar[ChargeLog.Type]
-        Wallet: _ClassVar[ChargeLog.Type]
-        Store: _ClassVar[ChargeLog.Type]
-        Payment: _ClassVar[ChargeLog.Type]
-        FirstConnect: _ClassVar[ChargeLog.Type]
-        Trial: _ClassVar[ChargeLog.Type]
-        Refund: _ClassVar[ChargeLog.Type]
-    None: ChargeLog.Type
-    Wallet: ChargeLog.Type
-    Store: ChargeLog.Type
-    Payment: ChargeLog.Type
-    FirstConnect: ChargeLog.Type
-    Trial: ChargeLog.Type
-    Refund: ChargeLog.Type
+        UNSPECIFIED: _ClassVar[ChargeLog.Type]
+        WALLET: _ClassVar[ChargeLog.Type]
+        STORE: _ClassVar[ChargeLog.Type]
+        PAYMENT: _ClassVar[ChargeLog.Type]
+        FIRST_CONNECT: _ClassVar[ChargeLog.Type]
+        TRIAL: _ClassVar[ChargeLog.Type]
+        REFUND: _ClassVar[ChargeLog.Type]
+    UNSPECIFIED: ChargeLog.Type
+    WALLET: ChargeLog.Type
+    STORE: ChargeLog.Type
+    PAYMENT: ChargeLog.Type
+    FIRST_CONNECT: ChargeLog.Type
+    TRIAL: ChargeLog.Type
+    REFUND: ChargeLog.Type
     ID_FIELD_NUMBER: _ClassVar[int]
     USER_ID_FIELD_NUMBER: _ClassVar[int]
     DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
@@ -241,7 +227,7 @@ class LiveLocationRelated(_message.Message):
     def __init__(self, id: _Optional[int] = ..., live_location_id: _Optional[int] = ..., object_id: _Optional[int] = ..., object_type: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class Config(_message.Message):
-    __slots__ = ("id", "organization_id", "created_by", "updated_by", "key", "value", "created_at", "updated_at")
+    __slots__ = ("id", "organization_id", "created_by", "updated_by", "key", "value", "created_at", "updated_at", "name", "type")
     ID_FIELD_NUMBER: _ClassVar[int]
     ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
     CREATED_BY_FIELD_NUMBER: _ClassVar[int]
@@ -250,6 +236,8 @@ class Config(_message.Message):
     VALUE_FIELD_NUMBER: _ClassVar[int]
     CREATED_AT_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    TYPE_FIELD_NUMBER: _ClassVar[int]
     id: int
     organization_id: int
     created_by: int
@@ -258,4 +246,6 @@ class Config(_message.Message):
     value: str
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., key: _Optional[str] = ..., value: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    name: str
+    type: str
+    def __init__(self, id: _Optional[int] = ..., organization_id: _Optional[int] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., key: _Optional[str] = ..., value: _Optional[str] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., name: _Optional[str] = ..., type: _Optional[str] = ...) -> None: ...

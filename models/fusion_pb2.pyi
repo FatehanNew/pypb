@@ -10,20 +10,22 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class WorkCycleDevice(_message.Message):
-    __slots__ = ("device_id", "movable", "radius", "group_id", "organization_id", "name")
+    __slots__ = ("device_id", "movable", "radius", "group_id", "organization_id", "name", "area_id")
     DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
     MOVABLE_FIELD_NUMBER: _ClassVar[int]
     RADIUS_FIELD_NUMBER: _ClassVar[int]
     GROUP_ID_FIELD_NUMBER: _ClassVar[int]
     ORGANIZATION_ID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
+    AREA_ID_FIELD_NUMBER: _ClassVar[int]
     device_id: int
     movable: bool
     radius: int
     group_id: int
     organization_id: int
     name: str
-    def __init__(self, device_id: _Optional[int] = ..., movable: bool = ..., radius: _Optional[int] = ..., group_id: _Optional[int] = ..., organization_id: _Optional[int] = ..., name: _Optional[str] = ...) -> None: ...
+    area_id: int
+    def __init__(self, device_id: _Optional[int] = ..., movable: bool = ..., radius: _Optional[int] = ..., group_id: _Optional[int] = ..., organization_id: _Optional[int] = ..., name: _Optional[str] = ..., area_id: _Optional[int] = ...) -> None: ...
 
 class WorkCycleDeviceList(_message.Message):
     __slots__ = ("list",)

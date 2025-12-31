@@ -13,14 +13,14 @@ DESCRIPTOR: _descriptor.FileDescriptor
 
 class AreaType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
-    Circle: _ClassVar[AreaType]
-    Polygon: _ClassVar[AreaType]
-    Rectangle: _ClassVar[AreaType]
-    Marker: _ClassVar[AreaType]
-Circle: AreaType
-Polygon: AreaType
-Rectangle: AreaType
-Marker: AreaType
+    CIRCLE: _ClassVar[AreaType]
+    POLYGON: _ClassVar[AreaType]
+    RECTANGLE: _ClassVar[AreaType]
+    MARKER: _ClassVar[AreaType]
+CIRCLE: AreaType
+POLYGON: AreaType
+RECTANGLE: AreaType
+MARKER: AreaType
 
 class Point(_message.Message):
     __slots__ = ("latitude", "longitude")
@@ -63,7 +63,7 @@ class Area(_message.Message):
     def __init__(self, id: _Optional[int] = ..., type: _Optional[_Union[AreaType, str]] = ..., name: _Optional[str] = ..., organization_id: _Optional[int] = ..., radius: _Optional[float] = ..., color: _Optional[str] = ..., created_by: _Optional[int] = ..., updated_by: _Optional[int] = ..., category_id: _Optional[int] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., category: _Optional[_Union[AreaCategory, _Mapping]] = ..., organization: _Optional[_Union[_identities_pb2.Organization, _Mapping]] = ..., coordinates: _Optional[_Iterable[_Union[Point, _Mapping]]] = ...) -> None: ...
 
 class WorkCycle(_message.Message):
-    __slots__ = ("device_id", "start", "finish", "area", "started_at", "finished_at", "mileage", "duration")
+    __slots__ = ("device_id", "device_name", "start", "finish", "area", "started_at", "finished_at", "mileage", "duration")
     class Event(_message.Message):
         __slots__ = ("id", "name", "entered_point", "entered_at", "exited_point", "exited_at", "mileage", "duration")
         ID_FIELD_NUMBER: _ClassVar[int]
@@ -84,6 +84,7 @@ class WorkCycle(_message.Message):
         duration: int
         def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., entered_point: _Optional[_Union[Point, _Mapping]] = ..., entered_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., exited_point: _Optional[_Union[Point, _Mapping]] = ..., exited_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., mileage: _Optional[int] = ..., duration: _Optional[int] = ...) -> None: ...
     DEVICE_ID_FIELD_NUMBER: _ClassVar[int]
+    DEVICE_NAME_FIELD_NUMBER: _ClassVar[int]
     START_FIELD_NUMBER: _ClassVar[int]
     FINISH_FIELD_NUMBER: _ClassVar[int]
     AREA_FIELD_NUMBER: _ClassVar[int]
@@ -92,6 +93,7 @@ class WorkCycle(_message.Message):
     MILEAGE_FIELD_NUMBER: _ClassVar[int]
     DURATION_FIELD_NUMBER: _ClassVar[int]
     device_id: int
+    device_name: str
     start: WorkCycle.Event
     finish: WorkCycle.Event
     area: WorkCycle.Event
@@ -99,7 +101,7 @@ class WorkCycle(_message.Message):
     finished_at: _timestamp_pb2.Timestamp
     mileage: int
     duration: int
-    def __init__(self, device_id: _Optional[int] = ..., start: _Optional[_Union[WorkCycle.Event, _Mapping]] = ..., finish: _Optional[_Union[WorkCycle.Event, _Mapping]] = ..., area: _Optional[_Union[WorkCycle.Event, _Mapping]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., mileage: _Optional[int] = ..., duration: _Optional[int] = ...) -> None: ...
+    def __init__(self, device_id: _Optional[int] = ..., device_name: _Optional[str] = ..., start: _Optional[_Union[WorkCycle.Event, _Mapping]] = ..., finish: _Optional[_Union[WorkCycle.Event, _Mapping]] = ..., area: _Optional[_Union[WorkCycle.Event, _Mapping]] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., finished_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., mileage: _Optional[int] = ..., duration: _Optional[int] = ...) -> None: ...
 
 class AreaAlertIsRunning(_message.Message):
     __slots__ = ("is_running", "latest")
